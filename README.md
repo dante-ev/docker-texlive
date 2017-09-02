@@ -1,6 +1,12 @@
 # Docker image for texlive
 
-This is based on [adnrv/texlive](https://hub.docker.com/r/adnrv/texlive/), with the addition of [latexmk](https://www.ctan.org/pkg/latexmk/).
+This is based on [adnrv/texlive](https://hub.docker.com/r/adnrv/texlive/), with the addition of following programs:
+
+- [latexmk](https://www.ctan.org/pkg/latexmk/)
+- Python 2.7, pip, pyparsing, python-docx
+- Java headless
+- [pax](http://ctan.org/pkg/pax)
+- [pdftk](https://www.pdflabs.com/tools/pdftk-the-pdf-toolkit/)
 
 Usage:
 
