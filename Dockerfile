@@ -2,7 +2,7 @@ FROM adnrv/texlive
 
 # we additionally need latexmk
 RUN apt-get update -qq && apt-get upgrade -qq && \
-    apt-get install -y --no-install-recommends latexmk python2.7 openjdk-8-jre-headless libfile-which-perl pdftk && \
+    apt-get install -y --no-install-recommends latexmk python2.7 openjdk-8-jre-headless libfile-which-perl pdftk ghostscript && \
     apt-get install -y python-pip && \
     rm -rf /var/lib/apt/lists/*
 

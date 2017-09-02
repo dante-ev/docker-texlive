@@ -7,6 +7,7 @@ This is based on [adnrv/texlive](https://hub.docker.com/r/adnrv/texlive/), with 
 - Java headless
 - [pax](http://ctan.org/pkg/pax)
 - [pdftk](https://www.pdflabs.com/tools/pdftk-the-pdf-toolkit/)
+- Ghostscript
 
 Usage:
 
