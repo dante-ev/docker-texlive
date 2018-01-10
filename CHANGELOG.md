@@ -1,4 +1,4 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file.
 
@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [unreleased]
 
+### Added
+- Added [MADR ADRs](https://adr.github.io/madr/)
+
+### Changed
+- New base image [sumdoc/texlive-2017](https://hub.docker.com/r/sumdoc/texlive-2017/).
+- `WORKDIR` is now `/home` instead of `/var/texlive`.
 
 ## [v1.2.0] - 2017-09-02
 

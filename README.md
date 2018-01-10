@@ -1,6 +1,6 @@
-# Docker image for texlive
+# Docker image for texlive [![download-size number-of-layers](https://images.microbadger.com/badges/image/koppor/texlive.svg)](https://microbadger.com/images/koppor/texlive)
 
-This is based on [adnrv/texlive](https://hub.docker.com/r/adnrv/texlive/), with the addition of following programs:
+This is based on [sumdoc/texlive-2017](https://hub.docker.com/r/sumdoc/texlive-2017/), with the addition of following programs:
 
 - [latexmk](https://www.ctan.org/pkg/latexmk/)
 - Python 2.7, pip, pyparsing, python-docx
@@ -11,7 +11,7 @@ This is based on [adnrv/texlive](https://hub.docker.com/r/adnrv/texlive/), with 
 
 Usage:
 
-    docker run --rm -it -v $(pwd):/var/texlive koppor/texlive latexmk document.tex
+    docker run --rm -it -v $(pwd):/home koppor/texlive latexmk document.tex
 
 Usage in [CircleCI 2.0](https://circleci.com/docs/2.0/):
 
