@@ -13,6 +13,7 @@ RUN tlmgr update --self --all --reinstall-forcibly-removed
 RUN mkdir /root/.texlive2017 && perl `kpsewhich -var-value TEXMFDIST`/scripts/pax/pdfannotextractor.pl --install
 
 # Enable using the scripts of https://github.com/gi-ev/LNI-proceedings
-RUN pip install pyparsing && pip install python-docx
+# Install pygments to enable minted
+RUN pip install pyparsing && pip install python-docx && pip install pygments
 
 WORKDIR /home

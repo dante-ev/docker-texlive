@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [unreleased]
 
+### Added
+- Added [pygments](http://pygments.org/) package to enable [minted](https://github.com/gpoore/minted).
 
 ## [v1.3.0] - 2018-01-10
 
