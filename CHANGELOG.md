@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 - Added [pygments](http://pygments.org/) package to enable [minted](https://github.com/gpoore/minted).
+- Added [bundler](http://bundler.io/) to enable testing via [RSpec](http://rspec.info/).
 
 ## [v1.3.0] - 2018-01-10
 

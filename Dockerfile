@@ -4,7 +4,11 @@ FROM sumdoc/texlive-2017
 RUN apt-get update -qq && apt-get upgrade -qq && \
     apt-get install -y --no-install-recommends latexmk python2.7 openjdk-8-jre-headless libfile-which-perl pdftk ghostscript unzip && \
     apt-get install -y python-pip && \
+    apt-get install -y ruby poppler-utils && \
     rm -rf /var/lib/apt/lists/*
+
+# install Ruby's bundler
+RUN gem install bundler
 
 # update texlive
 RUN tlmgr update --self --all --reinstall-forcibly-removed
