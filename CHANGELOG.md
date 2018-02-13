@@ -5,6 +5,8 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [Unreleased]
+
 ## [v1.4.0] - 2018-02-13
 
 ### Added
@@ -38,7 +40,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 Initial release
 
-[unreleased]: https://github.com/koppor/docker-texlive/compare/v1.4.0...HEAD
+[Unreleased]: https://github.com/koppor/docker-texlive/compare/v1.4.0...HEAD
 [v1.4.0]: https://github.com/koppor/docker-texlive/compare/v1.3.0...v1.4.0
 [v1.3.0]: https://github.com/koppor/docker-texlive/compare/v1.2.0...v1.3.0
 [v1.2.0]: https://github.com/koppor/docker-texlive/compare/v1.1.0...v1.2.0
