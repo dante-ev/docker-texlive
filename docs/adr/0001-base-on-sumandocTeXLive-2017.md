@@ -22,6 +22,7 @@ When choosing an existing one, which one should be taken?
 - base on https://github.com/harshjv/docker-texlive-2015/blob/master/Dockerfile - ubuntu 14.04
 - base on https://github.com/chrisanthropic/docker-TeXlive/blob/master/Dockerfile - debian:jessie, texlive 2015, ISO
 - base on https://github.com/camilstaps/docker-texlive/blob/master/Dockerfile - debian:jessie, config file in repo; `latexmk` does not work there. https://github.com/camilstaps/docker-texlive/issues/1
+- base on https://github.com/dc-uba/docker-alpine-texlive - [alpine linux](https://hub.docker.com/_/alpine/), minimal texlive 2016
 
 ## Decision Outcome
 
