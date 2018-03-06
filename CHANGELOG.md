@@ -5,7 +5,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased]
+## [v1.4.1] - 2018-06-03
+
+### Changed
+- Rebuilt due to freeze of TeXLive 2017.
 
 ## [v1.4.0] - 2018-02-13
 
@@ -16,7 +19,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [v1.3.0] - 2018-01-10
 
 ### Added
-- Added [MADR ADRs](https://adr.github.io/madr/)
+- Added [MADR ADRs](https://adr.github.io/madr/).
 
 ### Changed
 - New base image [sumdoc/texlive-2017](https://hub.docker.com/r/sumdoc/texlive-2017/).
@@ -40,7 +43,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 Initial release
 
-[Unreleased]: https://github.com/koppor/docker-texlive/compare/v1.4.0...HEAD
+[Unreleased]: https://github.com/koppor/docker-texlive/compare/v1.4.1...HEAD
+[v1.4.1]: https://github.com/koppor/docker-texlive/compare/v1.4.0...v1.4.1
 [v1.4.0]: https://github.com/koppor/docker-texlive/compare/v1.3.0...v1.4.0
 [v1.3.0]: https://github.com/koppor/docker-texlive/compare/v1.2.0...v1.3.0
 [v1.2.0]: https://github.com/koppor/docker-texlive/compare/v1.1.0...v1.2.0
