@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 - Added `plantuml.jar` and environemnt variable `PLANTUML_JAR` to enable usage of the [plantuml package](https://www.ctan.org/plantuml).
 - Added `graphviz` and `inkscape` for the plantuml package.
+- Added `pandoc` to be able to convert `md` to `pdf`.
 
 ### Fixed
 

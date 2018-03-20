@@ -10,7 +10,8 @@ RUN apt-get update -qq && apt-get upgrade -qq && \
     apt-get install -y python-pip && \
     apt-get install -y ruby poppler-utils && \
     # For plantuml, we need graphviz and inkscape. For inkscape, there is no non-X11 version, so 200 MB more
-    apt-get install -y --no-install-recommends graphviz inkscape && \
+    # pandoc is because of CTAN package releasing, where .md is converted to .pdf
+    apt-get install -y --no-install-recommends graphviz inkscape pandoc && \
     rm -rf /var/lib/apt/lists/*
 
 # get PlantUML in place
