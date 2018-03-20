@@ -6,7 +6,8 @@ ENV TERM=dumb
 
 # we additionally need python, java (because of pax), perl (because of pax), pdftk, ghostscript, and unzip (because of pax)
 RUN apt-get update -qq && apt-get upgrade -qq && \
-    apt-get install -y --no-install-recommends python2.7 openjdk-8-jre-headless libfile-which-perl pdftk ghostscript unzip && \
+    # libfile-copy-recursive-perl is required by ctanify
+    apt-get install -y --no-install-recommends python2.7 openjdk-8-jre-headless libfile-which-perl libfile-copy-recursive-perl pdftk ghostscript unzip && \
     apt-get install -y python-pip && \
     apt-get install -y ruby poppler-utils && \
     # For plantuml, we need graphviz and inkscape. For inkscape, there is no non-X11 version, so 200 MB more
