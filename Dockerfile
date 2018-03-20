@@ -10,9 +10,13 @@ RUN apt-get update -qq && apt-get upgrade -qq && \
     apt-get install -y python-pip && \
     apt-get install -y ruby poppler-utils && \
     # For plantuml, we need graphviz and inkscape. For inkscape, there is no non-X11 version, so 200 MB more
-    # pandoc is because of CTAN package releasing, where .md is converted to .pdf
-    apt-get install -y --no-install-recommends graphviz inkscape pandoc && \
+    apt-get install -y --no-install-recommends graphviz inkscape && \
     rm -rf /var/lib/apt/lists/*
+
+# pandoc is because of CTAN package releasing, where .md is converted to .pdf
+# pandoc in the repositories is 1.x, but there is 2.x released, which changed command line parameters.
+# To enable release.sh working also in CircleCI, we use a recent pandoc version there, too.
+RUN wget https://github.com/jgm/pandoc/releases/download/2.1.3/pandoc-2.1.3-1-amd64.deb -q --output-document=/home/pandoc.deb && dpkg -i pandoc.deb
 
 # get PlantUML in place
 RUN wget https://netix.dl.sourceforge.net/project/plantuml/1.2018.2/plantuml.1.2018.2.jar -q --output-document=/home/plantuml.jar
