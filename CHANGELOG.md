@@ -5,23 +5,38 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [Unreleased]
+
+### Added
+
+- Added `plantuml.jar` and environemnt variable `PLANTUML_JAR` to enable usage of the [plantuml package](https://www.ctan.org/plantuml).
+- Added `graphviz` and `inkscape` for the plantuml package.
+
+### Fixed
+
+- `latexmk` is not installed using `apt-get` anymore, because it is already by the parent image.
+
 ## [v1.4.1] - 2018-06-03
 
 ### Changed
+
 - Rebuilt due to freeze of TeXLive 2017.
 
 ## [v1.4.0] - 2018-02-13
 
 ### Added
+
 - Added [pygments](http://pygments.org/) package to enable [minted](https://github.com/gpoore/minted).
 - Added [bundler](http://bundler.io/) to enable testing via [RSpec](http://rspec.info/).
 
 ## [v1.3.0] - 2018-01-10
 
 ### Added
+
 - Added [MADR ADRs](https://adr.github.io/madr/).
 
 ### Changed
+
 - New base image [sumdoc/texlive-2017](https://hub.docker.com/r/sumdoc/texlive-2017/).
 - `WORKDIR` is now `/home` instead of `/var/texlive`.
 
