@@ -3,11 +3,14 @@
 This is based on [sumdoc/texlive-2017](https://hub.docker.com/r/sumdoc/texlive-2017/), with the addition of following programs:
 
 - [latexmk](https://www.ctan.org/pkg/latexmk/)
-- Python 2.7, pip, pyparsing, python-docx
+- [Python 2.7](https://pythonclock.org/), pip, pyparsing, python-docx
 - Java headless
 - [pax](http://ctan.org/pkg/pax)
 - [pdftk](https://www.pdflabs.com/tools/pdftk-the-pdf-toolkit/)
-- Ghostscript
+- [Pandoc](http://pandoc.org/)
+- [GraphViz](https://www.graphviz.org/)
+- [Inkscape](https://inkscape.org/)
+- [Ghostscript](https://www.ghostscript.com/)
 
 Usage:
 
