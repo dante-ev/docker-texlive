@@ -9,7 +9,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 
+- Use debian's [texlive-all](https://packages.debian.org/sid/texlive-full) instead of self-installed texlive
 - Ensure that git and ssh are installed
+- Install [LaTeXML](https://dlmf.nist.gov/LaTeXML/) as debian package and not directly from source
 
 ## [v1.5.0] - 2018-03-20
 
