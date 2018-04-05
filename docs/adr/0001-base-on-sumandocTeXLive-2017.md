@@ -38,5 +38,6 @@ We accept that
   - We are based on debian sid, which constantly changes
   - We will have to monitor the upstream repository if texlive 2018 is released and possibly adapt our Dockerfile.
   - We get a large image - more than 4 GB.
+  - We have to install font packages separatetly for each font (e.g., [fonts-texgyre](https://packages.debian.org/sid/fonts/fonts-texgyre))
 
 The only reasonable alternative seems to be https://github.com/adinriv/docker-texlive, which customizes the latex packages to be used.
