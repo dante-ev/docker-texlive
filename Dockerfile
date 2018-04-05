@@ -15,7 +15,7 @@ RUN apt-get update -qq && apt-get upgrade -qq && \
     # for plantuml, we need graphviz and inkscape. For inkscape, there is no non-X11 version, so 200 MB more
     apt-get install -y --no-install-recommends graphviz inkscape && \
     # install texlive-full. The documentation ( texlive-latex-base-doc- texlive-latex-extra-doc- texlive-latex-recommended-doc-	texlive-metapost-doc- texlive-pictures-doc- texlive-pstricks-doc- texlive-publishers-doc- texlive-science-doc- texlive-fonts-extra-doc- texlive-fonts-recommended-doc- texlive-humanities-doc-) is also required
-    apt-get install -y --no-install-recommends texlive-full latexml && \
+    apt-get install -y --no-install-recommends texlive-full fonts-texgyre latexml && \
     # texlive-full depends on pyhton3. These packages curently depend on python2.7.
     # install pygments to enable minted
     apt-get install -y python-pygments python-pip && \
