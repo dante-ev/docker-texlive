@@ -1,4 +1,4 @@
-# Do not base on any image
+# Do not base on any tex image
 
 ## Context and Problem Statement
 
@@ -13,7 +13,7 @@ When choosing an existing one, which one should be taken?
 
 ## Considered Options
 
-* Do not base on any image
+* Do not base on any tex image
 * base on https://github.com/janweinschenker/docker-texlive/blob/master/Dockerfile - Ubuntu 17.10, texlive-full
 * base on https://github.com/thomasWeise/docker-texlive/blob/master/image/Dockerfile - Ubuntu 16.04, small installation
 * base on https://github.com/sumandoc/TeXLive-2017/blob/master/Dockerfile - Debian sid, install-tl-unx.tar.gz, LaTeXML
@@ -31,7 +31,7 @@ When choosing an existing one, which one should be taken?
 
 ## Decision Outcome
 
-Chosen option: "Do not base on any image", because [sumandoc/TeXLive-2017](https://github.com/sumandoc/TeXLive-2017) was the most promising, but it removed support for latexml at https://github.com/sumandoc/TeXLive-2017/commit/ef143d3d3396fdb243b7b7e1ff01f00a7eb26802 and https://github.com/sumandoc/TeXLive-2017/commit/6272e96f9b382ac3ba4b2338817fb80e5238ac5f.
+Chosen option: "Do not base on any tex image", because [sumandoc/TeXLive-2017](https://github.com/sumandoc/TeXLive-2017) was the most promising, but it removed support for latexml at https://github.com/sumandoc/TeXLive-2017/commit/ef143d3d3396fdb243b7b7e1ff01f00a7eb26802 and https://github.com/sumandoc/TeXLive-2017/commit/6272e96f9b382ac3ba4b2338817fb80e5238ac5f.
 The risk that other breaking changes come in cannot be taken.
 
 We accept that
