@@ -14,7 +14,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Install [LaTeXML](https://dlmf.nist.gov/LaTeXML/) as debian package and not directly from source
 - New home at [DANTE e.V.](https://www.dante.de/): <https://github.com/dante-ev/docker-texlive>
 
-## [v1.5.0] - 2018-03-20
+## [v1.5.0] – 2018-03-20
 
 ### Added
 
@@ -26,20 +26,20 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 - `latexmk` is not installed using `apt-get` anymore, because it is already by the parent image.
 
-## [v1.4.1] - 2018-06-03
+## [v1.4.1] – 2018-06-03
 
 ### Changed
 
 - Rebuilt due to freeze of TeXLive 2017.
 
-## [v1.4.0] - 2018-02-13
+## [v1.4.0] – 2018-02-13
 
 ### Added
 
 - Added [pygments](http://pygments.org/) package to enable [minted](https://github.com/gpoore/minted).
 - Added [bundler](http://bundler.io/) to enable testing via [RSpec](http://rspec.info/).
 
-## [v1.3.0] - 2018-01-10
+## [v1.3.0] – 2018-01-10
 
 ### Added
 
@@ -50,13 +50,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - New base image [sumdoc/texlive-2017](https://hub.docker.com/r/sumdoc/texlive-2017/).
 - `WORKDIR` is now `/home` instead of `/var/texlive`.
 
-## [v1.2.0] - 2017-09-02
+## [v1.2.0] – 2017-09-02
 
 ### Added
 
 - Ghostscript
 
-## [v1.1.0] - 2017-09-02
+## [v1.1.0] – 2017-09-02
 
 ### Added
 
@@ -64,7 +64,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - packages `openjdk-8-jre-headless` and `libfile-which-perl` to enable execution of [pax](http://ctan.org/pkg/pax)
 - package [pdftk](https://www.pdflabs.com/tools/pdftk-the-pdf-toolkit/)
 
-## v1.0.0 - 2017-08-03
+## v1.0.0 – 2017-08-03
 
 Initial release
 
