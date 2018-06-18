@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Use debian's [texlive-all](https://packages.debian.org/sid/texlive-full) instead of self-installed texlive
 - Ensure that git and ssh are installed
 - Install [LaTeXML](https://dlmf.nist.gov/LaTeXML/) as debian package and not directly from source
+- New home at [DANTE e.V.](https://www.dante.de/): <https://github.com/dante-ev/docker-texlive>
 
 ## [v1.5.0] - 2018-03-20
 
