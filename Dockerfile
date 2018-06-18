@@ -1,4 +1,4 @@
-FROM debian:sid
+FROM ubuntu:bionic
 LABEL maintainer "Oliver Kopp <kopp.dev@gmail.com>"
 ENV LANG=C.UTF-8 \
     LC_ALL=C.UTF-8 \
