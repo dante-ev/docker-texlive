@@ -30,3 +30,11 @@ jobs:
        - checkout
        - run: latexmk document.tex
 ```
+
+## License
+
+- [Google Inconsolata](https://fonts.google.com/specimen/Inconsolata) is licensed under [OFL-1.1](https://spdx.org/licenses/OFL-1.1.html)
+- [IBM Plex™](https://github.com/IBM/plex/) is licensed under [OFL-1.1](https://spdx.org/licenses/OFL-1.1.html)
+- The files in this repository are licensed under [MIT](https://spdx.org/licenses/MIT.html).
+- Each LaTeX package has its own license.
+  Please check the respective package homepages at [CTAN](https://www.ctan.org/).

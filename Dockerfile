@@ -19,9 +19,21 @@ RUN apt-get update -qq && apt-get upgrade -qq && \
     # texlive-full depends on pyhton3. These packages curently depend on python2.7.
     # install pygments to enable minted
     apt-get install -y python-pygments python-pip && \
+    # add Google's Inconsolata font (https://fonts.google.com/specimen/Inconsolata)
+    apt-get install -y fonts-inconsolata && \
+    # required to install IBMPlexMono font
+    apt-get install -y fontconfig && \
     rm -rf /var/lib/apt/lists/*
 
 # update texlive is not required as we base on debian/sid
+
+# install IBM Plex fonts
+RUN mkdir -p /tmp/fonts && \
+    cd /tmp/fonts && \
+    wget https://github.com/IBM/plex/releases/download/v1.0.2/OpenType.zip && \
+    unzip OpenType.zip -x */LICENSE.txt */license.txt */CHANGELOG */.DS_Store && \
+    cp -r OpenType/* /usr/local/share/fonts && \
+    fc-cache -f -v
 
 # update font index
 RUN luaotfload-tool --update

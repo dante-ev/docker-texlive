@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Added
+
+- Support for [Google's Inconsolata font](https://fonts.google.com/specimen/Inconsolata)
+- Support for [IBM Plex™](https://github.com/IBM/plex/)
+
 ### Changed
 
 - Use debian's [texlive-all](https://packages.debian.org/sid/texlive-full) instead of self-installed texlive
