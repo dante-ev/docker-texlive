@@ -14,9 +14,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 
-- Use debian's [texlive-all](https://packages.debian.org/sid/texlive-full) instead of self-installed texlive
+- Use [Ubuntu Bionics's texlive-all](https://packages.ubuntu.com/bionic/texlive-full) instead of self-installed texlive.
+  We cannot use Debian/sid or a later ubuntu, because of <https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=901761>.
 - Ensure that git and ssh are installed
-- Install [LaTeXML](https://dlmf.nist.gov/LaTeXML/) as debian package and not directly from source
+- Install [LaTeXML](https://dlmf.nist.gov/LaTeXML/) as Debian package and not directly from source
 - New home at [DANTE e.V.](https://www.dante.de/): <https://github.com/dante-ev/docker-texlive>
 
 ## [v1.5.0] – 2018-03-20

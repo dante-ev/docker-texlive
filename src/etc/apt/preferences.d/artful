@@ -1,0 +1,3 @@
+Package: *
+Pin: release v=17.10, l=Ubuntu
+Pin-Priority: 500

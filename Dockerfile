@@ -1,9 +1,17 @@
-FROM ubuntu:bionic
+FROM ubuntu:artful
 LABEL maintainer "Oliver Kopp <kopp.dev@gmail.com>"
 ENV LANG=C.UTF-8 \
     LC_ALL=C.UTF-8 \
     TERM=dumb
+
+# avoid debconf and initrd
+ENV DEBIAN_FRONTEND noninteractive
+ENV INITRD No
+
 ARG BUILD_DATE
+
+COPY src/etc/apt/preferences.d/artful /etc/apt/preferences.d/
+COPY src/etc/apt/sources.list.d/bionic.list /etc/apt/sources.list.d/
 
 # we additionally need python, java (because of pax), perl (because of pax), pdftk, ghostscript, and unzip (because of pax)
 RUN apt-get update -qq && apt-get upgrade -qq && \
@@ -15,7 +23,9 @@ RUN apt-get update -qq && apt-get upgrade -qq && \
     # for plantuml, we need graphviz and inkscape. For inkscape, there is no non-X11 version, so 200 MB more
     apt-get install -y --no-install-recommends graphviz inkscape && \
     # install texlive-full. The documentation ( texlive-latex-base-doc- texlive-latex-extra-doc- texlive-latex-recommended-doc-	texlive-metapost-doc- texlive-pictures-doc- texlive-pstricks-doc- texlive-publishers-doc- texlive-science-doc- texlive-fonts-extra-doc- texlive-fonts-recommended-doc- texlive-humanities-doc-) is also required
-    apt-get install -y --no-install-recommends texlive-full fonts-texgyre latexml && \
+    # We base on bionic, because Ubuntu bionic is the last distribution offering an updated TeX Live 2017
+    # We cannot base fully on bionic, because pdftk is not available in bionic
+    apt-get install -y -t bionic --no-install-recommends texlive-full fonts-texgyre latexml && \
     # texlive-full depends on pyhton3. These packages curently depend on python2.7.
     # install pygments to enable minted
     apt-get install -y python-pygments python-pip && \
@@ -23,9 +33,17 @@ RUN apt-get update -qq && apt-get upgrade -qq && \
     apt-get install -y fonts-inconsolata && \
     # required to install IBMPlexMono font
     apt-get install -y fontconfig && \
-    rm -rf /var/lib/apt/lists/*
+    # required by tlmgr init-usertree
+    apt-get install -y xzdec && \
+    # save some space
+    rm -rf /var/lib/apt/lists/* && apt-get clean
 
-# update texlive is not required as we base on debian/sid
+# update texlive
+# not possible for texlive 2017 as it wants to update to texlive 2018
+#
+# source: https://askubuntu.com/a/485945
+# RUN tlmgr init-usertree
+# RUN tlmgr update --self --all --reinstall-forcibly-removed
 
 # install IBM Plex fonts
 RUN mkdir -p /tmp/fonts && \
@@ -57,6 +75,3 @@ RUN pip install pyparsing && pip install python-docx
 
 # prepare usage of pax
 RUN mkdir /root/.texlive2017 && perl `kpsewhich -var-value TEXMFDIST`/scripts/pax/pdfannotextractor.pl --install
-
-# output current version
-CMD ["tlmgr", "--version"]

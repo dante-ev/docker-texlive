@@ -31,6 +31,12 @@ jobs:
        - run: latexmk document.tex
 ```
 
+## Background
+
+We decided to offer latest TeX Live 2017, because this ensures recent packages.
+We cannot base on latest Debian, because pdftk cannot be installed there ([#901761](https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=901761)).
+Therefore, we base on Ubuntu Artful (where pdftk works), where we mix-in latest TeX Live from Ubuntu Bionic (which offers latest TeX Live 2017).
+
 ## License
 
 - [Google Inconsolata](https://fonts.google.com/specimen/Inconsolata) is licensed under [OFL-1.1](https://spdx.org/licenses/OFL-1.1.html)
