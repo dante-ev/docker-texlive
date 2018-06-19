@@ -25,7 +25,7 @@ RUN apt-get update -qq && apt-get upgrade -qq && \
     # install texlive-full. The documentation ( texlive-latex-base-doc- texlive-latex-extra-doc- texlive-latex-recommended-doc-	texlive-metapost-doc- texlive-pictures-doc- texlive-pstricks-doc- texlive-publishers-doc- texlive-science-doc- texlive-fonts-extra-doc- texlive-fonts-recommended-doc- texlive-humanities-doc-) is also required
     # We base on bionic, because Ubuntu bionic is the last distribution offering an updated TeX Live 2017
     # We cannot base fully on bionic, because pdftk is not available in bionic
-    apt-get install -y -t bionic --no-install-recommends texlive-full fonts-texgyre latexml && \
+    apt-get install -y -t bionic --no-install-recommends texlive-full fonts-texgyre latexml xindy && \
     # texlive-full depends on pyhton3. These packages curently depend on python2.7.
     # install pygments to enable minted
     apt-get install -y python-pygments python-pip && \
