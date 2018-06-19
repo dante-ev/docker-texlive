@@ -31,6 +31,12 @@ jobs:
        - run: latexmk document.tex
 ```
 
+## Latest stable version
+
+You can run latest stable version by using the tag `TL2017`:
+
+    docker run --rm -it -v $(pwd):/home danteev/texlive:TL2017 latexmk document.tex
+
 ## Background
 
 We decided to offer latest TeX Live 2017, because this ensures recent packages.
