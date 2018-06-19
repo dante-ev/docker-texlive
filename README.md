@@ -14,7 +14,7 @@ This docker image supports full TeX Live 2017 with following additions:
 
 Usage:
 
-    docker run --rm -it -v $(pwd):/home danteev/texlive latexmk document.tex
+    docker run --rm -it -v $(pwd):/home danteev/texlive:TL2017 latexmk document.tex
 
 Usage in [CircleCI 2.0](https://circleci.com/docs/2.0/):
 
@@ -25,7 +25,7 @@ version: 2
 jobs:
    build:
      docker:
-       - image: danteev/texlive
+       - image: danteev/texlive:TL2017
      steps:
        - checkout
        - run: latexmk document.tex

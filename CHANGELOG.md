@@ -5,12 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased]
+## [v1.6.0] – 2018-06-19
 
 ### Added
 
 - Support for [Google's Inconsolata font](https://fonts.google.com/specimen/Inconsolata)
 - Support for [IBM Plex™](https://github.com/IBM/plex/)
+- Tag version 1.6.0 as `TL2017` as TeX Live 2017 is frozen
 
 ### Changed
 
@@ -74,7 +75,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 Initial release
 
-[Unreleased]: https://github.com/koppor/docker-texlive/compare/v1.5.0...HEAD
+[Unreleased]: https://github.com/koppor/docker-texlive/compare/v1.6.0...HEAD
+[v1.6.0]: https://github.com/koppor/docker-texlive/compare/v1.5.1...v1.6.0
 [v1.5.0]: https://github.com/koppor/docker-texlive/compare/v1.4.1...v1.5.0
 [v1.4.1]: https://github.com/koppor/docker-texlive/compare/v1.4.0...v1.4.1
 [v1.4.0]: https://github.com/koppor/docker-texlive/compare/v1.3.0...v1.4.0
