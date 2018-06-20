@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [v1.6.0] – 2018-06-19
 
+> When using this version, you have to run `texindy` with the parameter `-C utf8`.
+> See <https://bugs.launchpad.net/ubuntu/+source/xindy/+bug/1735439> for details.
+
 ### Added
 
 - Support for [Google's Inconsolata font](https://fonts.google.com/specimen/Inconsolata)
