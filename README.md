@@ -39,14 +39,14 @@ You can run latest stable version by using the tag `TL2017`:
 
 ## Background
 
-We decided to offer latest TeX Live 2017, because this ensures recent packages.
-We cannot base on latest Debian, because pdftk cannot be installed there ([#901761](https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=901761)).
-Therefore, we base on Ubuntu Artful (where pdftk works), where we mix-in latest TeX Live from Ubuntu Bionic (which offers latest TeX Live 2017).
+We decided to offer latest TeX Live 2018 (as time of building), because this ensures recent packages.
+We base on Ubuntu Cosmic as this is the latest Ubuntu version available during building.
 
 ## License
 
-- [Google Inconsolata](https://fonts.google.com/specimen/Inconsolata) is licensed under [OFL-1.1](https://spdx.org/licenses/OFL-1.1.html)
-- [IBM Plex™](https://github.com/IBM/plex/) is licensed under [OFL-1.1](https://spdx.org/licenses/OFL-1.1.html)
+- [Google Inconsolata](https://fonts.google.com/specimen/Inconsolata) is licensed under [OFL-1.1](https://spdx.org/licenses/OFL-1.1.html).
+- [IBM Plex™](https://github.com/IBM/plex/) is licensed under [OFL-1.1](https://spdx.org/licenses/OFL-1.1.html).
+- [pkgcheck](https://ctan.org/pkg/pkgcheck) is licensed under Apache-2.0 or MIT.
 - The files in this repository are licensed under [MIT](https://spdx.org/licenses/MIT.html).
 - Each LaTeX package has its own license.
   Please check the respective package homepages at [CTAN](https://www.ctan.org/).

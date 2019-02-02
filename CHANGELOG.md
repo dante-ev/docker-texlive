@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Added
+
+- Added support for [pkgcheck](https://ctan.org/pkg/pkgcheck)
+
+### Changed
+
+- Update to TeX Live 2018
+- Update to Ubuntu Cosmic
+
 ## [v1.6.0] – 2018-06-19
 
 > When using this version, you have to run `texindy` with the parameter `-C utf8`.
