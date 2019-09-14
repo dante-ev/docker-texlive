@@ -41,7 +41,7 @@ language: generic
 services: docker
 
 script:
-- docker run --rm -it -v $(pwd):/home koppor/texlive latexmk -pdf document.tex
+- docker run --rm -it -v $(pwd):/home danteev/texlive latexmk -pdf document.tex
 ```
 
 ## Latest stable version
