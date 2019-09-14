@@ -14,7 +14,7 @@ This docker image supports full TeX Live 2017 with following additions:
 
 Usage:
 
-    docker run --rm -it -v $(pwd):/home danteev/texlive latexmk document.tex
+    docker run --rm -it -v $(pwd):/home danteev/texlive latexmk -pdf document.tex
 
 Usage in [CircleCI 2.0](https://circleci.com/docs/2.0/):
 
@@ -28,7 +28,20 @@ jobs:
        - image: danteev/texlive
      steps:
        - checkout
-       - run: latexmk document.tex
+       - run: latexmk -pdf document.tex
+```
+
+Usage in [Travis CI](https://travis-ci.org/):
+
+Create file `.travis.yml` with following content:
+
+```yaml
+dist: bionic
+language: generic
+services: docker
+
+script:
+- docker run --rm -it -v $(pwd):/home danteev/texlive latexmk -pdf document.tex
 ```
 
 ## Latest stable version
