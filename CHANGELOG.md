@@ -10,11 +10,22 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 
 - Added support for [pkgcheck](https://ctan.org/pkg/pkgcheck)
+- Added support for [fig2dev](https://linux.die.net/man/1/fig2dev)
+- Added support for [pandoc](https://pandoc.org/)
+- Remove more space after installing debian packages
 
 ### Changed
 
-- Update to TeX Live 2018
-- Update to Ubuntu Cosmic
+- Update to TeX Live 2019
+- Update to Debian unstable
+- Update to Python 3 variant of pygments, python-docx, and pyparsing
+- Update IBM's OpenType plex from 1.2.3 to 2.0.0
+- Update pandoc to 2.7.3
+- Always load latest plantuml.jar when building the docker image
+
+### Removed
+
+- Remove all -doc packages (and thus saving nearly 1,7TB of space)
 
 ## [v1.6.0] – 2018-06-19
 
