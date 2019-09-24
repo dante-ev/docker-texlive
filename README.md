@@ -52,7 +52,7 @@ You can run latest stable version by using the tag `TL2017`:
 
 ## Background
 
-We decided to offer latest TeX Live 2018 (as time of building), because this ensures recent packages.
+We decided to offer latest TeX Live 2019 (as time of building), because this ensures recent packages.
 We base on Ubuntu Cosmic as this is the latest Ubuntu version available during building.
 
 ## License
