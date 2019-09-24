@@ -37,12 +37,12 @@ RUN apt-get update -qq && apt-get upgrade -qq && \
     apt-get install -y fontconfig && \
     # required by tlmgr init-usertree
     apt-get install -y xzdec && \
-    # save some space
-    rm -rf /var/lib/apt/lists/* && apt-get clean && \
     # Removing documentation packages *after* installing them is kind of hacky,
     # but it only adds some overhead while building the image.
     # Source: https://github.com/aergus/dockerfiles/blob/master/latex/Dockerfile
-    apt-get --purge remove -y .\*-doc$
+    apt-get --purge remove -y .\*-doc$ && \
+    # save some space
+    rm -rf /var/lib/apt/lists/* && apt-get clean
 
 # update texlive
 # works if no new major release of texlive was done
