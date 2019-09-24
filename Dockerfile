@@ -82,6 +82,3 @@ RUN mkdir /root/.texlive2019 && perl `kpsewhich -var-value TEXMFDIST`/scripts/pa
 
 # install pkgcheck
 RUN wget https://gitlab.com/Lotz/pkgcheck/raw/master/bin/pkgcheck -q --output-document=/usr/local/bin/pkgcheck && chmod a+x /usr/local/bin/pkgcheck
-
-# save space
-RUN rm -rf /usr/share/man/ /usr/share/doc
