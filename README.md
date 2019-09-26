@@ -12,11 +12,32 @@ This docker image supports full TeX Live 2019 with following additions:
 - [Inkscape](https://inkscape.org/)
 - [Ghostscript](https://www.ghostscript.com/)
 
-Usage:
+## Usage
+
+### Using docker
 
     docker run --rm -it -v $(pwd):/home danteev/texlive latexmk -pdf document.tex
 
-Usage in [CircleCI 2.0](https://circleci.com/docs/2.0/):
+### Usage in [GitHub Workflows](https://help.github.com/en/articles/about-github-actions)
+
+Create a file `.github/workflows/build.yml` with following content:
+
+```yaml
+name: Build
+on: [push]
+jobs:
+  build_latex:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Git repository
+        uses: actions/checkout@v1
+      - name: Compile document.tex
+        uses: dante-ev/latex-action@master
+        with:
+          root_file: document.tex
+```
+
+### Usage in [CircleCI 2.0](https://circleci.com/docs/2.0/):
 
 Create file `.circle/config.yml` with following content:
 
@@ -31,7 +52,7 @@ jobs:
        - run: latexmk -pdf document.tex
 ```
 
-Usage in [Travis CI](https://travis-ci.org/):
+### Usage in [Travis CI](https://travis-ci.org/):
 
 Create file `.travis.yml` with following content:
 
