@@ -55,7 +55,7 @@ RUN tlmgr update --self --all --reinstall-forcibly-removed
 RUN mkdir -p /tmp/fonts && \
     cd /tmp/fonts && \
     wget https://github.com/IBM/plex/releases/download/v2.0.0/OpenType.zip -q && \
-    unzip OpenType.zip -x */LICENSE.txt */license.txt */CHANGELOG */.DS_Store && \
+    unzip OpenType.zip -q -x */LICENSE.txt */license.txt */CHANGELOG */.DS_Store && \
     cp -r OpenType/* /usr/local/share/fonts && \
     fc-cache -f -v
 
