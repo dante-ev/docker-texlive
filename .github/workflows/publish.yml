@@ -1,0 +1,21 @@
+name: Publish Docker
+on:
+  push:
+    branches:
+      - master
+  schedule:
+    # run on each day
+    - cron: '1 7 * * *'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+      with:
+        fetch-depth: 1
+    - name: Publish to Registry
+      uses: elgohr/Publish-Docker-Github-Action@master
+      with:
+        name: danteev/texlive
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
