@@ -17,30 +17,30 @@ RUN mkdir -p /usr/share/man/man1
 # we additionally need python, java (because of pax), perl (because of pax), pdftk, ghostscript, and unzip (because of pax)
 RUN apt-get update -qq && apt-get upgrade -qq && \
     # proposal by https://github.com/sumandoc/TeXLive-2017
-    apt-get install -y wget curl libgetopt-long-descriptive-perl libdigest-perl-md5-perl fontconfig && \
+    apt-get install -qy wget curl libgetopt-long-descriptive-perl libdigest-perl-md5-perl fontconfig && \
     # libfile-copy-recursive-perl is required by ctanify
-    apt-get install -y --no-install-recommends openjdk-8-jre-headless libfile-which-perl libfile-copy-recursive-perl pdftk ghostscript unzip openssh-client git && \
-    apt-get install -y ruby poppler-utils && \
+    apt-get install -qy --no-install-recommends openjdk-8-jre-headless libfile-which-perl libfile-copy-recursive-perl pdftk ghostscript unzip openssh-client git && \
+    apt-get install -qy ruby poppler-utils && \
     # for plantuml, we need graphviz and inkscape. For inkscape, there is no non-X11 version, so 200 MB more
-    apt-get install -y --no-install-recommends graphviz inkscape && \
+    apt-get install -qy --no-install-recommends graphviz inkscape && \
     # install texlive-full. The documentation ( texlive-latex-base-doc- texlive-latex-extra-doc- texlive-latex-recommended-doc-	texlive-metapost-doc- texlive-pictures-doc- texlive-pstricks-doc- texlive-publishers-doc- texlive-science-doc- texlive-fonts-extra-doc- texlive-fonts-recommended-doc- texlive-humanities-doc-) is also required
-    apt-get install -y --no-install-recommends texlive-full fonts-texgyre latexml xindy && \
+    apt-get install -qy --no-install-recommends texlive-full fonts-texgyre latexml xindy && \
     # add support for pygments
-    apt-get install -y python3-pygments python3-pip && \
+    apt-get install -qy python3-pygments python3-pip && \
     # fig2dev - tool for xfig to translate the figure to other formats
-    apt-get install -y fig2dev && \
+    apt-get install -qy fig2dev && \
     # pandoc - to convert to latex
-    apt-get install -y pandoc pandoc-citeproc && \
+    apt-get install -qy pandoc pandoc-citeproc && \
     # add Google's Inconsolata font (https://fonts.google.com/specimen/Inconsolata)
-    apt-get install -y fonts-inconsolata && \
+    apt-get install -qy fonts-inconsolata && \
     # required to install IBMPlexMono font
-    apt-get install -y fontconfig && \
+    apt-get install -qy fontconfig && \
     # required by tlmgr init-usertree
-    apt-get install -y xzdec && \
+    apt-get install -qy xzdec && \
     # Removing documentation packages *after* installing them is kind of hacky,
     # but it only adds some overhead while building the image.
     # Source: https://github.com/aergus/dockerfiles/blob/master/latex/Dockerfile
-    apt-get --purge remove -y .\*-doc$ && \
+    apt-get --purge remove -qy .\*-doc$ && \
     # save some space
     rm -rf /var/lib/apt/lists/* && apt-get clean
 
