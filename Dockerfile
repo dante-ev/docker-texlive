@@ -57,7 +57,9 @@ RUN mkdir -p /tmp/fonts && \
     wget https://github.com/IBM/plex/releases/download/v2.0.0/OpenType.zip -q && \
     unzip -q OpenType.zip -x */LICENSE.txt */license.txt */CHANGELOG */.DS_Store && \
     cp -r OpenType/* /usr/local/share/fonts && \
-    fc-cache -f -v
+    fc-cache -f -v && \
+    cd .. && \
+    rm -rf fonts
 
 # update font index
 RUN luaotfload-tool --update
