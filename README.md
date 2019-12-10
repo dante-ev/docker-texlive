@@ -65,6 +65,21 @@ script:
 - docker run --rm -it -v $(pwd):/home danteev/texlive latexmk -pdf document.tex
 ```
 
+## Usage in [GitLab CI](https://docs.gitlab.com/ce/ci/)
+
+Create file `.gitlab-ci.yml` with following content:
+
+```yaml
+build:
+  image: danteev/texlive
+  stage: build
+  script:
+    - latexmk -pdf document.tex
+  artifacts:
+    paths:
+      - document.pdf
+```
+
 ## Latest stable version
 
 You can run latest stable version by using the tag `TL2017`:
