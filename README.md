@@ -66,7 +66,7 @@ script:
 - docker run --rm -it -v $(pwd):/home danteev/texlive latexmk -pdf document.tex
 ```
 
-## Usage in [GitLab CI](https://docs.gitlab.com/ce/ci/)
+### Usage in [GitLab CI](https://docs.gitlab.com/ce/ci/)
 
 Create file `.gitlab-ci.yml` with following content:
 
