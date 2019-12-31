@@ -37,6 +37,8 @@ RUN apt-get update -qq && apt-get upgrade -qq && \
     apt-get install -qy fontconfig && \
     # required by tlmgr init-usertree
     apt-get install -qy xzdec && \
+    # install gnuplot
+    apt-get install -qy gnuplot && \
     # Removing documentation packages *after* installing them is kind of hacky,
     # but it only adds some overhead while building the image.
     # Source: https://github.com/aergus/dockerfiles/blob/master/latex/Dockerfile
