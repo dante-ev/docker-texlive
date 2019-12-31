@@ -2,15 +2,16 @@
 
 This docker image supports full TeX Live 2019 with following additions:
 
-- [latexmk](https://www.ctan.org/pkg/latexmk/)
-- [Python 3](https://pythonclock.org/), pip, pyparsing, python-docx
-- Java headless
-- [pax](http://ctan.org/pkg/pax)
-- [pdftk](https://www.pdflabs.com/tools/pdftk-the-pdf-toolkit/)
-- [Pandoc](http://pandoc.org/)
+- [Ghostscript](https://www.ghostscript.com/)
+- [Gnuplot](http://www.gnuplot.info/)
 - [GraphViz](https://www.graphviz.org/)
 - [Inkscape](https://inkscape.org/)
-- [Ghostscript](https://www.ghostscript.com/)
+- Java headless
+- [latexmk](https://www.ctan.org/pkg/latexmk/)
+- [Pandoc](http://pandoc.org/)
+- [pax](http://ctan.org/pkg/pax)
+- [pdftk](https://www.pdflabs.com/tools/pdftk-the-pdf-toolkit/)
+- [Python 3](https://pythonclock.org/), pip, pyparsing, python-docx
 
 ## Usage
 
