@@ -20,7 +20,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Update to Debian unstable
 - Update to Python 3 variant of pygments, python-docx, and pyparsing
 - Update IBM's OpenType plex from 1.2.3 to 2.0.0
-- Update pandoc to 2.7.3
+- Update pandoc to 2.9.2
 - Always load latest plantuml.jar when building the docker image
 
 ### Removed

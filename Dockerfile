@@ -29,8 +29,6 @@ RUN apt-get update -qq && apt-get upgrade -qq && \
     apt-get install -qy python3-pygments python3-pip && \
     # fig2dev - tool for xfig to translate the figure to other formats
     apt-get install -qy fig2dev && \
-    # pandoc - to convert to latex
-    apt-get install -qy pandoc pandoc-citeproc && \
     # add Google's Inconsolata font (https://fonts.google.com/specimen/Inconsolata)
     apt-get install -qy fonts-inconsolata && \
     # required to install IBMPlexMono font
@@ -62,7 +60,7 @@ RUN luaotfload-tool --update
 WORKDIR /home
 
 # pandoc in the repositories is older - we just overwrite it with a more recent version
-RUN wget https://github.com/jgm/pandoc/releases/download/2.7.3/pandoc-2.7.3-1-amd64.deb -q --output-document=/home/pandoc.deb && dpkg -i pandoc.deb && rm pandoc.deb
+RUN wget https://github.com/jgm/pandoc/releases/download/2.9.2/pandoc-2.9.2-1-amd64.deb -q --output-document=/home/pandoc.deb && dpkg -i pandoc.deb && rm pandoc.deb
 
 # get PlantUML in place
 RUN wget https://netcologne.dl.sourceforge.net/project/plantuml/plantuml.jar -q --output-document=/home/plantuml.jar
