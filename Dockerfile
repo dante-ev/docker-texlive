@@ -46,13 +46,6 @@ RUN apt-get update -qq && apt-get upgrade -qq && \
     # save some space
     rm -rf /var/lib/apt/lists/* && apt-get clean
 
-# update texlive
-# works if no new major release of texlive was done
-#
-# source: https://askubuntu.com/a/485945
-RUN tlmgr init-usertree
-RUN tlmgr update --self --all --reinstall-forcibly-removed
-
 # install IBM Plex fonts
 RUN mkdir -p /tmp/fonts && \
     cd /tmp/fonts && \
