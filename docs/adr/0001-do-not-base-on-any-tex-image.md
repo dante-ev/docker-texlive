@@ -13,7 +13,8 @@ When choosing an existing one, which one should be taken?
 ## Considered Options
 
 * Do not base on any tex image
-* Use <https://github.com/scottkosty/install-tl-ubuntu>
+* Use <https://github.com/scottkosty/install-tl-ubuntu> - Ubuntu and TeXLive 2019
+* base on <https://github.com/reitzig/texlive-docker> - alpine different flavours can be selected
 * base on https://github.com/janweinschenker/docker-texlive/blob/master/Dockerfile - Ubuntu 17.10, texlive-full
 * base on https://github.com/thomasWeise/docker-texlive/blob/master/image/Dockerfile - Ubuntu 16.04, small installation
 * <s>base on https://github.com/sumandoc/TeXLive-2017/blob/master/Dockerfile - Debian sid, install-tl-unx.tar.gz, LaTeXML</s> - does not exist anymore
