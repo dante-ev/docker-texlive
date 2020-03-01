@@ -73,7 +73,10 @@ RUN gem install bundler
 RUN pip3 install pyparsing && pip3 install docx
 
 # prepare usage of pax
-RUN mkdir /root/.texlive2019 && perl `kpsewhich -var-value TEXMFDIST`/scripts/pax/pdfannotextractor.pl --install 2>&1 > /dev/null
+RUN wget https://raw.githubusercontent.com/bastien-roucaries/latex-pax/0a4fc981f0d62772ce5f9e2a7b77a37f3e7b896c/scripts/pax/pdfannotextractor.pl -O /usr/share/texlive/texmf-dist/scripts/pax/pdfannotextractor.pl && \
+    wget wget https://raw.githubusercontent.com/bastien-roucaries/latex-pax/0a4fc981f0d62772ce5f9e2a7b77a37f3e7b896c/scripts/pax/pax.jar -O /usr/share/texlive/texmf-dist/scripts/pax/pax.jar && \
+    mkdir /root/.texlive2019 && \
+    perl `kpsewhich -var-value TEXMFDIST`/scripts/pax/pdfannotextractor.pl --install 2>&1 > /dev/null
 
 # install pkgcheck
 RUN wget https://gitlab.com/Lotz/pkgcheck/raw/master/bin/pkgcheck -q --output-document=/usr/local/bin/pkgcheck && chmod a+x /usr/local/bin/pkgcheck
