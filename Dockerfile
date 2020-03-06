@@ -1,4 +1,4 @@
-FROM debian:unstable-slim
+FROM debian:sid-20200224-slim
 LABEL maintainer "Oliver Kopp <kopp.dev@gmail.com>"
 ENV LANG=C.UTF-8 \
     LC_ALL=C.UTF-8 \
@@ -14,11 +14,13 @@ ARG BUILD_DATE
 # See https://github.com/debuerreotype/docker-debian-artifacts/issues/24#issuecomment-360870939
 RUN mkdir -p /usr/share/man/man1
 
-# we additionally need python, java (because of pax), perl (because of pax), pdftk, ghostscript, and unzip (because of pax)
-RUN apt-get update -qq && apt-get upgrade -qq && \
+# pin debian unstable to fix release to prevent hickups
+RUN echo "echo deb http://snapshot.debian.org/archive/debian/20200303T030645Z/ unstable main > /etc/apt/sources.list" && \
+    apt-get -o Acquire::Check-Valid-Until=false update -qq && apt-get upgrade -qq && \
     # proposal by https://github.com/sumandoc/TeXLive-2017
     apt-get install -qy wget curl libgetopt-long-descriptive-perl libdigest-perl-md5-perl fontconfig && \
     # libfile-copy-recursive-perl is required by ctanify
+    # pax: java, unzip, and perl
     apt-get install -qy --no-install-recommends openjdk-8-jre-headless libfile-which-perl libfile-copy-recursive-perl pdftk ghostscript unzip openssh-client git && \
     apt-get install -qy ruby poppler-utils && \
     # for plantuml, we need graphviz and inkscape. For inkscape, there is no non-X11 version, so 200 MB more
