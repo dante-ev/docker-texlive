@@ -49,8 +49,8 @@ RUN echo "echo deb http://snapshot.debian.org/archive/debian/20200303T030645Z/ u
 # install IBM Plex fonts
 RUN mkdir -p /tmp/fonts && \
     cd /tmp/fonts && \
-    wget https://github.com/IBM/plex/releases/download/v2.0.0/OpenType.zip -q && \
-    unzip -q OpenType.zip -x */LICENSE.txt */license.txt */CHANGELOG */.DS_Store && \
+    wget https://github.com/IBM/plex/releases/download/v4.0.2/OpenType.zip -q && \
+    unzip -q OpenType.zip && \
     cp -r OpenType/* /usr/local/share/fonts && \
     fc-cache -f -v && \
     cd .. && \
