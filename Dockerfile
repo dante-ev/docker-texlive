@@ -15,7 +15,7 @@ ARG BUILD_DATE
 RUN mkdir -p /usr/share/man/man1
 
 # pin debian unstable to fix release to prevent hickups
-RUN echo "echo deb http://snapshot.debian.org/archive/debian/20200303T030645Z/ unstable main > /etc/apt/sources.list" && \
+RUN echo "echo deb http://snapshot.debian.org/archive/debian/20200305T224751Z/ unstable main > /etc/apt/sources.list" && \
     apt-get -o Acquire::Check-Valid-Until=false update -qq && apt-get upgrade -qq && \
     # proposal by https://github.com/sumandoc/TeXLive-2017
     apt-get install -qy wget curl libgetopt-long-descriptive-perl libdigest-perl-md5-perl fontconfig && \
