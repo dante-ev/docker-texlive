@@ -37,7 +37,7 @@ Chosen option: "Do not base on any tex image", because
 
 * breaking changes on "base images" could come in
 * could become unmaintained (e.g., <https://github.com/adinriv/docker-texlive>)
-* the install-tl-ubuntu script could get unmaintained
+* the `install-tl-ubuntu` script could get unmaintained
 
 We accept that
 
