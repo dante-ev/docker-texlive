@@ -2,8 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
-The format is based on [Keep a Changelog](http://keepachangelog.com/)
-and this project adheres to [Semantic Versioning](http://semver.org/).
+The format is based on [Keep a Changelog](http://keepachangelog.com/).
+
+This project cannot adhere to [Semantic Versioning](http://semver.org/), because it builds on TeXLive, which introcuces breaking changes now and then.
+Thus, each new version would lead to a new major version.
+Instead, we version `YYYY-RR`, where `YYYY` is TeXLive version this image is based on and `RR` is numbering different releases in that cycle.
 
 ## [Unreleased]
 
