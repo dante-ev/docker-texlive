@@ -20,10 +20,10 @@ Instead, we version `YYYY-RR`, where `YYYY` is TeXLive version this image is bas
 
 ### Changed
 
-- Update to TeX Live 2019
-- Update to Debian unstable
+- Update to TeX Live 2020
+- Update to Debian testing
 - Update to Python 3 variant of pygments, python-docx, and pyparsing
-- Update IBM's OpenType plex from 1.2.3 to 2.0.0
+- Update IBM's OpenType plex from 1.2.3 to 5.0.0
 - Update pandoc to 2.9.2
 - Always load latest plantuml.jar when building the docker image
 

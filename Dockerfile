@@ -1,4 +1,4 @@
-FROM debian:sid-20200224-slim
+FROM debian:testing-slim
 LABEL maintainer "Oliver Kopp <kopp.dev@gmail.com>"
 ENV LANG=C.UTF-8 \
     LC_ALL=C.UTF-8 \
@@ -16,8 +16,7 @@ ARG GITLATEXDIFF_VERSION=1.6.0
 RUN mkdir -p /usr/share/man/man1
 
 # pin debian unstable to fix release to prevent hickups
-RUN echo "echo deb http://snapshot.debian.org/archive/debian/20200305T224751Z/ unstable main > /etc/apt/sources.list" && \
-    apt-get -o Acquire::Check-Valid-Until=false update -qq && apt-get upgrade -qq && \
+RUN apt-get upgrade -qq && \
     # proposal by https://github.com/sumandoc/TeXLive-2017
     apt-get install -qy wget curl libgetopt-long-descriptive-perl libdigest-perl-md5-perl fontconfig && \
     # libfile-copy-recursive-perl is required by ctanify
@@ -50,7 +49,7 @@ RUN echo "echo deb http://snapshot.debian.org/archive/debian/20200305T224751Z/ u
 # install IBM Plex fonts
 RUN mkdir -p /tmp/fonts && \
     cd /tmp/fonts && \
-    wget https://github.com/IBM/plex/releases/download/v4.0.2/OpenType.zip -q && \
+    wget https://github.com/IBM/plex/releases/download/v5.0.0/OpenType.zip -q && \
     unzip -q OpenType.zip && \
     cp -r OpenType/* /usr/local/share/fonts && \
     fc-cache -f -v && \
