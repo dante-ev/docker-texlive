@@ -83,3 +83,8 @@ RUN wget -q https://raw.githubusercontent.com/bastien-roucaries/latex-pax/0a4fc9
 
 # install pkgcheck
 RUN wget https://gitlab.com/Lotz/pkgcheck/raw/master/bin/pkgcheck -q --output-document=/usr/local/bin/pkgcheck && chmod a+x /usr/local/bin/pkgcheck
+
+# Install git-latexdiff v1.6.0 https://gitlab.com/git-latexdiff/git-latexdiff
+RUN git clone --branch 1.6.0 https://gitlab.com/git-latexdiff/git-latexdiff.git /tmp/git-latexdiff && \
+    make -C /tmp/git-latexdiff install-bin && \
+    rm -rf /tmp/git-latexdiff
