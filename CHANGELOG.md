@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Added support for [fig2dev](https://linux.die.net/man/1/fig2dev)
 - Added support for [pandoc](https://pandoc.org/)
 - Remove more space after installing debian packages
+- Added support for [git-latexdiff](https://gitlab.com/git-latexdiff/git-latexdiff)
 
 ### Changed
 
