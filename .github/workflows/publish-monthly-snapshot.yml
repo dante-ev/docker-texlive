@@ -1,4 +1,4 @@
-name: Publish Docker
+name: Publish Docker Image Snapshot
 on:
   schedule:
     # run on 1th and 15th of each month
@@ -8,8 +8,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-      with:
-        fetch-depth: 1
     - name: Publish to Registry
       uses: elgohr/Publish-Docker-Github-Action@master
       with:
