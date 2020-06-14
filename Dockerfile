@@ -16,12 +16,19 @@ ARG GITLATEXDIFF_VERSION=1.6.0
 RUN mkdir -p /usr/share/man/man1
 
 # pin debian unstable to fix release to prevent hickups
-RUN apt-get upgrade -qq && \
+RUN echo "echo deb http://de.debian.org/debian/ testing main > /etc/apt/sources.list" && \
+    apt-get update && \
+    # openjdk-8-jre-headless is currently not available in testing
+    # solution by https://stackoverflow.com/a/61902164/873282
+    apt-get install -qy software-properties-common && \
+    apt-add-repository 'deb http://security.debian.org/debian-security stretch/updates main' && \
+    apt-get update && \
+    apt-get install -qy --no-install-recommends openjdk-8-jdk && \
     # proposal by https://github.com/sumandoc/TeXLive-2017
     apt-get install -qy wget curl libgetopt-long-descriptive-perl libdigest-perl-md5-perl fontconfig && \
     # libfile-copy-recursive-perl is required by ctanify
     # pax: java, unzip, and perl
-    apt-get install -qy --no-install-recommends openjdk-8-jre-headless libfile-which-perl libfile-copy-recursive-perl pdftk ghostscript unzip openssh-client git && \
+    apt-get install -qy --no-install-recommends libfile-which-perl libfile-copy-recursive-perl pdftk ghostscript unzip openssh-client git && \
     apt-get install -qy ruby poppler-utils && \
     # for plantuml, we need graphviz and inkscape. For inkscape, there is no non-X11 version, so 200 MB more
     apt-get install -qy --no-install-recommends graphviz inkscape && \
