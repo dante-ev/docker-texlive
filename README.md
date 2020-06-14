@@ -39,6 +39,33 @@ jobs:
           root_file: document.tex
 ```
 
+Or for custom tex compilation script :
+
+```yaml
+name: Build
+on:
+  push:
+    paths-ignore:
+      - '*.pdf'
+jobs:
+  build_latex:
+    runs-on: ubuntu-latest
+    container:
+      image: danteev/texlive:latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Build LaTeX
+      run: |
+        for project in $(ls); do
+          if [ -d "$project" ]; then 
+            cd ${project}
+            latexmk -synctex=1 -interaction=nonstopmode -file-line-error -pdf -outdir=$PWD/../ $PWD/${project}
+            cd ..
+          fi
+        done
+```
+
 ### Usage in [CircleCI 2.0](https://circleci.com/docs/2.0/):
 
 Create file `.circle/config.yml` with following content:
