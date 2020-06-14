@@ -9,6 +9,7 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV INITRD No
 
 ARG BUILD_DATE
+ARG GITLATEXDIFF_VERSION=1.6.0
 
 # Fix for update-alternatives: error: error creating symbolic link '/usr/share/man/man1/rmid.1.gz.dpkg-tmp': No such file or directory
 # See https://github.com/debuerreotype/docker-debian-artifacts/issues/24#issuecomment-360870939
@@ -85,6 +86,6 @@ RUN wget -q https://raw.githubusercontent.com/bastien-roucaries/latex-pax/0a4fc9
 RUN wget https://gitlab.com/Lotz/pkgcheck/raw/master/bin/pkgcheck -q --output-document=/usr/local/bin/pkgcheck && chmod a+x /usr/local/bin/pkgcheck
 
 # Install git-latexdiff v1.6.0 https://gitlab.com/git-latexdiff/git-latexdiff
-RUN git clone --branch 1.6.0 https://gitlab.com/git-latexdiff/git-latexdiff.git /tmp/git-latexdiff && \
+RUN git clone --branch "$GITLATEXDIFF_VERSION" https://gitlab.com/git-latexdiff/git-latexdiff.git /tmp/git-latexdiff && \
     make -C /tmp/git-latexdiff install-bin && \
     rm -rf /tmp/git-latexdiff
