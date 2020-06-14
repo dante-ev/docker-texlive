@@ -39,7 +39,23 @@ jobs:
           root_file: document.tex
 ```
 
-Or for custom tex compilation script :
+You can also use it with multiple files as outlined here:
+
+```sh
+❯ tree
+.
+├── motivation_letter.pdf
+├── master_degree.pdf
+├── README.md
+├── master_degree
+│   ├── master_degree.sty
+│   └── master_degree.tex
+└── motivation_letter
+    ├── motivation_letter.bib
+    └── motivation_letter.tex
+```
+
+Following custom compilation script compiles all PDFs:
 
 ```yaml
 name: Build
@@ -65,6 +81,20 @@ jobs:
           fi
         done
 ```
+
+One can push the results using following example:
+
+```yaml
+    - name: Publish LaTeX
+      run : |
+        git config --global user.email "bot@example.org"
+        git config --global user.name "BOT_WORKFLOW"
+        git add -f $PWD/*.pdf
+        git commit -m "WORKFLOW_COMMIT - Update PDFs [skip ci]"
+        git push
+```
+
+Alternatively, you can use the [GitHub push action](https://github.com/ad-m/github-push-action) to push something.
 
 ### Usage in [CircleCI 2.0](https://circleci.com/docs/2.0/):
 
