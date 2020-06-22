@@ -74,7 +74,7 @@ jobs:
     - name: Build LaTeX
       run: |
         for project in $(ls); do
-          if [ -d "$project" ]; then 
+          if [ -d "$project" ]; then
             cd ${project}
             latexmk -synctex=1 -interaction=nonstopmode -file-line-error -pdf -outdir=$PWD/../ $PWD/${project}
             cd ..
@@ -96,7 +96,7 @@ One can push the results using following example:
 
 Alternatively, you can use the [GitHub push action](https://github.com/ad-m/github-push-action) to push something.
 
-### Usage in [CircleCI 2.0](https://circleci.com/docs/2.0/):
+### Usage in [CircleCI 2.0](https://circleci.com/docs/2.0/)
 
 Create file `.circle/config.yml` with following content:
 
@@ -111,7 +111,7 @@ jobs:
        - run: latexmk -pdf document.tex
 ```
 
-### Usage in [Travis CI](https://travis-ci.org/):
+### Usage in [Travis CI](https://travis-ci.org/)
 
 Create file `.travis.yml` with following content:
 
