@@ -8,7 +8,7 @@ This project cannot adhere to [Semantic Versioning](http://semver.org/), because
 Thus, each new version would lead to a new major version.
 Instead, we version `YYYY-RR`, where `YYYY` is TeXLive version this image is based on and `RR` is numbering different releases in that cycle.
 
-## [Unreleased]
+## [2020-01] &endash 21020-06-22
 
 ### Added
 
@@ -26,6 +26,7 @@ Instead, we version `YYYY-RR`, where `YYYY` is TeXLive version this image is bas
 - Update IBM's OpenType plex from 1.2.3 to 5.0.0
 - Update pandoc to 2.9.2
 - Always load latest plantuml.jar when building the docker image
+- Change versioning theme to `YYYY-RR`, where `YYYY` is the TeXLive version this image is based on and `RR` is numbering different releases in that cycle.
 
 ### Removed
 
@@ -104,7 +105,8 @@ Instead, we version `YYYY-RR`, where `YYYY` is TeXLive version this image is bas
 
 Initial release
 
-[Unreleased]: https://github.com/koppor/docker-texlive/compare/v1.6.0...HEAD
+[Unreleased]: https://github.com/koppor/docker-texlive/compare/2020-01...HEAD
+[2020-01]: https://github.com/koppor/docker-texlive/compare/v1.6.0...2020-01
 [v1.6.0]: https://github.com/koppor/docker-texlive/compare/v1.5.1...v1.6.0
 [v1.5.0]: https://github.com/koppor/docker-texlive/compare/v1.4.1...v1.5.0
 [v1.4.1]: https://github.com/koppor/docker-texlive/compare/v1.4.0...v1.4.1
