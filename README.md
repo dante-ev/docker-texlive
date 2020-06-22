@@ -1,4 +1,4 @@
-# Docker image for texlive [![TexLive:2019](https://img.shields.io/badge/TeX%20Live-2019-blue.svg)](https://www.tug.org/texlive/acquire.html) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![download-size number-of-layers](https://images.microbadger.com/badges/image/danteev/texlive.svg)](https://microbadger.com/images/danteev/texlive)
+# Docker image for texlive [![TexLive:2019](https://img.shields.io/badge/TeX%20Live-2020-blue.svg)](https://www.tug.org/texlive/acquire.html) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![download-size number-of-layers](https://images.microbadger.com/badges/image/danteev/texlive.svg)](https://microbadger.com/images/danteev/texlive)
 
 This docker image supports full TeX Live 2019 with following additions:
 
