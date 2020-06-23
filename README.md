@@ -143,12 +143,20 @@ build:
 
 ## Available Tags
 
+### Latest version
+
 - `latest` - the latest version
 - `2020` - latest TeXLive 2020 build
 - `2020-01` - first image release in year 2020
-- `TL2017` - TeXLive 2017 build
 
-Example: You can run the TeXLive 2017 version by using the tag `TL2017`:
+### Other versions
+
+- `TL2017` - TeXLive 2017 build
+- For all other versions see [CHANGELOG.md](https://github.com/dante-ev/docker-texlive/blob/master/CHANGELOG.md#changelog).
+
+### Usage example
+
+You can run the TeXLive 2017 version by using the tag `TL2017`:
 
 ```terminal
 docker run --rm -it -v $(pwd):/home danteev/texlive:TL2017 latexmk document.tex
