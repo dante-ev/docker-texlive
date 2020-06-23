@@ -1,4 +1,4 @@
-# Docker image for texlive [![TexLive:2019](https://img.shields.io/badge/TeX%20Live-2020-blue.svg)](https://www.tug.org/texlive/acquire.html) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![download-size number-of-layers](https://images.microbadger.com/badges/image/danteev/texlive.svg)](https://microbadger.com/images/danteev/texlive)
+# Docker image for texlive [![TexLive:2020](https://img.shields.io/badge/TeX%20Live-2020-blue.svg)](https://www.tug.org/texlive/acquire.html) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![download-size number-of-layers](https://images.microbadger.com/badges/image/danteev/texlive.svg)](https://microbadger.com/images/danteev/texlive)
 
 This docker image supports full TeX Live 2019 with following additions:
 
@@ -18,7 +18,9 @@ This docker image supports full TeX Live 2019 with following additions:
 
 ### Using docker
 
-    docker run --rm -it -v $(pwd):/home danteev/texlive latexmk -pdf document.tex
+```terminal
+docker run --rm -it -v $(pwd):/home danteev/texlive latexmk -pdf document.tex
+```
 
 ### Usage in [GitHub Workflows](https://help.github.com/en/articles/about-github-actions)
 
@@ -139,11 +141,18 @@ build:
       - document.pdf
 ```
 
-## Latest stable version
+## Available Tags
 
-You can run latest stable version by using the tag `TL2017`:
+- `latest` - the latest version
+- `2020` - latest TeXLive 2020 build
+- `2020-01` - first image release in year 2020
+- `TL2017` - TeXLive 2017 build
 
-    docker run --rm -it -v $(pwd):/home danteev/texlive:TL2017 latexmk document.tex
+Example: You can run the TeXLive 2017 version by using the tag `TL2017`:
+
+```terminal
+docker run --rm -it -v $(pwd):/home danteev/texlive:TL2017 latexmk document.tex
+```
 
 ## Background
 
