@@ -103,5 +103,8 @@ RUN wget -q https://raw.githubusercontent.com/bastien-roucaries/latex-pax/0a4fc9
     rm  /usr/share/java/pdfbox.jar && \
     perl `kpsewhich -var-value TEXMFDIST`/scripts/pax/pdfannotextractor.pl --install # 2>&1 > /dev/null
 
+# install luximono
+RUN cd /tmp && wget https://www.tug.org/fonts/getnonfreefonts/install-getnonfreefonts && texlua install-getnonfreefonts && getnonfreefonts --sys luximono
+
 # update font index
 RUN luaotfload-tool --update

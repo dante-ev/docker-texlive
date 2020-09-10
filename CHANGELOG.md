@@ -8,6 +8,12 @@ This project cannot adhere to [Semantic Versioning](http://semver.org/), because
 Thus, each new version would lead to a new major version.
 Instead, we version `YYYY-RR`, where `YYYY` is TeXLive version this image is based on and `RR` is numbering different releases in that cycle.
 
+## [Unreleased]
+
+### Added
+
+- Added support for luximono
+
 ## [2020-01] &ndash; 2020-06-23
 
 ### Added
