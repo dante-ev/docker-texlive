@@ -1,6 +1,6 @@
-# Docker image for texlive [![TexLive:2020](https://img.shields.io/badge/TeX%20Live-2020-blue.svg)](https://www.tug.org/texlive/acquire.html) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![download-size number-of-layers](https://images.microbadger.com/badges/image/danteev/texlive.svg)](https://microbadger.com/images/danteev/texlive)
+# Docker image for texlive ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![download-size number-of-layers](https://images.microbadger.com/badges/image/danteev/texlive.svg)](https://microbadger.com/images/danteev/texlive)
 
-This docker image supports full TeX Live 2019 with following additions:
+This docker image supports full TeX Live with following additions:
 
 - [Ghostscript](https://www.ghostscript.com/)
 - [Gnuplot](http://www.gnuplot.info/)
@@ -34,7 +34,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Set up Git repository
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
       - name: Compile document.tex
         uses: dante-ev/latex-action@master
         with:
@@ -164,8 +164,16 @@ docker run --rm -it -v $(pwd):/home danteev/texlive:TL2017 latexmk document.tex
 
 ## Background
 
-We decided to offer latest TeX Live 2019 (as time of building), because this ensures recent packages.
-We base on Ubuntu Cosmic as this is the latest Ubuntu version available during building.
+We decided to base on the official texlive image, because because this ensures recent texlive packages and a working basic build.
+We extended the image with tools required four our use cases.
+
+## Alternatives
+
+In case this all-in-one image is too large for you, you might be interested in following images:
+
+- [Official texlive image](https://hub.docker.com/r/texlive/texlive) - contains plain full texlive without additional tooling
+- [docker-texlive-thin](https://github.com/thomasWeise/docker-texlive-thin) - other packages and tools
+- [texlive-docker by @reitzig](https://github.com/reitzig/texlive-docker) - profile-based texlive image
 
 ## License
 

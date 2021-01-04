@@ -1,12 +1,25 @@
-FROM texlive:texlive-latest
+FROM registry.gitlab.com/islandoftex/images/texlive:latest
 LABEL maintainer "Oliver Kopp <kopp.dev@gmail.com>"
 ENV LANG=C.UTF-8 \
     LC_ALL=C.UTF-8 \
     TERM=dumb
 
 ARG BUILD_DATE
-ARG OPENTYPE_VERSION=5.1.3
 ARG GITLATEXDIFF_VERSION=1.6.0
+
+# Mark Debian packages "provided" by texlive:latest as installed
+# Idea from https://tex.stackexchange.com/a/95373/9075
+RUN apt-get update && \
+    apt install -qy equivs --no-install-recommends freeglut3 && \
+    mkdir -p /tmp/tl-equivs && cd /tmp/tl-equivs && \
+    wget -O texlive-local http://www.tug.org/texlive/files/debian-equivs-2020-ex.txt && \
+    equivs-build texlive-local && \
+    dpkg -i texlive-local_2020-1_all.deb && \
+    apt install -qyf && \
+    apt remove -y --purge equivs freeglut3 && \
+    apt-get autoremove -qy --purge && \
+    # save some space
+    rm -rf /var/lib/apt/lists/* && apt-get clean
 
 WORKDIR /home
 
@@ -27,7 +40,7 @@ RUN wget https://gitlab.com/Lotz/pkgcheck/raw/master/bin/pkgcheck -q --output-do
 # Install IBM Plex fonts
 RUN mkdir -p /tmp/fonts && \
     cd /tmp/fonts && \
-    wget https://github.com/IBM/plex/releases/download/v5.1.3/$OPENTYPE_VERSION -q && \
+    wget "https://github.com/IBM/plex/releases/download/v5.1.3/OpenType.zip" -q && \
     unzip -q OpenType.zip && \
     cp -r OpenType/* /usr/local/share/fonts && \
     fc-cache -f -v && \
