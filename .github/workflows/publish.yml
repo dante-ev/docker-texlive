@@ -49,7 +49,7 @@ jobs:
           platforms: linux/amd64
           tags: |
             danteev/texlive:latest
-            ghcr.io/danteev/texlive:latest
+            ghcr.io/dante-ev/texlive:latest
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
