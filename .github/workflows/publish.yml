@@ -1,5 +1,8 @@
 name: Publish Docker Image
 on:
+  schedule:
+    # run on 1th and 15th of each month
+    - cron: '1 2 1,15 * *'
   push:
     branches:
       - master
@@ -7,11 +10,35 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
-    - uses: docker/build-push-action@v1
-      with:
-        repository: danteev/texlive
+      -
+        name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+      -
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+      -
+        name: Login to DockerHub
+        uses: docker/login-action@v1
+        with:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-        tag_with_ref: true
-        cache_froms: danteev/texlive:latest
+      -
+        name: Login to GitHub Container Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: koppor
+          password: ${{ secrets.CR_PAT }}
+      -
+        name: Build and push
+        id: docker_build
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          platforms: linux/amd64
+          tags: |
+            danteev/texlive:latest
+            ghcr.io/danteev/texlive:latest
+      -
+        name: Image digest
+        run: echo ${{ steps.docker_build.outputs.digest }}
