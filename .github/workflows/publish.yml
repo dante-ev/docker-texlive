@@ -5,6 +5,7 @@ on:
     - cron: '1 2 1,15 * *'
   push:
     branches:
+      - main
       - master
       - fix-10
 jobs:

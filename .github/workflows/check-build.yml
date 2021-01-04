@@ -1,5 +1,10 @@
 name: Check build of docker image
-on: [push, pull_request]
+on:
+  push:
+    branches-ignore:
+      - main
+      - master
+  pull_request:
 jobs:
   build:
     runs-on: ubuntu-latest
