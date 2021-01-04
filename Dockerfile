@@ -84,6 +84,8 @@ RUN apt-get update && \
     apt-get install -qy fonts-inconsolata && \
     # required by tlmgr init-usertree
     apt-get install -qy xzdec && \
+    # install bibtool
+    apt-get install -qy bibtool && \
     # install gnuplot
     apt-get install -qy gnuplot && \
     # Removing documentation packages *after* installing them is kind of hacky,
