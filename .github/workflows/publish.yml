@@ -8,6 +8,7 @@ on:
       - main
       - master
       - fix-10
+  workflow_dispatch:
 jobs:
   build:
     runs-on: ubuntu-latest
