@@ -1,14 +1,11 @@
-FROM debian:testing-slim
+FROM texlive:texlive-latest
 LABEL maintainer "Oliver Kopp <kopp.dev@gmail.com>"
 ENV LANG=C.UTF-8 \
     LC_ALL=C.UTF-8 \
     TERM=dumb
 
-# avoid debconf and initrd
-ENV DEBIAN_FRONTEND noninteractive
-ENV INITRD No
-
 ARG BUILD_DATE
+ARG OPENTYPE_VERSION=5.1.3
 ARG GITLATEXDIFF_VERSION=1.6.0
 
 WORKDIR /home
@@ -17,13 +14,8 @@ WORKDIR /home
 # See https://github.com/debuerreotype/docker-debian-artifacts/issues/24#issuecomment-360870939
 RUN mkdir -p /usr/share/man/man1
 
-# Minimal binaries
-RUN echo "echo deb http://de.debian.org/debian/ testing main > /etc/apt/sources.list" && \
-    apt-get update && apt-get install -qy wget unzip && \
-    rm -rf /var/lib/apt/lists/* && apt-get clean
-
 # pandoc in the repositories is older - we just overwrite it with a more recent version
-RUN wget https://github.com/jgm/pandoc/releases/download/2.9.2/pandoc-2.9.2-1-amd64.deb -q --output-document=/home/pandoc.deb && dpkg -i pandoc.deb && rm pandoc.deb
+RUN wget https://github.com/jgm/pandoc/releases/download/2.11.3.2/pandoc-2.11.3.2-1-amd64.deb -q --output-document=/home/pandoc.deb && dpkg -i pandoc.deb && rm pandoc.deb
 
 # get PlantUML in place
 RUN wget https://netcologne.dl.sourceforge.net/project/plantuml/plantuml.jar -q --output-document=/home/plantuml.jar
@@ -32,35 +24,21 @@ ENV PLANTUML_JAR=/home/plantuml.jar
 # install pkgcheck
 RUN wget https://gitlab.com/Lotz/pkgcheck/raw/master/bin/pkgcheck -q --output-document=/usr/local/bin/pkgcheck && chmod a+x /usr/local/bin/pkgcheck
 
-# Install git and fontconfig
-RUN apt-get update && apt-get install -qy --no-install-recommends git make && \
-    # required to install IBMPlexMono font
-    apt-get install -qy fontconfig && \
-    rm -rf /var/lib/apt/lists/* && apt-get clean
-
 # Install IBM Plex fonts
 RUN mkdir -p /tmp/fonts && \
     cd /tmp/fonts && \
-    wget https://github.com/IBM/plex/releases/download/v5.0.0/OpenType.zip -q && \
+    wget https://github.com/IBM/plex/releases/download/v5.1.3/$OPENTYPE_VERSION -q && \
     unzip -q OpenType.zip && \
     cp -r OpenType/* /usr/local/share/fonts && \
     fc-cache -f -v && \
     cd .. && \
     rm -rf fonts
 
-# Install git-latexdiff v1.6.0 https://gitlab.com/git-latexdiff/git-latexdiff
-RUN git config --global advice.detachedHead false && \
-    git clone --branch "$GITLATEXDIFF_VERSION" --depth=1 https://gitlab.com/git-latexdiff/git-latexdiff.git /tmp/git-latexdiff && \
-    make -C /tmp/git-latexdiff install-bin && \
-    rm -rf /tmp/git-latexdiff
-
-# install Ruby's bundler
 RUN apt-get update && \
-    apt-get install -qy ruby poppler-utils && \
-    gem install bundler && \
-    rm -rf /var/lib/apt/lists/* && apt-get clean
-
-RUN apt-get update && \
+    # Install git (Required for git-latexdiff)
+    apt-get install -qy --no-install-recommends git && \
+    # Install Ruby's bundler
+    apt-get install -qy ruby poppler-utils && gem install bundler && \
     # openjdk-8-jre-headless is currently not available in testing
     # solution by https://stackoverflow.com/a/61902164/873282
     apt-get install -qy software-properties-common && \
@@ -94,6 +72,12 @@ RUN apt-get update && \
     apt-get --purge remove -qy .\*-doc$ && \
     # save some space
     rm -rf /var/lib/apt/lists/* && apt-get clean
+
+# Install git-latexdiff v1.6.0 https://gitlab.com/git-latexdiff/git-latexdiff
+RUN git config --global advice.detachedHead false && \
+    git clone --branch "$GITLATEXDIFF_VERSION" --depth=1 https://gitlab.com/git-latexdiff/git-latexdiff.git /tmp/git-latexdiff && \
+    make -C /tmp/git-latexdiff install-bin && \
+    rm -rf /tmp/git-latexdiff
 
 # enable using the scripts of https://github.com/gi-ev/LNI-proceedings
 RUN pip3 install pyparsing && pip3 install docx
