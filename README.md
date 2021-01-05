@@ -164,8 +164,8 @@ docker run --rm -it -v $(pwd):/home danteev/texlive:TL2017 latexmk document.tex
 
 ## Background
 
-We decided to base on the official texlive image, because because this ensures recent texlive packages and a working basic build.
-We extended the image with tools required four our use cases.
+We decided to base on the official texlive image, because this ensures recent texlive packages and a working basic build.
+We extended the image with tools required for our use cases.
 
 ## Alternatives
 
