@@ -65,10 +65,8 @@ RUN apt-get update && \
     apt-get install -qy --no-install-recommends libfile-which-perl libfile-copy-recursive-perl pdftk ghostscript openssh-client && \
     # for plantuml, we need graphviz and inkscape. For inkscape, there is no non-X11 version, so 200 MB more
     apt-get install -qy --no-install-recommends graphviz inkscape && \
-    # install texlive-full. The documentation ( texlive-latex-base-doc- texlive-latex-extra-doc- texlive-latex-recommended-doc-	texlive-metapost-doc- texlive-pictures-doc- texlive-pstricks-doc- texlive-publishers-doc- texlive-science-doc- texlive-fonts-extra-doc- texlive-fonts-recommended-doc- texlive-humanities-doc-) is also required
-    apt-get install -qy --no-install-recommends texlive-full fonts-texgyre latexml xindy && \
-    # add support for pygments
-    apt-get install -qy python3-pygments python3-pip && \
+    # some more packages
+    apt-get install -qy --no-install-recommends fonts-texgyre latexml xindy && \
     # fig2dev - tool for xfig to translate the figure to other formats
     apt-get install -qy fig2dev && \
     # add Google's Inconsolata font (https://fonts.google.com/specimen/Inconsolata)
@@ -92,9 +90,6 @@ RUN git config --global advice.detachedHead false && \
     make -C /tmp/git-latexdiff install-bin && \
     rm -rf /tmp/git-latexdiff
 
-# enable using the scripts of https://github.com/gi-ev/LNI-proceedings
-RUN pip3 install pyparsing && pip3 install docx
-
 # prepare usage of pax
 RUN wget -q https://raw.githubusercontent.com/bastien-roucaries/latex-pax/0a4fc981f0d62772ce5f9e2a7b77a37f3e7b896c/scripts/pax/pdfannotextractor.pl -O /usr/share/texlive/texmf-dist/scripts/pax/pdfannotextractor.pl && \
     wget -q https://raw.githubusercontent.com/bastien-roucaries/latex-pax/0a4fc981f0d62772ce5f9e2a7b77a37f3e7b896c/scripts/pax/pax.jar -O /usr/share/texlive/texmf-dist/scripts/pax/pax.jar && \
@@ -104,6 +99,13 @@ RUN wget -q https://raw.githubusercontent.com/bastien-roucaries/latex-pax/0a4fc9
 
 # install luximono
 RUN cd /tmp && wget https://www.tug.org/fonts/getnonfreefonts/install-getnonfreefonts && texlua install-getnonfreefonts && getnonfreefonts --sys luximono
+
+# enable using the scripts of https://github.com/gi-ev/LNI-proceedings
+RUN apt-get update && \
+    apt-get install -qy python3-pip && \
+    pip3 install pyparsing && \
+    pip3 install docx && \
+    rm -rf /var/lib/apt/lists/* && apt-get clean
 
 # update font index
 RUN luaotfload-tool --update
