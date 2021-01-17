@@ -93,14 +93,13 @@ RUN git config --global advice.detachedHead false && \
 # prepare usage of pax
 # We need to use raw.githack.com, because of block by GitHub
 # The files originate from https://github.com/bastien-roucaries/latex-pax
-RUN wget -q https://rawcdn.githack.com/bastien-roucaries/latex-pax/0a4fc981f0d62772ce5f9e2a7b77a37f3e7b896c/scripts/pax/pdfannotextractor.pl -O /usr/share/texlive/texmf-dist/scripts/pax/pdfannotextractor.pl && \
-    wget -q https://rawcdn.githack.com/bastien-roucaries/latex-pax/0a4fc981f0d62772ce5f9e2a7b77a37f3e7b896c/scripts/pax/pax.jar -O /usr/share/texlive/texmf-dist/scripts/pax/pax.jar && \
+RUN apt-get update && \
+    apt-get install -qy libfile-which-perl && \
+    rm -rf /var/lib/apt/lists/* && apt-get clean && \
+    wget -q https://rawcdn.githack.com/bastien-roucaries/latex-pax/0a4fc981f0d62772ce5f9e2a7b77a37f3e7b896c/scripts/pax/pdfannotextractor.pl -O  /usr/local/texlive/2020/texmf-dist/scripts/pax/pdfannotextractor.pl && \
+    wget -q https://rawcdn.githack.com/bastien-roucaries/latex-pax/0a4fc981f0d62772ce5f9e2a7b77a37f3e7b896c/scripts/pax/pax.jar -O  /usr/local/texlive/2020/texmf-dist/scripts/pax/pax.jar && \
     mkdir /root/.texlive2020 && \
-    rm  /usr/share/java/pdfbox.jar && \
-    perl `kpsewhich -var-value TEXMFDIST`/scripts/pax/pdfannotextractor.pl --install # 2>&1 > /dev/null
-
-# install luximono
-RUN cd /tmp && wget https://www.tug.org/fonts/getnonfreefonts/install-getnonfreefonts && texlua install-getnonfreefonts && getnonfreefonts --sys luximono
+    perl  /usr/local/texlive/2020/texmf-dist/scripts/pax/pdfannotextractor.pl --install 2>&1 > /dev/null
 
 # enable using the scripts of https://github.com/gi-ev/LNI-proceedings
 RUN apt-get update && \
@@ -108,6 +107,9 @@ RUN apt-get update && \
     pip3 install pyparsing && \
     pip3 install docx && \
     rm -rf /var/lib/apt/lists/* && apt-get clean
+
+# install luximono
+RUN cd /tmp && wget https://www.tug.org/fonts/getnonfreefonts/install-getnonfreefonts && texlua install-getnonfreefonts && getnonfreefonts --sys luximono
 
 # update font index
 RUN luaotfload-tool --update
