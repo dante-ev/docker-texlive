@@ -91,8 +91,10 @@ RUN git config --global advice.detachedHead false && \
     rm -rf /tmp/git-latexdiff
 
 # prepare usage of pax
-RUN wget -q https://raw.githubusercontent.com/bastien-roucaries/latex-pax/0a4fc981f0d62772ce5f9e2a7b77a37f3e7b896c/scripts/pax/pdfannotextractor.pl -O /usr/share/texlive/texmf-dist/scripts/pax/pdfannotextractor.pl && \
-    wget -q https://raw.githubusercontent.com/bastien-roucaries/latex-pax/0a4fc981f0d62772ce5f9e2a7b77a37f3e7b896c/scripts/pax/pax.jar -O /usr/share/texlive/texmf-dist/scripts/pax/pax.jar && \
+# We need to use raw.githack.com, because of block by GitHub
+# The files originate from https://github.com/bastien-roucaries/latex-pax
+RUN wget -q https://rawcdn.githack.com/bastien-roucaries/latex-pax/0a4fc981f0d62772ce5f9e2a7b77a37f3e7b896c/scripts/pax/pdfannotextractor.pl -O /usr/share/texlive/texmf-dist/scripts/pax/pdfannotextractor.pl && \
+    wget -q https://rawcdn.githack.com/bastien-roucaries/latex-pax/0a4fc981f0d62772ce5f9e2a7b77a37f3e7b896c/scripts/pax/pax.jar -O /usr/share/texlive/texmf-dist/scripts/pax/pax.jar && \
     mkdir /root/.texlive2020 && \
     rm  /usr/share/java/pdfbox.jar && \
     perl `kpsewhich -var-value TEXMFDIST`/scripts/pax/pdfannotextractor.pl --install # 2>&1 > /dev/null
