@@ -7,20 +7,6 @@ ENV LANG=C.UTF-8 \
 ARG BUILD_DATE
 ARG GITLATEXDIFF_VERSION=1.6.0
 
-# Mark Debian packages "provided" by texlive:latest as installed
-# Idea from https://tex.stackexchange.com/a/95373/9075
-RUN apt-get update && \
-    apt install -qy equivs --no-install-recommends freeglut3 && \
-    mkdir -p /tmp/tl-equivs && cd /tmp/tl-equivs && \
-    wget -O texlive-local http://www.tug.org/texlive/files/debian-equivs-2020-ex.txt && \
-    equivs-build texlive-local && \
-    dpkg -i texlive-local_2020-1_all.deb && \
-    apt install -qyf && \
-    apt remove -y --purge equivs freeglut3 && \
-    apt-get autoremove -qy --purge && \
-    # save some space
-    rm -rf /var/lib/apt/lists/* && apt-get clean
-
 WORKDIR /home
 
 # Fix for update-alternatives: error: error creating symbolic link '/usr/share/man/man1/rmid.1.gz.dpkg-tmp': No such file or directory
