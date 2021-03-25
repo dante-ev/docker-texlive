@@ -7,20 +7,6 @@ ENV LANG=C.UTF-8 \
 ARG BUILD_DATE
 ARG GITLATEXDIFF_VERSION=1.6.0
 
-# Mark Debian packages "provided" by texlive:latest as installed
-# Idea from https://tex.stackexchange.com/a/95373/9075
-RUN apt-get update && \
-    apt install -qy equivs --no-install-recommends freeglut3 && \
-    mkdir -p /tmp/tl-equivs && cd /tmp/tl-equivs && \
-    wget -O texlive-local http://www.tug.org/texlive/files/debian-equivs-2020-ex.txt && \
-    equivs-build texlive-local && \
-    dpkg -i texlive-local_2020-1_all.deb && \
-    apt install -qyf && \
-    apt remove -y --purge equivs freeglut3 && \
-    apt-get autoremove -qy --purge && \
-    # save some space
-    rm -rf /var/lib/apt/lists/* && apt-get clean
-
 WORKDIR /home
 
 # Fix for update-alternatives: error: error creating symbolic link '/usr/share/man/man1/rmid.1.gz.dpkg-tmp': No such file or directory
@@ -28,7 +14,7 @@ WORKDIR /home
 RUN mkdir -p /usr/share/man/man1
 
 # pandoc in the repositories is older - we just overwrite it with a more recent version
-RUN wget https://github.com/jgm/pandoc/releases/download/2.11.3.2/pandoc-2.11.3.2-1-amd64.deb -q --output-document=/home/pandoc.deb && dpkg -i pandoc.deb && rm pandoc.deb
+RUN wget https://github.com/jgm/pandoc/releases/download/2.12/pandoc-2.12-1-amd64.deb -q --output-document=/home/pandoc.deb && dpkg -i pandoc.deb && rm pandoc.deb
 
 # get PlantUML in place
 RUN wget https://netcologne.dl.sourceforge.net/project/plantuml/plantuml.jar -q --output-document=/home/plantuml.jar
@@ -109,7 +95,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/* && apt-get clean
 
 # install luximono
-RUN cd /tmp && wget https://www.tug.org/fonts/getnonfreefonts/install-getnonfreefonts && texlua install-getnonfreefonts && getnonfreefonts --sys luximono
+# RUN cd /tmp && wget https://www.tug.org/fonts/getnonfreefonts/install-getnonfreefonts && texlua install-getnonfreefonts && getnonfreefonts --sys luximono
 
 # update font index
-RUN luaotfload-tool --update
+# RUN luaotfload-tool --update

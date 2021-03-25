@@ -14,6 +14,11 @@ Instead, we version `YYYY-RR`, where `YYYY` is TeXLive version this image is bas
 
 - Added support for luximono
 
+## Changed
+
+- Switch upstream image to [Island of TeX's texlive image](https://gitlab.com/islandoftex/images/texlive)
+- Update pandoc to 2.12.1
+
 ## [2020-01] &ndash; 2020-06-23
 
 ### Added
