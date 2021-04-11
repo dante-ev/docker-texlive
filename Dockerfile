@@ -33,36 +33,36 @@ RUN mkdir -p /tmp/fonts && \
     cd .. && \
     rm -rf fonts
 
-RUN apt-get update && \
+RUN apt-get update -q && \
     # Install git (Required for git-latexdiff)
-    apt-get install -qy -o=Dpkg::Use-Pty=0 --no-install-recommends git && \
+    apt-get install -qqy -o=Dpkg::Use-Pty=0 --no-install-recommends git && \
     # Install Ruby's bundler
-    apt-get install -qy -o=Dpkg::Use-Pty=0 ruby poppler-utils && gem install bundler && \
+    apt-get install -qqy -o=Dpkg::Use-Pty=0 ruby poppler-utils && gem install bundler && \
     # openjdk-8-jre-headless is currently not available in testing
     # solution by https://stackoverflow.com/a/61902164/873282
-    apt-get install -qy -o=Dpkg::Use-Pty=0 software-properties-common && \
+    apt-get install -qqy -o=Dpkg::Use-Pty=0 software-properties-common && \
     apt-add-repository 'deb http://security.debian.org/debian-security stretch/updates main' && \
     apt-get update && \
     # plantuml requires java8
-    apt-get install -qy -o=Dpkg::Use-Pty=0 --no-install-recommends openjdk-8-jre-headless && \
+    apt-get install -qqy -o=Dpkg::Use-Pty=0 --no-install-recommends openjdk-8-jre-headless && \
     # proposal by https://github.com/sumandoc/TeXLive-2017
-    apt-get install -qy -o=Dpkg::Use-Pty=0 curl libgetopt-long-descriptive-perl libdigest-perl-md5-perl fontconfig && \
+    apt-get install -qqy -o=Dpkg::Use-Pty=0 curl libgetopt-long-descriptive-perl libdigest-perl-md5-perl fontconfig && \
     # libfile-copy-recursive-perl is required by ctanify
-    apt-get install -qy -o=Dpkg::Use-Pty=0 --no-install-recommends libfile-which-perl libfile-copy-recursive-perl pdftk ghostscript openssh-client && \
+    apt-get install -qqy -o=Dpkg::Use-Pty=0 --no-install-recommends libfile-which-perl libfile-copy-recursive-perl pdftk ghostscript openssh-client && \
     # for plantuml, we need graphviz and inkscape. For inkscape, there is no non-X11 version, so 200 MB more
-    apt-get install -qy -o=Dpkg::Use-Pty=0 --no-install-recommends graphviz inkscape && \
+    apt-get install -qqy -o=Dpkg::Use-Pty=0 --no-install-recommends graphviz inkscape && \
     # some more packages
-    apt-get install -qy -o=Dpkg::Use-Pty=0 --no-install-recommends fonts-texgyre latexml xindy && \
+    apt-get install -qqy -o=Dpkg::Use-Pty=0 --no-install-recommends fonts-texgyre latexml xindy && \
     # fig2dev - tool for xfig to translate the figure to other formats
-    apt-get install -qy -o=Dpkg::Use-Pty=0 fig2dev && \
+    apt-get install -qqy -o=Dpkg::Use-Pty=0 fig2dev && \
     # add Google's Inconsolata font (https://fonts.google.com/specimen/Inconsolata)
-    apt-get install -qy -o=Dpkg::Use-Pty=0 fonts-inconsolata && \
+    apt-get install -qqy -o=Dpkg::Use-Pty=0 fonts-inconsolata && \
     # required by tlmgr init-usertree
-    apt-get install -qy -o=Dpkg::Use-Pty=0 xzdec && \
+    apt-get install -qqy -o=Dpkg::Use-Pty=0 xzdec && \
     # install bibtool
-    apt-get install -qy -o=Dpkg::Use-Pty=0 bibtool && \
+    apt-get install -qqy -o=Dpkg::Use-Pty=0 bibtool && \
     # install gnuplot
-    apt-get install -qy -o=Dpkg::Use-Pty=0 gnuplot && \
+    apt-get install -qqy -o=Dpkg::Use-Pty=0 gnuplot && \
     # Removing documentation packages *after* installing them is kind of hacky,
     # but it only adds some overhead while building the image.
     # Source: https://github.com/aergus/dockerfiles/blob/master/latex/Dockerfile
@@ -78,7 +78,7 @@ RUN git config --global advice.detachedHead false && \
 
 # enable using the scripts of https://github.com/gi-ev/LNI-proceedings
 RUN apt-get update && \
-    apt-get install -qy -o=Dpkg::Use-Pty=0 python3-pip && \
+    apt-get install -qqy -o=Dpkg::Use-Pty=0 python3-pip && \
     pip3 install pyparsing && \
     pip3 install docx && \
     rm -rf /var/lib/apt/lists/* && apt-get clean
