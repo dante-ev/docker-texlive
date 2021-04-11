@@ -29,11 +29,10 @@ jobs:
           images: |
             danteev/texlive
             ghcr.io/dante-ev/texlive
-          flavor:
-            latest=true
           tags: |
             type=schedule,pattern={{date 'YYYY-MM-DD'}}
             type=ref,event=tag
+            type=edge,branch=main
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v1

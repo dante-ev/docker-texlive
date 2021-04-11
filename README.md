@@ -142,14 +142,14 @@ build:
 
 ## Available Tags
 
-### Latest version
-
-- `latest` - the latest version
-- `2020` - latest TeXLive 2020 build
-- `2020-01` - first image release in year 2020
+- `edge` - the edge build
+- `latest` - the latest released version
+- `YYYY-MM-DD` - a build of that date. Usually created on the first and fifteenth of a month
 
 ### Other versions
 
+- `2020` - latest TeXLive 2020 build
+- `2020-01` - first image release in year 2020
 - `TL2017` - TeXLive 2017 build
 - For all other versions see [CHANGELOG.md](https://github.com/dante-ev/docker-texlive/blob/master/CHANGELOG.md#changelog).
 
