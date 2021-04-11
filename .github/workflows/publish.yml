@@ -32,6 +32,7 @@ jobs:
           tags: |
             type=schedule,pattern={{date 'YYYY-MM-DD'}}
             type=ref,event=tag
+            type=ref,event=branch
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v1
