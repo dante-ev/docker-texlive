@@ -16,6 +16,10 @@ Note that this version is continuosly built based on [texlive/texlive](https://g
 
 - Added support for luximono
 
+### Fixed
+
+- Fixed support of `xindy`
+
 ## Changed
 
 - Switch upstream image to [Island of TeX's texlive image](https://gitlab.com/islandoftex/images/texlive)

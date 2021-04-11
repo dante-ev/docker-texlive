@@ -34,6 +34,7 @@ RUN mkdir -p /tmp/fonts && \
     rm -rf fonts
 
 RUN apt-get update -q && \
+    apt-get install -y xindy && \
     # Install git (Required for git-latexdiff)
     apt-get install -qqy -o=Dpkg::Use-Pty=0 --no-install-recommends git && \
     # Install Ruby's bundler
