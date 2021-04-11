@@ -1,4 +1,5 @@
 name: Publish Docker Image
+
 on:
   schedule:
     # run on 1th and 15th of each month
@@ -6,7 +7,11 @@ on:
   push:
     branches:
       - main
+      - ghactionstest
+    tags:
+      - '*'
   workflow_dispatch:
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -16,6 +21,18 @@ jobs:
         uses: styfle/cancel-workflow-action@0.6.0
         with:
           access_token: ${{ github.token }}
+      -
+        name: Docker meta
+        id: meta
+        uses: crazy-max/ghaction-docker-meta@v2
+        with:
+          images: |
+            danteev/texlive
+            ghcr.io/dante-ev/texlive
+          tags: |
+            type=schedule,pattern={{date 'YYYY-MM-DD'}}
+            type=ref,event=tag
+            type=edge,branch=main
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v1
@@ -50,9 +67,8 @@ jobs:
         with:
           push: true
           platforms: linux/amd64
-          tags: |
-            danteev/texlive:latest
-            ghcr.io/dante-ev/texlive:latest
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}

@@ -8,7 +8,9 @@ This project cannot adhere to [Semantic Versioning](http://semver.org/), because
 Thus, each new version would lead to a new major version.
 Instead, we version `YYYY-RR`, where `YYYY` is TeXLive version this image is based on and `RR` is numbering different releases in that cycle.
 
-## [Unreleased]
+## [edge]
+
+Note that this version is continuosly built based on [texlive/texlive](https://gitlab.com/islandoftex/images/texlive).
 
 ### Added
 
@@ -121,7 +123,7 @@ Instead, we version `YYYY-RR`, where `YYYY` is TeXLive version this image is bas
 
 Initial release
 
-[Unreleased]: https://github.com/koppor/docker-texlive/compare/2020-01...HEAD
+[edge]: https://github.com/koppor/docker-texlive/compare/2020-01...HEAD
 [2020-01]: https://github.com/koppor/docker-texlive/compare/v1.6.0...2020-01
 [v1.6.0]: https://github.com/koppor/docker-texlive/compare/v1.5.1...v1.6.0
 [v1.5.0]: https://github.com/koppor/docker-texlive/compare/v1.4.1...v1.5.0
