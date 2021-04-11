@@ -9,7 +9,6 @@ This docker image supports full TeX Live with following additions:
 - Java headless
 - [latexmk](https://www.ctan.org/pkg/latexmk/)
 - [Pandoc](http://pandoc.org/)
-- [pax](http://ctan.org/pkg/pax)
 - [pdftk](https://www.pdflabs.com/tools/pdftk-the-pdf-toolkit/)
 - [Python 3](https://pythonclock.org/), pip, pyparsing, python-docx
 - [git-latexdiff](https://gitlab.com/git-latexdiff/git-latexdiff)

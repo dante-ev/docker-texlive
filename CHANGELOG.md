@@ -17,7 +17,12 @@ Instead, we version `YYYY-RR`, where `YYYY` is TeXLive version this image is bas
 ## Changed
 
 - Switch upstream image to [Island of TeX's texlive image](https://gitlab.com/islandoftex/images/texlive)
+- Switch to TeX Live 2021
 - Update pandoc to 2.12.1
+
+## Removed
+
+- Remove support of [pax](https://ctan.org/pkg/pax), because there is [newpax](https://ctan.org/pkg/newpax)
 
 ## [2020-01] &ndash; 2020-06-23
 
