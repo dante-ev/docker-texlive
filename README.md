@@ -10,7 +10,6 @@ This docker image supports full TeX Live with following additions:
 - [latexmk](https://www.ctan.org/pkg/latexmk/)
 - [Pandoc](http://pandoc.org/)
 - [pdftk](https://www.pdflabs.com/tools/pdftk-the-pdf-toolkit/)
-- [Python 3](https://pythonclock.org/), pip, pyparsing, python-docx
 - [git-latexdiff](https://gitlab.com/git-latexdiff/git-latexdiff)
 
 ## Usage

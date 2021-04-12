@@ -77,13 +77,6 @@ RUN git config --global advice.detachedHead false && \
     make -C /tmp/git-latexdiff install-bin && \
     rm -rf /tmp/git-latexdiff
 
-# enable using the scripts of https://github.com/gi-ev/LNI-proceedings
-RUN apt-get update && \
-    apt-get install -qqy -o=Dpkg::Use-Pty=0 python3-pip && \
-    pip3 install pyparsing && \
-    pip3 install docx && \
-    rm -rf /var/lib/apt/lists/* && apt-get clean
-
 # install luximono
 # RUN cd /tmp && wget https://www.tug.org/fonts/getnonfreefonts/install-getnonfreefonts && texlua install-getnonfreefonts && getnonfreefonts --sys luximono
 

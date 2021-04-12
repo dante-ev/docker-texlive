@@ -29,6 +29,7 @@ Note that this version is continuosly built based on [texlive/texlive](https://g
 ## Removed
 
 - Remove support of [pax](https://ctan.org/pkg/pax), because there is [newpax](https://ctan.org/pkg/newpax)
+- Remove Python, because it is not required in a default setup
 
 ## [2020-01] &ndash; 2020-06-23
 
