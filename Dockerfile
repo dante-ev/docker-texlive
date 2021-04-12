@@ -53,7 +53,7 @@ RUN apt-get update -q && \
     # for plantuml, we need graphviz and inkscape. For inkscape, there is no non-X11 version, so 200 MB more
     apt-get install -qqy -o=Dpkg::Use-Pty=0 --no-install-recommends graphviz inkscape && \
     # some more packages
-    apt-get install -qqy -o=Dpkg::Use-Pty=0 --no-install-recommends fonts-texgyre latexml xindy && \
+    apt-get install -qqy -o=Dpkg::Use-Pty=0 --no-install-recommends fonts-texgyre latexml && \
     # fig2dev - tool for xfig to translate the figure to other formats
     apt-get install -qqy -o=Dpkg::Use-Pty=0 fig2dev && \
     # add Google's Inconsolata font (https://fonts.google.com/specimen/Inconsolata)
