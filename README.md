@@ -2,15 +2,13 @@
 
 This docker image supports full TeX Live with following additions:
 
-- [Ghostscript](https://www.ghostscript.com/)
 - [Gnuplot](http://www.gnuplot.info/)
 - [GraphViz](https://www.graphviz.org/)
 - [Inkscape](https://inkscape.org/)
-- Java headless
-- [latexmk](https://www.ctan.org/pkg/latexmk/)
-- [Pandoc](http://pandoc.org/)
-- [pdftk](https://www.pdflabs.com/tools/pdftk-the-pdf-toolkit/)
-- [git-latexdiff](https://gitlab.com/git-latexdiff/git-latexdiff)
+- [latexmk](https://www.ctan.org/pkg/latexmk/) - an automator for latex building
+- [Pandoc](http://pandoc.org/) - to convert from and to `.tex`
+- [git-latexdiff](https://gitlab.com/git-latexdiff/git-latexdiff) - to enable diffs of LaTeX documents
+- Java headless - required for Pandoc
 
 ## Usage
 
