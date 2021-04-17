@@ -48,7 +48,7 @@ RUN apt-get update -q && \
     # proposal by https://github.com/sumandoc/TeXLive-2017
     apt-get install -qqy -o=Dpkg::Use-Pty=0 curl libgetopt-long-descriptive-perl libdigest-perl-md5-perl fontconfig && \
     # libfile-copy-recursive-perl is required by ctanify
-    apt-get install -qqy -o=Dpkg::Use-Pty=0 --no-install-recommends libfile-which-perl libfile-copy-recursive-perl pdftk ghostscript openssh-client && \
+    apt-get install -qqy -o=Dpkg::Use-Pty=0 --no-install-recommends libfile-which-perl libfile-copy-recursive-perl openssh-client && \
     # for plantuml, we need graphviz and inkscape. For inkscape, there is no non-X11 version, so 200 MB more
     apt-get install -qqy -o=Dpkg::Use-Pty=0 --no-install-recommends graphviz inkscape && \
     # some more packages

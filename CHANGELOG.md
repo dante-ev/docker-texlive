@@ -30,6 +30,7 @@ Note that this version is continuosly built based on [texlive/texlive](https://g
 
 - Remove support of [pax](https://ctan.org/pkg/pax), because there is [newpax](https://ctan.org/pkg/newpax)
 - Remove Python, because it is not required in a default setup
+- Remove pdftk and ghostscript. Seems to be used only in rare cases.
 
 ## [2020-01] &ndash; 2020-06-23
 
