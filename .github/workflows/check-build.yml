@@ -44,7 +44,9 @@ jobs:
           push: true
           tags: localhost:5000/name/app:latest
       -
-        name: Inspect
+        name: Check latex exection
         working-directory: test
         run: |
+          pwd
+          ls -la
           docker run -it -v $(pwd):/workdir localhost:5000/name/app:latest latexmk minimal-article.tex
