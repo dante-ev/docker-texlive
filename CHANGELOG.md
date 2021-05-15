@@ -6,7 +6,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 This project cannot adhere to [Semantic Versioning](http://semver.org/), because it builds on TeXLive, which introcuces breaking changes now and then.
 Thus, each new version would lead to a new major version.
-Instead, we version `YYYY-RR`, where `YYYY` is TeXLive version this image is based on and `RR` is numbering different releases in that cycle.
+Instead, we version `YYYY-R`, where `YYYY` is TeXLive version this image is based on and `R` is numbering different releases in that cycle using characters.
+E.g., `2021-A`, `2021-B`, ...
+We use letters instead of numbers to avoid confustion with the automatic builds such as `2021-05-15`.
 
 ## [edge]
 
@@ -32,7 +34,7 @@ Note that this version is continuosly built based on [texlive/texlive](https://g
 - Remove Python, because it is not required in a default setup
 - Remove pdftk and ghostscript. Seems to be used only in rare cases.
 
-## [2020-01] &ndash; 2020-06-23
+## [2020] &ndash; 2020-06-23
 
 ### Added
 
@@ -129,8 +131,8 @@ Note that this version is continuosly built based on [texlive/texlive](https://g
 
 Initial release
 
-[edge]: https://github.com/koppor/docker-texlive/compare/2020-01...HEAD
-[2020-01]: https://github.com/koppor/docker-texlive/compare/v1.6.0...2020-01
+[edge]: https://github.com/koppor/docker-texlive/compare/2020...HEAD
+[2020]: https://github.com/koppor/docker-texlive/compare/v1.6.0...2020
 [v1.6.0]: https://github.com/koppor/docker-texlive/compare/v1.5.1...v1.6.0
 [v1.5.0]: https://github.com/koppor/docker-texlive/compare/v1.4.1...v1.5.0
 [v1.4.1]: https://github.com/koppor/docker-texlive/compare/v1.4.0...v1.4.1

@@ -143,19 +143,27 @@ build:
 - `latest` - the latest released version
 - `YYYY-MM-DD` - a build of that date. Usually created on the first and fifteenth of a month
 
+Browse all available tags at <https://hub.docker.com/repository/docker/danteev/texlive/tags?page=1&ordering=last_updated>.
+
 ### Other versions
 
+- `2021-A` - first image release in year 2021
 - `2020` - latest TeXLive 2020 build
-- `2020-01` - first image release in year 2020
 - `TL2017` - TeXLive 2017 build
 - For all other versions see [CHANGELOG.md](https://github.com/dante-ev/docker-texlive/blob/master/CHANGELOG.md#changelog).
 
 ### Usage example
 
-You can run the TeXLive 2017 version by using the tag `TL2017`:
+```terminal
+docker run --rm -it -v $(pwd):/home danteev/texlive latexmk document.tex
+```
+
+In case you want to use an explcit tag, you can do it as follows:
+
+You can run the build of 2021-05-15 by using the tag `2021-05-15`:
 
 ```terminal
-docker run --rm -it -v $(pwd):/home danteev/texlive:TL2017 latexmk document.tex
+docker run --rm -it -v $(pwd):/home danteev/texlive:2021-05-15 latexmk document.tex
 ```
 
 ## Background
