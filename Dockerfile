@@ -81,3 +81,5 @@ RUN git config --global advice.detachedHead false && \
 
 # update font index
 RUN luaotfload-tool --update
+
+WORKDIR /workdir

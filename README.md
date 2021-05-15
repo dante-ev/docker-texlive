@@ -15,7 +15,7 @@ This docker image supports full TeX Live with following additions:
 ### Using docker
 
 ```terminal
-docker run --rm -it -v $(pwd):/home danteev/texlive latexmk -pdf document.tex
+docker run --rm -it -v $(pwd):/workdir danteev/texlive latexmk -pdf document.tex
 ```
 
 ### Usage in [GitHub Workflows](https://help.github.com/en/articles/about-github-actions)
@@ -119,7 +119,7 @@ language: generic
 services: docker
 
 script:
-- docker run --rm -it -v $(pwd):/home danteev/texlive latexmk -pdf document.tex
+- docker run --rm -it -v $(pwd):/workdir danteev/texlive latexmk -pdf document.tex
 ```
 
 ### Usage in [GitLab CI](https://docs.gitlab.com/ce/ci/)
@@ -155,7 +155,7 @@ Browse all available tags at <https://hub.docker.com/repository/docker/danteev/t
 ### Usage example
 
 ```terminal
-docker run --rm -it -v $(pwd):/home danteev/texlive latexmk document.tex
+docker run --rm -it -v $(pwd):/workdir danteev/texlive latexmk document.tex
 ```
 
 In case you want to use an explcit tag, you can do it as follows:
@@ -163,7 +163,7 @@ In case you want to use an explcit tag, you can do it as follows:
 You can run the build of 2021-05-15 by using the tag `2021-05-15`:
 
 ```terminal
-docker run --rm -it -v $(pwd):/home danteev/texlive:2021-05-15 latexmk document.tex
+docker run --rm -it -v $(pwd):/workdir danteev/texlive:2021-05-15 latexmk document.tex
 ```
 
 ## Background

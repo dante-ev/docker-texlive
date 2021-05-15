@@ -1,5 +1,8 @@
 name: Check build of docker image
 on:
+  schedule:
+    # 1h later than publish.yml
+    - cron: '1 3 1,15 * *'
   push:
     branches-ignore:
       - main
@@ -8,6 +11,11 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    services:
+      registry:
+        image: registry:2
+        ports:
+          - 5000:5000
     steps:
       -
         name: Cancel Previous Runs
@@ -25,12 +33,16 @@ jobs:
         uses: actions/cache@v2
         with:
           path: /tmp/.buildx-cache
-          key: ${{ runner.os }}-buildx-${{ github.sha }}
-          restore-keys: |
-            ${{ runner.os }}-buildx-
+          key: ${{ runner.os }}-buildx
       -
         name: Build
         id: docker_build
         uses: docker/build-push-action@v2
         with:
-          push: false
+          push: true
+          tags: localhost:5000/name/app:latest
+      -
+        name: Inspect
+        working-directory: test
+        run: |
+          docker run -it -v $(pwd):/workdir localhost:5000/name/app:latest latexmk minimal-article.tex
