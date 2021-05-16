@@ -7,6 +7,7 @@ This docker image supports full TeX Live with following additions:
 - [Inkscape](https://inkscape.org/)
 - [latexmk](https://www.ctan.org/pkg/latexmk/) - an automator for latex building
 - [Pandoc](http://pandoc.org/) - to convert from and to `.tex`
+- Python including [pygments](https://pygments.org/). This enables the usage of the [minted](https://ctan.org/pkg/minted) package for source code highlighting.
 - [git-latexdiff](https://gitlab.com/git-latexdiff/git-latexdiff) - to enable diffs of LaTeX documents
 - Java headless - required for Pandoc
 
@@ -15,7 +16,7 @@ This docker image supports full TeX Live with following additions:
 ### Using docker
 
 ```terminal
-docker run --rm -it -v $(pwd):/home danteev/texlive latexmk -pdf document.tex
+docker run --rm -it -v $(pwd):/workdir danteev/texlive latexmk -pdf document.tex
 ```
 
 ### Usage in [GitHub Workflows](https://help.github.com/en/articles/about-github-actions)
@@ -32,7 +33,7 @@ jobs:
       - name: Set up Git repository
         uses: actions/checkout@v2
       - name: Compile document.tex
-        uses: dante-ev/latex-action@master
+        uses: dante-ev/latex-action@edge
         with:
           root_file: document.tex
 ```
@@ -119,7 +120,7 @@ language: generic
 services: docker
 
 script:
-- docker run --rm -it -v $(pwd):/home danteev/texlive latexmk -pdf document.tex
+- docker run --rm -it -v $(pwd):/workdir danteev/texlive latexmk -pdf document.tex
 ```
 
 ### Usage in [GitLab CI](https://docs.gitlab.com/ce/ci/)
@@ -155,7 +156,7 @@ Browse all available tags at <https://hub.docker.com/repository/docker/danteev/t
 ### Usage example
 
 ```terminal
-docker run --rm -it -v $(pwd):/home danteev/texlive latexmk document.tex
+docker run --rm -it -v $(pwd):/workdir danteev/texlive latexmk document.tex
 ```
 
 In case you want to use an explcit tag, you can do it as follows:
@@ -163,7 +164,7 @@ In case you want to use an explcit tag, you can do it as follows:
 You can run the build of 2021-05-15 by using the tag `2021-05-15`:
 
 ```terminal
-docker run --rm -it -v $(pwd):/home danteev/texlive:2021-05-15 latexmk document.tex
+docker run --rm -it -v $(pwd):/workdir danteev/texlive:2021-05-15 latexmk document.tex
 ```
 
 ## Background

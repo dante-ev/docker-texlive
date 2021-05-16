@@ -27,6 +27,7 @@ Note that this version is continuosly built based on [texlive/texlive](https://g
 - Switch upstream image to [Island of TeX's texlive image](https://gitlab.com/islandoftex/images/texlive)
 - Switch to TeX Live 2021
 - Update pandoc to 2.12.1
+- The working directory for latex compilation is now `/workdir` instead of `/home`. `/home` is kept for plantuml.jar and other local pacakges.
 
 ## Removed
 
