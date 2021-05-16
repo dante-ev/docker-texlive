@@ -55,3 +55,9 @@ jobs:
         working-directory: test
         run: |
           docker run -v $(pwd):/workdir localhost:5000/name/app:latest pdflatex --shell-escape minimal-minted.tex
+      - name: Archive PDFs
+        uses: actions/upload-artifact@v2
+        with:
+          name: pdfs
+          path: |
+            test/*.pdf
