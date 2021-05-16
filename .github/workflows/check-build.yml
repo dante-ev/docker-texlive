@@ -49,11 +49,9 @@ jobs:
         name: minimal-article.tex
         working-directory: test
         run: |
-          pwd
-          ls -la
-          docker run -it -v $(pwd):/workdir localhost:5000/name/app:latest pdflatex minimal-article.tex
+          docker run -v $(pwd):/workdir localhost:5000/name/app:latest pdflatex minimal-article.tex
       -
         name: minimal-minted.tex
         working-directory: test
         run: |
-          docker run -it -v $(pwd):/workdir localhost:5000/name/app:latest pdflatex --shell-escape minimal-minted.tex
+          docker run -v $(pwd):/workdir localhost:5000/name/app:latest pdflatex --shell-escape minimal-minted.tex
