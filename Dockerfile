@@ -1,5 +1,11 @@
 FROM registry.gitlab.com/islandoftex/images/texlive:latest
-LABEL maintainer "Oliver Kopp <kopp.dev@gmail.com>"
+
+LABEL \
+  org.opencontainers.image.title="Full TeX Live with additions" \
+  org.opencontainers.image.authors="Oliver Kopp <kopp.dev@gmail.com>" \
+  org.opencontainers.image.source="https://github.com/dante-ev/docker-texlive" \
+  org.opencontainers.image.licenses="MIT"
+
 ENV LANG=C.UTF-8 \
     LC_ALL=C.UTF-8 \
     TERM=dumb
@@ -48,11 +54,13 @@ RUN apt-get update -q && \
     # proposal by https://github.com/sumandoc/TeXLive-2017
     apt-get install -qqy -o=Dpkg::Use-Pty=0 curl libgetopt-long-descriptive-perl libdigest-perl-md5-perl fontconfig && \
     # libfile-copy-recursive-perl is required by ctanify
-    apt-get install -qqy -o=Dpkg::Use-Pty=0 --no-install-recommends libfile-which-perl libfile-copy-recursive-perl pdftk ghostscript openssh-client && \
+    apt-get install -qqy -o=Dpkg::Use-Pty=0 --no-install-recommends libfile-which-perl libfile-copy-recursive-perl openssh-client && \
+    # latexindent modules
+    apt-get install -qqy -o=Dpkg::Use-Pty=0 libyaml-tiny-perl libfile-homedir-perl libunicode-linebreak-perl liblog-log4perl-perl libtest-log-dispatch-perl && \
     # for plantuml, we need graphviz and inkscape. For inkscape, there is no non-X11 version, so 200 MB more
     apt-get install -qqy -o=Dpkg::Use-Pty=0 --no-install-recommends graphviz inkscape && \
     # some more packages
-    apt-get install -qqy -o=Dpkg::Use-Pty=0 --no-install-recommends fonts-texgyre latexml xindy && \
+    apt-get install -qqy -o=Dpkg::Use-Pty=0 --no-install-recommends fonts-texgyre latexml && \
     # fig2dev - tool for xfig to translate the figure to other formats
     apt-get install -qqy -o=Dpkg::Use-Pty=0 fig2dev && \
     # add Google's Inconsolata font (https://fonts.google.com/specimen/Inconsolata)
@@ -76,15 +84,10 @@ RUN git config --global advice.detachedHead false && \
     make -C /tmp/git-latexdiff install-bin && \
     rm -rf /tmp/git-latexdiff
 
-# enable using the scripts of https://github.com/gi-ev/LNI-proceedings
-RUN apt-get update && \
-    apt-get install -qqy -o=Dpkg::Use-Pty=0 python3-pip && \
-    pip3 install pyparsing && \
-    pip3 install docx && \
-    rm -rf /var/lib/apt/lists/* && apt-get clean
-
 # install luximono
 RUN cd /tmp && wget https://www.tug.org/fonts/getnonfreefonts/install-getnonfreefonts && texlua install-getnonfreefonts && getnonfreefonts --sys luximono
 
 # update font index
 RUN luaotfload-tool --update
+
+WORKDIR /workdir

@@ -2,23 +2,21 @@
 
 This docker image supports full TeX Live with following additions:
 
-- [Ghostscript](https://www.ghostscript.com/)
 - [Gnuplot](http://www.gnuplot.info/)
 - [GraphViz](https://www.graphviz.org/)
 - [Inkscape](https://inkscape.org/)
-- Java headless
-- [latexmk](https://www.ctan.org/pkg/latexmk/)
-- [Pandoc](http://pandoc.org/)
-- [pdftk](https://www.pdflabs.com/tools/pdftk-the-pdf-toolkit/)
-- [Python 3](https://pythonclock.org/), pip, pyparsing, python-docx
-- [git-latexdiff](https://gitlab.com/git-latexdiff/git-latexdiff)
+- [latexmk](https://www.ctan.org/pkg/latexmk/) - an automator for latex building
+- [Pandoc](http://pandoc.org/) - to convert from and to `.tex`
+- Python including [pygments](https://pygments.org/). This enables the usage of the [minted](https://ctan.org/pkg/minted) package for source code highlighting.
+- [git-latexdiff](https://gitlab.com/git-latexdiff/git-latexdiff) - to enable diffs of LaTeX documents
+- Java headless - required for Pandoc
 
 ## Usage
 
 ### Using docker
 
 ```terminal
-docker run --rm -it -v $(pwd):/home danteev/texlive latexmk -pdf document.tex
+docker run --rm -it -v $(pwd):/workdir danteev/texlive latexmk -pdf document.tex
 ```
 
 ### Usage in [GitHub Workflows](https://help.github.com/en/articles/about-github-actions)
@@ -35,7 +33,7 @@ jobs:
       - name: Set up Git repository
         uses: actions/checkout@v2
       - name: Compile document.tex
-        uses: dante-ev/latex-action@master
+        uses: dante-ev/latex-action@edge
         with:
           root_file: document.tex
 ```
@@ -122,7 +120,7 @@ language: generic
 services: docker
 
 script:
-- docker run --rm -it -v $(pwd):/home danteev/texlive latexmk -pdf document.tex
+- docker run --rm -it -v $(pwd):/workdir danteev/texlive latexmk -pdf document.tex
 ```
 
 ### Usage in [GitLab CI](https://docs.gitlab.com/ce/ci/)
@@ -142,23 +140,31 @@ build:
 
 ## Available Tags
 
-### Latest version
+- `edge` - the edge build
+- `latest` - the latest released version
+- `YYYY-MM-DD` - a build of that date. Usually created on the first and fifteenth of a month
 
-- `latest` - the latest version
-- `2020` - latest TeXLive 2020 build
-- `2020-01` - first image release in year 2020
+Browse all available tags at <https://hub.docker.com/repository/docker/danteev/texlive/tags?page=1&ordering=last_updated>.
 
 ### Other versions
 
+- `2021-A` - first image release in year 2021
+- `2020` - latest TeXLive 2020 build
 - `TL2017` - TeXLive 2017 build
 - For all other versions see [CHANGELOG.md](https://github.com/dante-ev/docker-texlive/blob/master/CHANGELOG.md#changelog).
 
 ### Usage example
 
-You can run the TeXLive 2017 version by using the tag `TL2017`:
+```terminal
+docker run --rm -it -v $(pwd):/workdir danteev/texlive latexmk document.tex
+```
+
+In case you want to use an explcit tag, you can do it as follows:
+
+You can run the build of 2021-05-15 by using the tag `2021-05-15`:
 
 ```terminal
-docker run --rm -it -v $(pwd):/home danteev/texlive:TL2017 latexmk document.tex
+docker run --rm -it -v $(pwd):/workdir danteev/texlive:2021-05-15 latexmk document.tex
 ```
 
 ## Background
