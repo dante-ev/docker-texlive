@@ -16,10 +16,6 @@ Note that this version is continuosly built based on [texlive/texlive](https://g
 
 ## [2021-A] &ndash; 2021-05-17
 
-### Added
-
-- Added support for luximono
-
 ### Fixed
 
 - Fixed support of [`latexindent`](https://ctan.org/pkg/latexindent)
