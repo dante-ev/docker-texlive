@@ -1,5 +1,11 @@
 FROM registry.gitlab.com/islandoftex/images/texlive:latest
-LABEL maintainer "Oliver Kopp <kopp.dev@gmail.com>"
+
+LABEL \
+  org.opencontainers.image.title="Full TeX Live with additions" \
+  org.opencontainers.image.authors="Oliver Kopp <kopp.dev@gmail.com>" \
+  org.opencontainers.image.source="https://github.com/dante-ev/docker-texlive" \
+  org.opencontainers.image.licenses="MIT"
+
 ENV LANG=C.UTF-8 \
     LC_ALL=C.UTF-8 \
     TERM=dumb
