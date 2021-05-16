@@ -51,6 +51,11 @@ jobs:
         run: |
           docker run -v $(pwd):/workdir localhost:5000/name/app:latest pdflatex minimal-article.tex
       -
+        name: minimal-codehigh.tex
+        working-directory: test
+        run: |
+          docker run -v $(pwd):/workdir localhost:5000/name/app:latest lualatex minimal-codehigh.tex
+      -
         name: minimal-minted.tex
         working-directory: test
         run: |
