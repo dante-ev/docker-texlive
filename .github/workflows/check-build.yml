@@ -18,6 +18,13 @@ jobs:
           - 5000:5000
     steps:
       -
+        name: check dirs
+        run: |
+          pwd
+          ls -la
+          cd test
+          ls -la
+      -
         name: Cancel Previous Runs
         uses: styfle/cancel-workflow-action@0.6.0
         with:
@@ -44,9 +51,14 @@ jobs:
           push: true
           tags: localhost:5000/name/app:latest
       -
-        name: pdflatex minimal-article.tex
-        working-directory: ./test
+        name: minimal-article.tex
+        working-directory: test
         run: |
           pwd
           ls -la
           docker run -it -v $(pwd):/workdir localhost:5000/name/app:latest pdflatex minimal-article.tex
+      -
+        name: minimal-minted.tex
+        working-directory: test
+        run: |
+          docker run -it -v $(pwd):/workdir localhost:5000/name/app:latest pdflatex --shell-escape minimal-minted.tex
