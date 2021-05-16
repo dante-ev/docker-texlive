@@ -69,7 +69,7 @@ jobs:
         name: minimal-selnolig.tex
         working-directory: test
         run: |
-          docker run -v $(pwd):/workdir localhost:5000/name/app:latest lualatex selnolig.tex
+          docker run -v $(pwd):/workdir localhost:5000/name/app:latest lualatex minimal-selnolig.tex
       - name: Archive PDFs
         uses: actions/upload-artifact@v2
         with:
