@@ -10,6 +10,8 @@ Instead, we version `YYYY-R`, where `YYYY` is TeXLive version this image is base
 E.g., `2021-A`, `2021-B`, ...
 We use letters instead of numbers to avoid confustion with the automatic builds such as `2021-05-15`.
 
+## [edge]
+
 ## [2021-A] &ndash; 2021-05-17
 
 Note that this version is continuosly built based on [texlive/texlive](https://gitlab.com/islandoftex/images/texlive).
