@@ -60,6 +60,11 @@ jobs:
         working-directory: test
         run: |
           docker run -v $(pwd):/workdir localhost:5000/name/app:latest pdflatex --shell-escape minimal-minted.tex
+      -
+        name: minimal-plantuml.tex
+        working-directory: test
+        run: |
+          docker run -v $(pwd):/workdir localhost:5000/name/app:latest lualatex --shell-escape minimal-plantuml.tex
       - name: Archive PDFs
         uses: actions/upload-artifact@v2
         with:
