@@ -20,6 +20,7 @@ Note that this version is continuosly built based on [texlive/texlive](https://g
 
 ### Fixed
 
+- Fixed support of [`latexindent`](https://ctan.org/pkg/latexindent)
 - Fixed support of `xindy`
 
 ## Changed

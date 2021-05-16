@@ -46,6 +46,21 @@ jobs:
       - name: Set up Git repository
         uses: actions/checkout@v2
       -
+        name: lacheck
+        working-directory: test
+        run: |
+          docker run -v $(pwd):/workdir localhost:5000/name/app:latest lacheck minimal-article.tex
+      -
+        name: chktex
+        working-directory: test
+        run: |
+          docker run -v $(pwd):/workdir localhost:5000/name/app:latest chktex minimal-article.tex
+      -
+        name: latexindent
+        working-directory: test
+        run: |
+          docker run -v $(pwd):/workdir localhost:5000/name/app:latest latexindent minimal-article.tex
+      -
         name: minimal-article.tex
         working-directory: test
         run: |
