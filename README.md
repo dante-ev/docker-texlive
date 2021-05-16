@@ -32,7 +32,7 @@ jobs:
       - name: Set up Git repository
         uses: actions/checkout@v2
       - name: Compile document.tex
-        uses: dante-ev/latex-action@master
+        uses: dante-ev/latex-action@edge
         with:
           root_file: document.tex
 ```
