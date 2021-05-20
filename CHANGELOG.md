@@ -14,6 +14,10 @@ We use letters instead of numbers to avoid confustion with the automatic builds 
 
 Note that this version is continuosly built based on [texlive/texlive](https://gitlab.com/islandoftex/images/texlive).
 
+### Added
+
+- `pip3` [#37](https://github.com/dante-ev/docker-texlive/issues/37)
+
 ## [2021-A] &ndash; 2021-05-17
 
 ### Fixed
@@ -31,7 +35,6 @@ Note that this version is continuosly built based on [texlive/texlive](https://g
 ### Removed
 
 - Remove support of [pax](https://ctan.org/pkg/pax), because there is [newpax](https://ctan.org/pkg/newpax)
-- Remove Python, because it is not required in a default setup
 - Remove pdftk and ghostscript. Seems to be used only in rare cases.
 
 ## [2020] &ndash; 2020-06-23
