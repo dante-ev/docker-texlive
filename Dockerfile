@@ -69,6 +69,8 @@ RUN apt-get update -q && \
     apt-get install -qqy -o=Dpkg::Use-Pty=0 xzdec && \
     # install bibtool
     apt-get install -qqy -o=Dpkg::Use-Pty=0 bibtool && \
+    # install Python's pip3
+    apt-get install -qqy -o=Dpkg::Use-Pty=0 python3-pip && \
     # install gnuplot
     apt-get install -qqy -o=Dpkg::Use-Pty=0 gnuplot && \
     # Removing documentation packages *after* installing them is kind of hacky,
