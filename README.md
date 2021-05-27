@@ -7,7 +7,9 @@ This docker image supports full TeX Live with following additions:
 - [Inkscape](https://inkscape.org/)
 - [latexmk](https://www.ctan.org/pkg/latexmk/) - an automator for latex building
 - [Pandoc](http://pandoc.org/) - to convert from and to `.tex`
-- Python including [pygments](https://pygments.org/). This enables the usage of the [minted](https://ctan.org/pkg/minted) package for source code highlighting.
+- Python
+  - [pygments](https://pygments.org/). This enables the usage of the [minted](https://ctan.org/pkg/minted) package for source code highlighting.
+  - [pip](https://pypi.org/project/pip/). This enables manual Python package installation.
 - [git-latexdiff](https://gitlab.com/git-latexdiff/git-latexdiff) - to enable diffs of LaTeX documents
 - Java headless - required for Pandoc
 
