@@ -16,6 +16,7 @@ Note that this version is continuosly built based on [texlive/texlive](https://g
 
 ### Added
 
+- Added support for luximono
 - `pip3` [#37](https://github.com/dante-ev/docker-texlive/issues/37)
 
 ## [2021-A] &ndash; 2021-05-17

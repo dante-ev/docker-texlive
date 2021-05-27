@@ -86,8 +86,11 @@ RUN git config --global advice.detachedHead false && \
     make -C /tmp/git-latexdiff install-bin && \
     rm -rf /tmp/git-latexdiff
 
+# install-getnonfreefronts uses that directory
+ENV PATH="/usr/local/texlive/2021/bin/x86_64-linux:${PATH}"
+
 # install luximono
-# RUN cd /tmp && wget https://www.tug.org/fonts/getnonfreefonts/install-getnonfreefonts && texlua install-getnonfreefonts && getnonfreefonts --sys luximono
+RUN cd /tmp && wget https://www.tug.org/fonts/getnonfreefonts/install-getnonfreefonts && texlua install-getnonfreefonts && getnonfreefonts --sys luximono
 
 # update font index
 RUN luaotfload-tool --update
