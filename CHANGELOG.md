@@ -14,6 +14,8 @@ We use letters instead of numbers to avoid confustion with the automatic builds 
 
 Note that this version is continuosly built based on [texlive/texlive](https://gitlab.com/islandoftex/images/texlive).
 
+## [2021-B] &ndash; 2021-06-11
+
 ### Added
 
 - Added support for luximono
