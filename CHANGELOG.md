@@ -137,7 +137,8 @@ Note that this version is continuosly built based on [texlive/texlive](https://g
 
 Initial release
 
-[edge]: https://github.com/koppor/docker-texlive/compare/2021-A...HEAD
+[edge]: https://github.com/koppor/docker-texlive/compare/2021-B...HEAD
+[2021-B]: https://github.com/koppor/docker-texlive/compare/2021-A...2021-B
 [2021-A]: https://github.com/koppor/docker-texlive/compare/2020...2021-A
 [2020]: https://github.com/koppor/docker-texlive/compare/v1.6.0...2020
 [v1.6.0]: https://github.com/koppor/docker-texlive/compare/v1.5.1...v1.6.0
