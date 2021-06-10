@@ -2,13 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
-The format is based on [Keep a Changelog](http://keepachangelog.com/).
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 This project cannot adhere to [Semantic Versioning](http://semver.org/), because it builds on TeXLive, which introcuces breaking changes now and then.
 Thus, each new version would lead to a new major version.
 Instead, we version `YYYY-R`, where `YYYY` is TeXLive version this image is based on and `R` is numbering different releases in that cycle using characters.
 E.g., `2021-A`, `2021-B`, ...
-We use letters instead of numbers to avoid confustion with the automatic builds such as `2021-05-15`.
+We use letters instead of numbers to avoid confusion with the automatic builds such as `2021-05-15`.
 
 ## [edge]
 
