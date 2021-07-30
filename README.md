@@ -13,6 +13,8 @@ This docker image supports full TeX Live with following additions:
 - [git-latexdiff](https://gitlab.com/git-latexdiff/git-latexdiff) - to enable diffs of LaTeX documents
 - Java headless - required for Pandoc
 
+It builds on the [full texlive image by "Island of TeX"](https://gitlab.com/islandoftex/images/texlive) with additions concidered important.
+
 ## Usage
 
 ### Using docker
@@ -142,9 +144,9 @@ build:
 
 ## Available Tags
 
-- `edge` - the edge build
+- `edge` - the edge build. Usually created on the first and fifteenth of a month.
 - `latest` - the latest released version
-- `YYYY-MM-DD` - a build of that date. Usually created on the first and fifteenth of a month
+- `YYYY-MM-DD` - a build of that date. Usually created on the first and fifteenth of a month.
 
 Browse all available tags at <https://hub.docker.com/repository/docker/danteev/texlive/tags?page=1&ordering=last_updated>.
 
