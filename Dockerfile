@@ -1,4 +1,4 @@
-FROM registry.gitlab.com/islandoftex/images/texlive:TL2021-2021-08-01-04-07
+FROM registry.gitlab.com/islandoftex/images/texlive:latest
 
 LABEL \
   org.opencontainers.image.title="Full TeX Live with additions" \
