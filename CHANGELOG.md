@@ -10,9 +10,11 @@ Instead, we version `YYYY-R`, where `YYYY` is TeXLive version this image is base
 E.g., `2021-A`, `2021-B`, ...
 We use letters instead of numbers to avoid confusion with the automatic builds such as `2021-05-15`.
 
-## [edge]
+## [2021-C] &ndash; 2021-08-03
 
-Note that this version is continuosly built based on [texlive/texlive](https://gitlab.com/islandoftex/images/texlive).
+### Changed
+
+- Uses tag `TL2021-2021-08-01-04-07` of the [upstream texlive image](https://gitlab.com/islandoftex/images/texlive)
 
 ## [2021-B] &ndash; 2021-06-11
 
@@ -33,7 +35,7 @@ Note that this version is continuosly built based on [texlive/texlive](https://g
 - Switch upstream image to [Island of TeX's texlive image](https://gitlab.com/islandoftex/images/texlive)
 - Switch to TeX Live 2021
 - Update pandoc to 2.12.1
-- The working directory for latex compilation is now `/workdir` instead of `/home`. `/home` is kept for plantuml.jar and other local pacakges.
+- The working directory for latex compilation is now `/workdir` instead of `/home`. `/home` is kept for plantuml.jar and other local packages.
 
 ### Removed
 
@@ -138,6 +140,7 @@ Note that this version is continuosly built based on [texlive/texlive](https://g
 Initial release
 
 [edge]: https://github.com/koppor/docker-texlive/compare/2021-B...HEAD
+[2021-C]: https://github.com/koppor/docker-texlive/compare/2021-B...2021-C
 [2021-B]: https://github.com/koppor/docker-texlive/compare/2021-A...2021-B
 [2021-A]: https://github.com/koppor/docker-texlive/compare/2020...2021-A
 [2020]: https://github.com/koppor/docker-texlive/compare/v1.6.0...2020
