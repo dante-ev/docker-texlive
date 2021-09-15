@@ -1,7 +1,7 @@
-FROM registry.gitlab.com/islandoftex/images/texlive:latest
+FROM registry.gitlab.com/islandoftex/images/texlive:TL2019-historic
 
 LABEL \
-  org.opencontainers.image.title="Full TeX Live with additions" \
+  org.opencontainers.image.title="Full TeX Live 2019 with additions" \
   org.opencontainers.image.authors="Oliver Kopp <kopp.dev@gmail.com>" \
   org.opencontainers.image.source="https://github.com/dante-ev/docker-texlive" \
   org.opencontainers.image.licenses="MIT"
@@ -87,7 +87,7 @@ RUN git config --global advice.detachedHead false && \
     rm -rf /tmp/git-latexdiff
 
 # install-getnonfreefronts uses that directory
-ENV PATH="/usr/local/texlive/2021/bin/x86_64-linux:${PATH}"
+ENV PATH="/usr/local/texlive/2019/bin/x86_64-linux:${PATH}"
 
 # install luximono
 RUN cd /tmp && wget https://www.tug.org/fonts/getnonfreefonts/install-getnonfreefonts && texlua install-getnonfreefonts && getnonfreefonts --sys luximono
