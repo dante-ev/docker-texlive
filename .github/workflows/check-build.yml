@@ -65,7 +65,7 @@ jobs:
         working-directory: test
         run: |
           docker run -v $(pwd):/workdir localhost:5000/name/app:latest pdflatex minimal-article.tex
-#      codehigh is not available in TL2019
+#      codehigh is not available in TL2020
 #      -
 #        name: minimal-codehigh.tex
 #        working-directory: test
