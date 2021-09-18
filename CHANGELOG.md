@@ -24,7 +24,7 @@ Note that this version is continuosly built based on [texlive/texlive](https://g
 
 - Uses tag `TL2020-historic` of the [upstream texlive image](https://gitlab.com/islandoftex/images/texlive)
 
-## [2019-A] &ndash; 2021-09-19
+## [2019-A] &ndash; 2021-09-15
 
 ### Changed
 
