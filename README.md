@@ -142,7 +142,7 @@ build:
       - document.pdf
 ```
 
-## Available Tags
+## Available tags
 
 - `edge` - the edge build. Usually created on the first and fifteenth of a month.
 - `latest` - the latest released version
@@ -175,6 +175,13 @@ docker run --rm -it -v $(pwd):/workdir danteev/texlive:2021-05-15 latexmk docume
 
 We decided to base on the official texlive image, because this ensures recent texlive packages and a working basic build.
 We extended the image with tools required for our use cases.
+
+## Development hints
+
+- At a release, we point to a specific tag of the "upstream" Docker image.
+  To find out the lasest tag there, follow the instructions at <https://gitlab.com/islandoftex/images/texlive/-/issues/9>.
+  Search for `build:latest: [2021, no, no]` in the build jobs.
+  `no, no` means: no documentation and no source files.
 
 ## Alternatives
 
