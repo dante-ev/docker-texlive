@@ -18,6 +18,12 @@ Note that this version is continuosly built based on [texlive/texlive](https://g
 
 - Switch back to `latest` of the [upstream texlive image](https://gitlab.com/islandoftex/images/texlive)
 
+## [2021-D] &ndash; 2021-09-19
+
+### Changed
+
+- Uses tag `TL2021-2021-08-01-04-07` of the [upstream texlive image](https://gitlab.com/islandoftex/images/texlive)
+
 ## [2020-A] &ndash; 2021-09-18
 
 ### Changed
@@ -160,6 +166,7 @@ Note that this version is continuosly built based on [texlive/texlive](https://g
 Initial release
 
 [edge]: https://github.com/koppor/docker-texlive/compare/2021-B...HEAD
+[2021-D]: https://github.com/koppor/docker-texlive/compare/2021-C...2021-D
 [2021-C]: https://github.com/koppor/docker-texlive/compare/2021-B...2021-C
 [2021-B]: https://github.com/koppor/docker-texlive/compare/2021-A...2021-B
 [2021-A]: https://github.com/koppor/docker-texlive/compare/2020...2021-A
