@@ -42,6 +42,8 @@ jobs:
           root_file: document.tex
 ```
 
+See [dante-ev/latex-action](https://github.com/dante-ev/latex-action#readme) for documentation on the different `with` options available.
+
 You can also use it with multiple files as outlined here:
 
 ```sh
