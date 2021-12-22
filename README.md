@@ -155,7 +155,7 @@ Browse all available tags at <https://hub.docker.com/repository/docker/danteev/t
 ### Other versions
 
 - `2021-A` - first image release in year 2021
-- `2020` - latest TeXLive 2020 build
+- `2020-A` - latest TeXLive 2020 build
 - `TL2017` - TeXLive 2017 build
 - For all other versions see [CHANGELOG.md](https://github.com/dante-ev/docker-texlive/blob/master/CHANGELOG.md#changelog).
 
