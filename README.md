@@ -189,6 +189,7 @@ We extended the image with tools required for our use cases.
 
 In case this all-in-one image is too large for you, you might be interested in following images:
 
+- [VS.Code DevContainer](https://github.com/a-nau/latex-devcontainer) - contains a ready-to-start VS Code environment.
 - [Official texlive image](https://hub.docker.com/r/texlive/texlive) - contains plain full texlive without additional tooling
 - [docker-texlive-thin](https://github.com/thomasWeise/docker-texlive-thin) - other packages and tools
 - [texlive-docker by @reitzig](https://github.com/reitzig/texlive-docker) - profile-based texlive image
