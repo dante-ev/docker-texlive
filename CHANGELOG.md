@@ -12,11 +12,20 @@ We use letters instead of numbers to avoid confusion with the automatic builds s
 
 ## [edge]
 
-Note that this version is continuosly built based on [texlive/texlive](https://gitlab.com/islandoftex/images/texlive).
+Note that this version is continuously built based on [texlive/texlive](https://gitlab.com/islandoftex/images/texlive).
+
+### Fixed
+
+- Fixed build (`wget` was not available any more)
 
 ### Changed
 
 - Switch back to `latest` of the [upstream texlive image](https://gitlab.com/islandoftex/images/texlive)
+
+### Removed
+
+- [git-latexdiff](https://gitlab.com/git-latexdiff/git-latexdiff) removed
+- Removed luximono installation (currently does not work)
 
 ## [2021-D] &ndash; 2021-09-19
 

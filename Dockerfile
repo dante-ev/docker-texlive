@@ -19,42 +19,21 @@ WORKDIR /home
 # See https://github.com/debuerreotype/docker-debian-artifacts/issues/24#issuecomment-360870939
 RUN mkdir -p /usr/share/man/man1
 
-# pandoc in the repositories is older - we just overwrite it with a more recent version
-RUN wget https://github.com/jgm/pandoc/releases/download/2.12/pandoc-2.12-1-amd64.deb -q --output-document=/home/pandoc.deb && dpkg -i pandoc.deb && rm pandoc.deb
-
-# get PlantUML in place
-RUN wget https://netcologne.dl.sourceforge.net/project/plantuml/plantuml.jar -q --output-document=/home/plantuml.jar
-ENV PLANTUML_JAR=/home/plantuml.jar
-
-# install pkgcheck
-RUN wget https://gitlab.com/Lotz/pkgcheck/raw/master/bin/pkgcheck -q --output-document=/usr/local/bin/pkgcheck && chmod a+x /usr/local/bin/pkgcheck
-
-# Install IBM Plex fonts
-RUN mkdir -p /tmp/fonts && \
-    cd /tmp/fonts && \
-    wget "https://github.com/IBM/plex/releases/download/v5.1.3/OpenType.zip" -q && \
-    unzip -q OpenType.zip && \
-    cp -r OpenType/* /usr/local/share/fonts && \
-    fc-cache -f -v && \
-    cd .. && \
-    rm -rf fonts
-
 RUN apt-get update -q && \
     # Install git (Required for git-latexdiff)
-    apt-get install -qqy -o=Dpkg::Use-Pty=0 --no-install-recommends git && \
+    apt-get install -qqy -o=Dpkg::Use-Pty=0 --no-install-recommends git wget && \
     # Install Ruby's bundler
     apt-get install -qqy -o=Dpkg::Use-Pty=0 ruby poppler-utils && gem install bundler && \
     # openjdk-8-jre-headless is currently not available in testing
     # solution by https://stackoverflow.com/a/61902164/873282
     apt-get install -qqy -o=Dpkg::Use-Pty=0 software-properties-common && \
-    apt-add-repository 'deb http://security.debian.org/debian-security stretch/updates main' && \
     apt-get update && \
     # plantuml requires java8
-    apt-get install -qqy -o=Dpkg::Use-Pty=0 --no-install-recommends openjdk-8-jre-headless && \
+    apt-get install -qqy -o=Dpkg::Use-Pty=0 --no-install-recommends openjdk-17-jre-headless && \
     # proposal by https://github.com/sumandoc/TeXLive-2017
     apt-get install -qqy -o=Dpkg::Use-Pty=0 curl libgetopt-long-descriptive-perl libdigest-perl-md5-perl fontconfig && \
     # libfile-copy-recursive-perl is required by ctanify
-    apt-get install -qqy -o=Dpkg::Use-Pty=0 --no-install-recommends libfile-which-perl libfile-copy-recursive-perl openssh-client && \
+    apt-get install -qqy -o=Dpkg::Use-Pty=0 --no-install-recommends libfile-which-perl libfile-copy-recursive-perl openssh-client  && \
     # latexindent modules
     apt-get install -qqy -o=Dpkg::Use-Pty=0 libyaml-tiny-perl libfile-homedir-perl libunicode-linebreak-perl liblog-log4perl-perl libtest-log-dispatch-perl && \
     # for plantuml, we need graphviz and inkscape. For inkscape, there is no non-X11 version, so 200 MB more
@@ -80,17 +59,33 @@ RUN apt-get update -q && \
     # save some space
     rm -rf /var/lib/apt/lists/* && apt-get clean
 
-# Install git-latexdiff v1.6.0 https://gitlab.com/git-latexdiff/git-latexdiff
-RUN git config --global advice.detachedHead false && \
-    git clone --branch "$GITLATEXDIFF_VERSION" --depth=1 https://gitlab.com/git-latexdiff/git-latexdiff.git /tmp/git-latexdiff && \
-    make -C /tmp/git-latexdiff install-bin && \
-    rm -rf /tmp/git-latexdiff
+# pandoc in the repositories is older - we just overwrite it with a more recent version
+RUN wget https://github.com/jgm/pandoc/releases/download/3.1.2/pandoc-3.1.2-1-amd64.deb -q --output-document=/home/pandoc.deb && dpkg -i pandoc.deb && rm pandoc.deb
+
+# get PlantUML in place
+RUN wget https://deac-riga.dl.sourceforge.net/project/plantuml/1.2023.6/plantuml-jar-asl-1.2023.6.zip -q --output-document=/home/plantuml.zip && \
+  unzip plantuml.zip && \
+  rm plantuml.zip
+ENV PLANTUML_JAR=/home/plantuml.jar
+
+# install pkgcheck
+RUN wget https://gitlab.com/Lotz/pkgcheck/raw/master/bin/pkgcheck -q --output-document=/usr/local/bin/pkgcheck && chmod a+x /usr/local/bin/pkgcheck
+
+# Install IBM Plex fonts
+RUN mkdir -p /tmp/fonts && \
+    cd /tmp/fonts && \
+    wget "https://github.com/IBM/plex/releases/download/v6.3.0/OpenType.zip" -q && \
+    unzip -q OpenType.zip && \
+    cp -r OpenType/* /usr/local/share/fonts && \
+    fc-cache -f -v && \
+    cd .. && \
+    rm -rf fonts
 
 # install-getnonfreefronts uses that directory
-ENV PATH="/usr/local/texlive/2021/bin/x86_64-linux:${PATH}"
+#v ENV PATH="/usr/local/texlive/2023/bin/x86_64-linux:${PATH}"
 
 # install luximono
-RUN cd /tmp && wget https://www.tug.org/fonts/getnonfreefonts/install-getnonfreefonts && texlua install-getnonfreefonts && getnonfreefonts --sys luximono
+# RUN cd /tmp && wget https://www.tug.org/fonts/getnonfreefonts/install-getnonfreefonts && texlua install-getnonfreefonts && getnonfreefonts --sys luximono
 
 # update font index
 RUN luaotfload-tool --update

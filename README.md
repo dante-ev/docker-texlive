@@ -10,7 +10,6 @@ This docker image supports full TeX Live with following additions:
 - Python
   - [pygments](https://pygments.org/). This enables the usage of the [minted](https://ctan.org/pkg/minted) package for source code highlighting.
   - [pip](https://pypi.org/project/pip/). This enables manual Python package installation.
-- [git-latexdiff](https://gitlab.com/git-latexdiff/git-latexdiff) - to enable diffs of LaTeX documents
 - Java headless - required for Pandoc
 
 It builds on the [full texlive image by "Island of TeX"](https://gitlab.com/islandoftex/images/texlive) with additions concidered important.
@@ -147,7 +146,7 @@ build:
 ## Available tags
 
 - `edge` - the edge build. Usually created on the first and fifteenth of a month.
-- `latest` - the latest released version
+- `latest` - the latest released version.
 - `YYYY-MM-DD` - a build of that date. Usually created on the first and fifteenth of a month.
 
 Browse all available tags at <https://hub.docker.com/repository/docker/danteev/texlive/tags?page=1&ordering=last_updated>.
@@ -165,7 +164,7 @@ Browse all available tags at <https://hub.docker.com/repository/docker/danteev/t
 docker run --rm -it -v $(pwd):/workdir danteev/texlive latexmk document.tex
 ```
 
-In case you want to use an explcit tag, you can do it as follows:
+In case you want to use an explicit tag, you can do it as follows:
 
 You can run the build of 2021-05-15 by using the tag `2021-05-15`:
 
@@ -175,7 +174,7 @@ docker run --rm -it -v $(pwd):/workdir danteev/texlive:2021-05-15 latexmk docume
 
 ## Background
 
-We decided to base on the official texlive image, because this ensures recent texlive packages and a working basic build.
+We decided to base on the official TeXLive image, because this ensures recent TeXLive packages and a working basic build.
 We extended the image with tools required for our use cases.
 
 ## Development hints
@@ -190,15 +189,15 @@ We extended the image with tools required for our use cases.
 In case this all-in-one image is too large for you, you might be interested in following images:
 
 - [VS.Code DevContainer](https://github.com/a-nau/latex-devcontainer) - contains a ready-to-start VS Code environment.
-- [Official texlive image](https://hub.docker.com/r/texlive/texlive) - contains plain full texlive without additional tooling
+- [Official texlive image](https://hub.docker.com/r/texlive/texlive) - contains plain full TeXLive without additional tooling
 - [docker-texlive-thin](https://github.com/thomasWeise/docker-texlive-thin) - other packages and tools
-- [texlive-docker by @reitzig](https://github.com/reitzig/texlive-docker) - profile-based texlive image
+- [texlive-docker by @reitzig](https://github.com/reitzig/texlive-docker) - profile-based TeXLive image
 
 ## License
 
 - [Google Inconsolata](https://fonts.google.com/specimen/Inconsolata) is licensed under [OFL-1.1](https://spdx.org/licenses/OFL-1.1.html).
 - [IBM Plex™](https://github.com/IBM/plex/) is licensed under [OFL-1.1](https://spdx.org/licenses/OFL-1.1.html).
-- Luximono is lucensed under the [Bigelow & Holmes - Luxi License](https://www.fontsquirrel.com/license/luxi-mono).
+- Luximono is licensed under the [Bigelow & Holmes - Luxi License](https://www.fontsquirrel.com/license/luxi-mono).
 - [pkgcheck](https://ctan.org/pkg/pkgcheck) is licensed under Apache-2.0 or MIT.
 - The files in this repository are licensed under [MIT](https://spdx.org/licenses/MIT.html).
 - Each LaTeX package has its own license.
