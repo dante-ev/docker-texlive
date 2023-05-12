@@ -14,6 +14,8 @@ We use letters instead of numbers to avoid confusion with the automatic builds s
 
 Note that this version is continuously built based on [texlive/texlive](https://gitlab.com/islandoftex/images/texlive).
 
+## [2023-A] &ndash; 2023-05-12
+
 ### Fixed
 
 - Fixed build (`wget` was not available any more)
@@ -174,7 +176,8 @@ Note that this version is continuously built based on [texlive/texlive](https://
 
 Initial release
 
-[edge]: https://github.com/koppor/docker-texlive/compare/2021-B...HEAD
+[edge]: https://github.com/koppor/docker-texlive/compare/2023-A...HEAD
+[2023-A]: https://github.com/koppor/docker-texlive/compare/2021-D...2023-A
 [2021-D]: https://github.com/koppor/docker-texlive/compare/2021-C...2021-D
 [2021-C]: https://github.com/koppor/docker-texlive/compare/2021-B...2021-C
 [2021-B]: https://github.com/koppor/docker-texlive/compare/2021-A...2021-B
