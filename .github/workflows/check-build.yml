@@ -32,6 +32,8 @@ jobs:
         with:
           path: /tmp/.buildx-cache
           key: ${{ runner.os }}-buildx
+      - name: Set up Git repository
+        uses: actions/checkout@v4
       -
         name: Build
         id: docker_build
@@ -39,8 +41,6 @@ jobs:
         with:
           push: true
           tags: localhost:5000/name/app:latest
-      - name: Set up Git repository
-        uses: actions/checkout@v3
       -
         name: lacheck
         working-directory: test
