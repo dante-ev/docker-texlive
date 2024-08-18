@@ -10,78 +10,87 @@ Instead, we version `YYYY-R`, where `YYYY` is TeXLive version this image is base
 E.g., `2021-A`, `2021-B`, ...
 We use letters instead of numbers to avoid confusion with the automatic builds such as `2021-05-15`.
 
+## Versions
+
+- [edge](#edge)
+- [TeXLive 2023](#texlive-2023)
+- [TeXLive 2021](#texlive-2021)
+- [TeXLive 2020](#texlive-2020)
+- [TeXLive 2019](#texlive-2019)
+- [TeXLive 2018 and before](#texlive-2018-and-before)
+
 ## [edge]
 
 Note that this version is continuously built based on [texlive/texlive](https://gitlab.com/islandoftex/images/texlive).
 
-## [2023-A] &ndash; 2023-05-12
+## TeXLive 2023
 
-### Fixed
+### [2023-A] &ndash; 2023-05-12
+
+#### Fixed
 
 - Fixed build (`wget` was not available any more)
 
-### Changed
+#### Changed
 
 - Switch back to `latest` of the [upstream texlive image](https://gitlab.com/islandoftex/images/texlive)
 
-### Removed
+#### Removed
 
 - [git-latexdiff](https://gitlab.com/git-latexdiff/git-latexdiff) removed
 - Removed luximono installation (currently does not work)
 
-## [2021-D] &ndash; 2021-09-19
+## TeXLive 2021
 
-### Changed
+### [2021-D] &ndash; 2021-09-19
 
-- Uses tag `TL2021-2021-08-01-04-07` of the [upstream texlive image](https://gitlab.com/islandoftex/images/texlive)
-
-## [2020-A] &ndash; 2021-09-18
-
-### Changed
-
-- Uses tag `TL2020-historic` of the [upstream texlive image](https://gitlab.com/islandoftex/images/texlive)
-
-## [2019-A] &ndash; 2021-09-15
-
-### Changed
-
-- Uses tag `TL2019-historic` of the [upstream texlive image](https://gitlab.com/islandoftex/images/texlive)
-
-## [2021-C] &ndash; 2021-08-03
-
-### Changed
+#### Changed
 
 - Uses tag `TL2021-2021-08-01-04-07` of the [upstream texlive image](https://gitlab.com/islandoftex/images/texlive)
 
-## [2021-B] &ndash; 2021-06-11
+### [2021-C] &ndash; 2021-08-03
 
-### Added
+#### Changed
+
+- Uses tag `TL2021-2021-08-01-04-07` of the [upstream texlive image](https://gitlab.com/islandoftex/images/texlive)
+
+### [2021-B] &ndash; 2021-06-11
+
+#### Added
 
 - Added support for luximono
 - `pip3` [#37](https://github.com/dante-ev/docker-texlive/issues/37)
 
-## [2021-A] &ndash; 2021-05-17
+### [2021-A] &ndash; 2021-05-17
 
-### Fixed
+#### Fixed
 
 - Fixed support of [`latexindent`](https://ctan.org/pkg/latexindent)
 - Fixed support of `xindy`
 
-### Changed
+#### Changed
 
 - Switch upstream image to [Island of TeX's texlive image](https://gitlab.com/islandoftex/images/texlive)
 - Switch to TeX Live 2021
 - Update pandoc to 2.12.1
 - The working directory for latex compilation is now `/workdir` instead of `/home`. `/home` is kept for plantuml.jar and other local packages.
 
-### Removed
+#### Removed
 
 - Remove support of [pax](https://ctan.org/pkg/pax), because there is [newpax](https://ctan.org/pkg/newpax)
 - Remove pdftk and ghostscript. Seems to be used only in rare cases.
 
-## [2020] &ndash; 2020-06-23
+## TeXLive 2020
 
-### Added
+### [2020-A] &ndash; 2021-09-18
+
+#### Changed
+
+- Uses tag `TL2020-historic` of the [upstream texlive image](https://gitlab.com/islandoftex/images/texlive)
+
+### [2020] &ndash; 2020-06-23
+
+#### Added
 
 - Added support for [pkgcheck](https://ctan.org/pkg/pkgcheck)
 - Added support for [fig2dev](https://linux.die.net/man/1/fig2dev)
@@ -89,7 +98,7 @@ Note that this version is continuously built based on [texlive/texlive](https://
 - Remove more space after installing debian packages
 - Added support for [git-latexdiff](https://gitlab.com/git-latexdiff/git-latexdiff)
 
-### Changed
+#### Changed
 
 - Update to TeX Live 2020
 - Update to Debian testing
@@ -99,9 +108,19 @@ Note that this version is continuously built based on [texlive/texlive](https://
 - Always load latest plantuml.jar when building the docker image
 - Change versioning theme to `YYYY-RR`, where `YYYY` is the TeXLive version this image is based on and `RR` is numbering different releases in that cycle.
 
-### Removed
+#### Removed
 
 - Remove all -doc packages (and thus saving nearly 1,7TB of space)
+
+## TeXLive 2019
+
+### [2019-A] &ndash; 2021-09-15
+
+#### Changed
+
+- Uses tag `TL2019-historic` of the [upstream texlive image](https://gitlab.com/islandoftex/images/texlive)
+
+## TeXLive 2018 and before
 
 ## [v1.6.0] &ndash; 2018-06-19
 
