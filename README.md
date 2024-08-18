@@ -185,7 +185,7 @@ At a release, we point to a specific tag of the "upstream" Docker image.
 To find out the lasest tag, navigate to <https://gitlab.com/islandoftex/images/texlive/-/jobs>.
 Then look for `build:latest` and then `[no, no, full]`.
 `no, no` means: no documentation and no source files.
-
+Open the build log, scroll down to the end, there you will find something like `registry.gitlab.com/islandoftex/images/texlive:TL2024-2024-08-11-full`.
 More background information is given at <https://gitlab.com/islandoftex/images/texlive/-/issues/9>.
 
 ### Other hints
