@@ -92,7 +92,7 @@ jobs:
         run: |
           docker run -v $(pwd)/..:/workdir localhost:5000/name/app:latest /bin/bash -c "cd subdir1 && lualatex current-file.tex"
       - name: Archive PDFs
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: pdfs
           path: |
