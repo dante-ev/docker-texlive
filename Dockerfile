@@ -24,11 +24,7 @@ RUN apt-get update -q && \
     apt-get install -qqy -o=Dpkg::Use-Pty=0 --no-install-recommends git wget && \
     # Install Ruby's bundler
     apt-get install -qqy -o=Dpkg::Use-Pty=0 ruby poppler-utils && gem install bundler && \
-    # openjdk-8-jre-headless is currently not available in testing
-    # solution by https://stackoverflow.com/a/61902164/873282
-    apt-get install -qqy -o=Dpkg::Use-Pty=0 software-properties-common && \
-    apt-get update && \
-    # plantuml requires java8
+    # plantuml requires java17
     apt-get install -qqy -o=Dpkg::Use-Pty=0 --no-install-recommends openjdk-17-jre-headless && \
     # proposal by https://github.com/sumandoc/TeXLive-2017
     apt-get install -qqy -o=Dpkg::Use-Pty=0 curl libgetopt-long-descriptive-perl libdigest-perl-md5-perl fontconfig && \
