@@ -1,5 +1,7 @@
 FROM registry.gitlab.com/islandoftex/images/texlive:latest
 
+ARG TARGETARCH
+
 LABEL \
   org.opencontainers.image.title="Full TeX Live with additions" \
   org.opencontainers.image.authors="Oliver Kopp <kopp.dev@gmail.com>" \
@@ -24,11 +26,7 @@ RUN apt-get update -q && \
     apt-get install -qqy -o=Dpkg::Use-Pty=0 --no-install-recommends git wget && \
     # Install Ruby's bundler
     apt-get install -qqy -o=Dpkg::Use-Pty=0 ruby poppler-utils && gem install bundler && \
-    # openjdk-8-jre-headless is currently not available in testing
-    # solution by https://stackoverflow.com/a/61902164/873282
-    apt-get install -qqy -o=Dpkg::Use-Pty=0 software-properties-common && \
-    apt-get update && \
-    # plantuml requires java8
+    # plantuml requires java17
     apt-get install -qqy -o=Dpkg::Use-Pty=0 --no-install-recommends openjdk-17-jre-headless && \
     # proposal by https://github.com/sumandoc/TeXLive-2017
     apt-get install -qqy -o=Dpkg::Use-Pty=0 curl libgetopt-long-descriptive-perl libdigest-perl-md5-perl fontconfig && \
@@ -60,7 +58,7 @@ RUN apt-get update -q && \
     rm -rf /var/lib/apt/lists/* && apt-get clean
 
 # pandoc in the repositories is older - we just overwrite it with a more recent version
-RUN wget https://github.com/jgm/pandoc/releases/download/3.1.2/pandoc-3.1.2-1-amd64.deb -q --output-document=/home/pandoc.deb && dpkg -i pandoc.deb && rm pandoc.deb
+RUN wget https://github.com/jgm/pandoc/releases/download/3.1.2/pandoc-3.1.2-1-$TARGETARCH.deb -q --output-document=/home/pandoc.deb && dpkg -i pandoc.deb && rm pandoc.deb
 
 # get PlantUML in place
 RUN wget https://deac-riga.dl.sourceforge.net/project/plantuml/1.2023.6/plantuml-jar-asl-1.2023.6.zip -q --output-document=/home/plantuml.zip && \
