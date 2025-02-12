@@ -23,6 +23,10 @@ We use letters instead of numbers to avoid confusion with the automatic builds s
 
 Note that this version is continuously built based on [texlive/texlive](https://gitlab.com/islandoftex/images/texlive).
 
+### Added
+
+- Support for arm64. [#54](https://github.com/dante-ev/docker-texlive/pull/54)
+
 ## TeXLive 2023
 
 ### [2023-A] &ndash; 2023-05-12
