@@ -23,16 +23,20 @@ We use letters instead of numbers to avoid confusion with the automatic builds s
 
 Note that this version is continuously built based on [texlive/texlive](https://gitlab.com/islandoftex/images/texlive).
 
-### Added
+## TeXLive 2024
+
+### [2024-A] &ndash; 2025-02-13
+
+#### Added
 
 - Support for arm64. [#54](https://github.com/dante-ev/docker-texlive/pull/54)
 
-### Changed
+#### Changed
 
 - Updated PlantUML
 - Updated pandoc
 
-### Removed
+#### Removed
 
 - IBM Plex is removed as this is their corporate design.
 - Remoed luximono
