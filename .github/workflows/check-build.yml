@@ -20,7 +20,6 @@ jobs:
         ports:
           - 5000:5000
     steps:
-      - uses: gautamkrishnar/keepalive-workflow@v2
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v2
@@ -97,3 +96,4 @@ jobs:
           name: pdfs
           path: |
             test/**/*.pdf
+      - uses: gautamkrishnar/keepalive-workflow@v2
