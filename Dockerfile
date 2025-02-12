@@ -55,7 +55,7 @@ RUN apt-get update -q && \
     # Source: https://github.com/aergus/dockerfiles/blob/master/latex/Dockerfile
     apt-get --purge remove -qy .\*-doc$ && \
     # save some space
-RUN    rm -rf /var/lib/apt/lists/* && apt-get clean
+    rm -rf /var/lib/apt/lists/* && apt-get clean
 
 # pandoc in the repositories is older - we just overwrite it with a more recent version
 RUN wget https://github.com/jgm/pandoc/releases/download/3.6.3/pandoc-3.6.3-1-$TARGETARCH.deb -q --output-document=/home/pandoc.deb && dpkg -i pandoc.deb && rm pandoc.deb
