@@ -85,7 +85,8 @@ RUN mkdir -p /tmp/fonts && \
 # install luximono
 # RUN cd /tmp && wget https://www.tug.org/fonts/getnonfreefonts/install-getnonfreefonts && texlua install-getnonfreefonts && getnonfreefonts --sys luximono
 
-# update font index
-RUN luaotfload-tool --update
+# Create font cache
+COPY load-fonts.tex /tmp/
+RUN luaotfload-tool --update --force --no-compress && texhash && cd /tmp && lualatex -interaction=nonstopmode load-fonts && rm load-fonts.*
 
 WORKDIR /workdir

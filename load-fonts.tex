@@ -1,0 +1,29 @@
+\documentclass{article}
+\usepackage{fontspec}
+\usepackage{luacode}
+\usepackage{luaotfload}
+
+\begin{document}
+
+% based on https://tex.stackexchange.com/a/14171/9075
+
+\begin{luacode}
+myfonts = dofile(config.luaotfload.paths.index_path_luc)
+
+for i,v in ipairs(myfonts.mappings) do
+    if v.fullname then
+        -- Set the main font dynamically
+        tex.print("\\setmainfont{" .. v.fullname .. "}")
+
+        -- Print the font name using itself
+        tex.print("\\noindent " .. v.fullname)
+
+        -- Print the font name in monospaced font below
+        tex.print(" -- \\texttt{" .. v.fullname .. "} \\par")
+
+        tex.print("\\par")
+      end
+end
+\end{luacode}
+
+\end{document}
