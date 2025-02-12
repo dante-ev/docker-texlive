@@ -208,7 +208,6 @@ In case this all-in-one image is too large for you, you might be interested in f
 ## License
 
 - [Google Inconsolata](https://fonts.google.com/specimen/Inconsolata) is licensed under [OFL-1.1](https://spdx.org/licenses/OFL-1.1.html).
-- Luximono is licensed under the [Bigelow & Holmes - Luxi License](https://www.fontsquirrel.com/license/luxi-mono).
 - [pkgcheck](https://ctan.org/pkg/pkgcheck) is licensed under Apache-2.0 or MIT.
 - The files in this repository are licensed under [MIT](https://spdx.org/licenses/MIT.html).
 - Each LaTeX package has its own license.

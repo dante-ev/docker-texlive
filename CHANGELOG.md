@@ -35,6 +35,7 @@ Note that this version is continuously built based on [texlive/texlive](https://
 ### Removed
 
 - IBM Plex is removed as this is their corporate design.
+- Remoed luximono
 
 ## TeXLive 2023
 
