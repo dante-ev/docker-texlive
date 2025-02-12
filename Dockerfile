@@ -67,7 +67,7 @@ RUN wget https://github.com/plantuml/plantuml/releases/download/v1.2025.0/plantu
 ENV PLANTUML_JAR=/home/plantuml.jar
 
 # install pkgcheck
-RUN wget https://gitlab.com/Lotz/pkgcheck/raw/master/bin/pkgcheck -q --output-document=/usr/local/bin/pkgcheck && chmod a+x /usr/local/bin/pkgcheck
+RUN wget https://codeberg.org/ManfredLotz/pkgcheck/raw/branch/master/bin/pkgcheck -q --output-document=/usr/local/bin/pkgcheck && chmod a+x /usr/local/bin/pkgcheck
 
 # update font index
 RUN luaotfload-tool --update
