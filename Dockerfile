@@ -26,8 +26,8 @@ RUN apt-get update -q && \
     apt-get install -qqy -o=Dpkg::Use-Pty=0 --no-install-recommends git wget && \
     # Install Ruby's bundler
     apt-get install -qqy -o=Dpkg::Use-Pty=0 ruby poppler-utils && gem install bundler && \
-    # plantuml requires java17
-    apt-get install -qqy -o=Dpkg::Use-Pty=0 --no-install-recommends openjdk-17-jre-headless && \
+    # plantuml requires a recent java version
+    apt-get install -qqy -o=Dpkg::Use-Pty=0 --no-install-recommends openjdk-21-jre-headless && \
     # proposal by https://github.com/sumandoc/TeXLive-2017
     apt-get install -qqy -o=Dpkg::Use-Pty=0 curl libgetopt-long-descriptive-perl libdigest-perl-md5-perl fontconfig && \
     # libfile-copy-recursive-perl is required by ctanify
@@ -55,13 +55,13 @@ RUN apt-get update -q && \
     # Source: https://github.com/aergus/dockerfiles/blob/master/latex/Dockerfile
     apt-get --purge remove -qy .\*-doc$ && \
     # save some space
-    rm -rf /var/lib/apt/lists/* && apt-get clean
+RUN    rm -rf /var/lib/apt/lists/* && apt-get clean
 
 # pandoc in the repositories is older - we just overwrite it with a more recent version
-RUN wget https://github.com/jgm/pandoc/releases/download/3.1.2/pandoc-3.1.2-1-$TARGETARCH.deb -q --output-document=/home/pandoc.deb && dpkg -i pandoc.deb && rm pandoc.deb
+RUN wget https://github.com/jgm/pandoc/releases/download/3.6.3/pandoc-3.6.3-1-$TARGETARCH.deb -q --output-document=/home/pandoc.deb && dpkg -i pandoc.deb && rm pandoc.deb
 
 # get PlantUML in place
-RUN wget https://deac-riga.dl.sourceforge.net/project/plantuml/1.2023.6/plantuml-jar-asl-1.2023.6.zip -q --output-document=/home/plantuml.zip && \
+RUN wget https://github.com/plantuml/plantuml/releases/download/v1.2025.0/plantuml-asl-1.2025.0.jar -q --output-document=/home/plantuml.zip && \
   unzip plantuml.zip && \
   rm plantuml.zip
 ENV PLANTUML_JAR=/home/plantuml.jar

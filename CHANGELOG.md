@@ -27,6 +27,11 @@ Note that this version is continuously built based on [texlive/texlive](https://
 
 - Support for arm64. [#54](https://github.com/dante-ev/docker-texlive/pull/54)
 
+### Changed
+
+- Updated PlantUML
+- Updated pandoc
+
 ### Removed
 
 - IBM Plex is removed as this is their corporate design.
