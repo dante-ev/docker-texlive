@@ -20,73 +20,60 @@ jobs:
         ports:
           - 5000:5000
     steps:
-      -
-        name: Set up QEMU
+      - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
-      -
-        name: Set up Docker Buildx
+      - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
         with:
           driver-opts: network=host
-      -
-        name: Cache Docker layers
+      - name: Cache Docker layers
         uses: actions/cache@v3
         with:
           path: /tmp/.buildx-cache
           key: ${{ runner.os }}-buildx
       - name: Set up Git repository
         uses: actions/checkout@v4
-      -
-        name: Build
+      - name: Build
         id: docker_build
         uses: docker/build-push-action@v4
         with:
           push: true
           tags: localhost:5000/name/app:latest
-      -
-        name: lacheck
+      - name: lacheck
         working-directory: test
         run: |
           docker run -v $(pwd):/workdir localhost:5000/name/app:latest lacheck minimal-article.tex
-      -
-        name: chktex
+      - name: chktex
         working-directory: test
         run: |
           docker run -v $(pwd):/workdir localhost:5000/name/app:latest chktex minimal-article.tex
-      -
-        name: latexindent
+      - name: latexindent
         working-directory: test
         run: |
           docker run -v $(pwd):/workdir localhost:5000/name/app:latest latexindent minimal-article.tex
-      -
-        name: minimal-article.tex
+      - name: minimal-article.tex
         working-directory: test
         run: |
           docker run -v $(pwd):/workdir localhost:5000/name/app:latest pdflatex minimal-article.tex
-      -
-        name: minimal-codehigh.tex
+      - name: minimal-codehigh.tex
         working-directory: test
         run: |
           docker run -v $(pwd):/workdir localhost:5000/name/app:latest lualatex minimal-codehigh.tex
-      -
-        name: minimal-minted.tex
+      - name: minimal-minted.tex
         working-directory: test
         run: |
           docker run -v $(pwd):/workdir localhost:5000/name/app:latest pdflatex --shell-escape minimal-minted.tex
-      -
-        name: minimal-plantuml.tex
+      - name: minimal-plantuml.tex
         working-directory: test
         run: |
           docker run -v $(pwd):/workdir localhost:5000/name/app:latest lualatex --shell-escape minimal-plantuml.tex
-      -
-        name: minimal-selnolig.tex
+      - name: minimal-selnolig.tex
         working-directory: test
         run: |
           docker run -v $(pwd):/workdir localhost:5000/name/app:latest lualatex minimal-selnolig.tex
-      -
-        # Test compilation of a .tex file referencing a .tex file in a parent directory.
-        # Issue: https://github.com/dante-ev/docker-texlive/issues/39
-        name: current-file.tex
+      # Test compilation of a .tex file referencing a .tex file in a parent directory.
+      # Issue: https://github.com/dante-ev/docker-texlive/issues/39
+      - name: current-file.tex
         working-directory: test/subdir1
         run: |
           docker run -v $(pwd)/..:/workdir localhost:5000/name/app:latest /bin/bash -c "cd subdir1 && lualatex current-file.tex"
