@@ -69,16 +69,6 @@ ENV PLANTUML_JAR=/home/plantuml.jar
 # install pkgcheck
 RUN wget https://gitlab.com/Lotz/pkgcheck/raw/master/bin/pkgcheck -q --output-document=/usr/local/bin/pkgcheck && chmod a+x /usr/local/bin/pkgcheck
 
-# Install IBM Plex fonts
-RUN mkdir -p /tmp/fonts && \
-    cd /tmp/fonts && \
-    wget "https://github.com/IBM/plex/releases/download/v6.3.0/OpenType.zip" -q && \
-    unzip -q OpenType.zip && \
-    cp -r OpenType/* /usr/local/share/fonts && \
-    fc-cache -f -v && \
-    cd .. && \
-    rm -rf fonts
-
 # install-getnonfreefronts uses that directory
 #v ENV PATH="/usr/local/texlive/2023/bin/x86_64-linux:${PATH}"
 
