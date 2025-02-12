@@ -26,8 +26,8 @@ RUN apt-get update -q && \
     apt-get install -qqy -o=Dpkg::Use-Pty=0 --no-install-recommends git wget && \
     # Install Ruby's bundler
     apt-get install -qqy -o=Dpkg::Use-Pty=0 ruby poppler-utils && gem install bundler && \
-    # plantuml requires java17
-    apt-get install -qqy -o=Dpkg::Use-Pty=0 --no-install-recommends openjdk-17-jre-headless && \
+    # plantuml requires a recent java version
+    apt-get install -qqy -o=Dpkg::Use-Pty=0 --no-install-recommends openjdk-21-jre-headless && \
     # proposal by https://github.com/sumandoc/TeXLive-2017
     apt-get install -qqy -o=Dpkg::Use-Pty=0 curl libgetopt-long-descriptive-perl libdigest-perl-md5-perl fontconfig && \
     # libfile-copy-recursive-perl is required by ctanify
@@ -58,32 +58,16 @@ RUN apt-get update -q && \
     rm -rf /var/lib/apt/lists/* && apt-get clean
 
 # pandoc in the repositories is older - we just overwrite it with a more recent version
-RUN wget https://github.com/jgm/pandoc/releases/download/3.1.2/pandoc-3.1.2-1-$TARGETARCH.deb -q --output-document=/home/pandoc.deb && dpkg -i pandoc.deb && rm pandoc.deb
+RUN wget https://github.com/jgm/pandoc/releases/download/3.6.3/pandoc-3.6.3-1-$TARGETARCH.deb -q --output-document=/home/pandoc.deb && dpkg -i pandoc.deb && rm pandoc.deb
 
 # get PlantUML in place
-RUN wget https://deac-riga.dl.sourceforge.net/project/plantuml/1.2023.6/plantuml-jar-asl-1.2023.6.zip -q --output-document=/home/plantuml.zip && \
+RUN wget https://github.com/plantuml/plantuml/releases/download/v1.2025.0/plantuml-asl-1.2025.0.jar -q --output-document=/home/plantuml.zip && \
   unzip plantuml.zip && \
   rm plantuml.zip
 ENV PLANTUML_JAR=/home/plantuml.jar
 
 # install pkgcheck
-RUN wget https://gitlab.com/Lotz/pkgcheck/raw/master/bin/pkgcheck -q --output-document=/usr/local/bin/pkgcheck && chmod a+x /usr/local/bin/pkgcheck
-
-# Install IBM Plex fonts
-RUN mkdir -p /tmp/fonts && \
-    cd /tmp/fonts && \
-    wget "https://github.com/IBM/plex/releases/download/v6.3.0/OpenType.zip" -q && \
-    unzip -q OpenType.zip && \
-    cp -r OpenType/* /usr/local/share/fonts && \
-    fc-cache -f -v && \
-    cd .. && \
-    rm -rf fonts
-
-# install-getnonfreefronts uses that directory
-#v ENV PATH="/usr/local/texlive/2023/bin/x86_64-linux:${PATH}"
-
-# install luximono
-# RUN cd /tmp && wget https://www.tug.org/fonts/getnonfreefonts/install-getnonfreefonts && texlua install-getnonfreefonts && getnonfreefonts --sys luximono
+RUN wget https://codeberg.org/ManfredLotz/pkgcheck/raw/branch/master/bin/pkgcheck -q --output-document=/usr/local/bin/pkgcheck && chmod a+x /usr/local/bin/pkgcheck
 
 # update font index
 RUN luaotfload-tool --update

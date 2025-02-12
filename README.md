@@ -188,6 +188,9 @@ Then look for `build:latest` and then `[no, no, full]`.
 Open the build log, scroll down to the end, there you will find something like `registry.gitlab.com/islandoftex/images/texlive:TL2024-2024-08-11-full`.
 More background information is given at <https://gitlab.com/islandoftex/images/texlive/-/issues/9>.
 
+- `sed -i 's/^    \(.*\) && \\$/ RUN \1/' Dockerfile`
+- `sed -i 's/^ RUN \(.*\)/    \1 \&\& \\/' Dockerfile`
+
 ### Other hints
 
 - To see all progress during the build, use `docker build --progress=plain .`. [[Source](https://stackoverflow.com/a/67682576/873282)]
@@ -205,8 +208,6 @@ In case this all-in-one image is too large for you, you might be interested in f
 ## License
 
 - [Google Inconsolata](https://fonts.google.com/specimen/Inconsolata) is licensed under [OFL-1.1](https://spdx.org/licenses/OFL-1.1.html).
-- [IBM Plex™](https://github.com/IBM/plex/) is licensed under [OFL-1.1](https://spdx.org/licenses/OFL-1.1.html).
-- Luximono is licensed under the [Bigelow & Holmes - Luxi License](https://www.fontsquirrel.com/license/luxi-mono).
 - [pkgcheck](https://ctan.org/pkg/pkgcheck) is licensed under Apache-2.0 or MIT.
 - The files in this repository are licensed under [MIT](https://spdx.org/licenses/MIT.html).
 - Each LaTeX package has its own license.
