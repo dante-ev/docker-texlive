@@ -188,6 +188,9 @@ Then look for `build:latest` and then `[no, no, full]`.
 Open the build log, scroll down to the end, there you will find something like `registry.gitlab.com/islandoftex/images/texlive:TL2024-2024-08-11-full`.
 More background information is given at <https://gitlab.com/islandoftex/images/texlive/-/issues/9>.
 
+- `sed -i 's/^    \(.*\) && \\$/ RUN \1/' Dockerfile`
+- `sed -i 's/^ RUN \(.*\)/    \1 \&\& \\/' Dockerfile`
+
 ### Other hints
 
 - To see all progress during the build, use `docker build --progress=plain .`. [[Source](https://stackoverflow.com/a/67682576/873282)]
