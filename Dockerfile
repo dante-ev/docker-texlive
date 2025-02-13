@@ -69,6 +69,9 @@ ENV PLANTUML_JAR=/home/plantuml.jar
 
 # Create font cache
 COPY load-fonts.tex /tmp/
-RUN luaotfload-tool --update --force --no-compress && texhash && cd /tmp && lualatex -interaction=nonstopmode load-fonts && rm load-fonts.*
+RUN luaotfload-tool --update --force --no-compress
+RUN texhash
+RUN cd /tmp && lualatex -interaction=nonstopmode load-fonts
+RUN rm /tmp/load-fonts.*
 
 WORKDIR /workdir
