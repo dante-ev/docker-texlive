@@ -1,4 +1,5 @@
 FROM registry.gitlab.com/islandoftex/images/texlive:latest
+# FROM registry.gitlab.com/islandoftex/images/texlive:TL2024-2025-02-09-full
 
 ARG TARGETARCH
 
@@ -53,7 +54,7 @@ RUN apt-get update -q && \
     # Removing documentation packages *after* installing them is kind of hacky,
     # but it only adds some overhead while building the image.
     # Source: https://github.com/aergus/dockerfiles/blob/master/latex/Dockerfile
-    apt-get --purge remove -qy .\*-doc$ && \
+    apt-get --purge remove -qqy .\*-doc$ && \
     # save some space
     rm -rf /var/lib/apt/lists/* && apt-get clean
 
@@ -62,7 +63,7 @@ RUN wget https://github.com/jgm/pandoc/releases/download/3.6.3/pandoc-3.6.3-1-$T
 
 # get PlantUML in place
 RUN wget https://github.com/plantuml/plantuml/releases/download/v1.2025.0/plantuml-asl-1.2025.0.jar -q --output-document=/home/plantuml.zip && \
-  unzip plantuml.zip && \
+  unzip -q plantuml.zip && \
   rm plantuml.zip
 ENV PLANTUML_JAR=/home/plantuml.jar
 

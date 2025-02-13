@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
-This project cannot adhere to [Semantic Versioning](http://semver.org/), because it builds on TeXLive, which introcuces breaking changes now and then.
+This project cannot adhere to [Semantic Versioning](http://semver.org/), because it builds on TeXLive, which introduces breaking changes now and then.
 Thus, each new version would lead to a new major version.
 Instead, we version `YYYY-R`, where `YYYY` is TeXLive version this image is based on and `R` is numbering different releases in that cycle using characters.
 E.g., `2021-A`, `2021-B`, ...
@@ -23,16 +23,20 @@ We use letters instead of numbers to avoid confusion with the automatic builds s
 
 Note that this version is continuously built based on [texlive/texlive](https://gitlab.com/islandoftex/images/texlive).
 
-### Added
+## TeXLive 2024
+
+### [2024-A] &ndash; 2025-02-13
+
+#### Added
 
 - Support for arm64. [#54](https://github.com/dante-ev/docker-texlive/pull/54)
 
-### Changed
+#### Changed
 
 - Updated PlantUML
 - Updated pandoc
 
-### Removed
+#### Removed
 
 - IBM Plex is removed as this is their corporate design.
 - Remoed luximono
