@@ -67,9 +67,6 @@ RUN wget https://github.com/plantuml/plantuml/releases/download/v1.2025.0/plantu
   rm plantuml.zip
 ENV PLANTUML_JAR=/home/plantuml.jar
 
-# install pkgcheck
-RUN wget https://codeberg.org/ManfredLotz/pkgcheck/raw/branch/master/bin/pkgcheck -q --output-document=/usr/local/bin/pkgcheck && chmod a+x /usr/local/bin/pkgcheck
-
 # Create font cache
 COPY load-fonts.tex /tmp/
 RUN luaotfload-tool --update --force --no-compress && texhash && cd /tmp && lualatex -interaction=nonstopmode load-fonts && rm load-fonts.*
