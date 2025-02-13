@@ -58,4 +58,5 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
+      - uses: actions/checkout@v4
       - uses: gautamkrishnar/keepalive-workflow@v2
