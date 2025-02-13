@@ -1,29 +1,37 @@
+% Source: https://tex.stackexchange.com/a/737051/9075
+
 \documentclass{article}
 \usepackage{fontspec}
 \usepackage{luacode}
-\usepackage{luaotfload}
-
 \begin{document}
-
 % based on https://tex.stackexchange.com/a/14171/9075
-
+% addaswyd yn ateb: https://tex.stackexchange.com/a/737051/
 \begin{luacode}
-myfonts = dofile(config.luaotfload.paths.index_path_luc)
-
-for i,v in ipairs(myfonts.mappings) do
-    if v.fullname then
-        -- Set the main font dynamically
-        tex.print("\\setmainfont{" .. v.fullname .. "}")
-
-        -- Print the font name using itself
-        tex.print("\\noindent " .. v.fullname)
-
-        -- Print the font name in monospaced font below
-        tex.print(" -- \\texttt{" .. v.fullname .. "} \\par")
-
-        tex.print("\\par")
-      end
-end
+  myfonts = luaotfload.aux.read_font_index()
+  t={ myfonts, myfonts.families }
+  for _,b in ipairs(t) do
+    -- tex.print("\\ttfamily " .. b .. ": \\par")
+    for i,j in pairs(b) do
+      tex.print("\\ttfamily " .. i .. ":: " .. type(j) .. "\\par")
+    end
+  end
+  n = 0
+  for _,i in ipairs(myfonts.mappings) do
+    n = n + 1
+    if n > 10 then break end
+    tex.print("\\ttfamily " .. myfonts.mappings[n].plainname .. "\\par")
+  end
+  for i,_ in pairs(myfonts.mappings[1]) do
+    tex.print("\\ttfamily " .. i .. " ")
+  end
+  tex.print("\\par")
+  n=0
+  for _,i in ipairs(myfonts.mappings) do
+    n = n + 1
+    if n > 10 then return 0 end
+    tex.print("\\ttfamily "  ..
+      "\\font\\myfont = {file:" .. myfonts.mappings[n].basename .. "} at 14pt \\myfont " ..
+      (string.gsub(myfonts.mappings[n].basename,"_","\\_")) ..
+    "\\par")
+  end
 \end{luacode}
-
-\end{document}
