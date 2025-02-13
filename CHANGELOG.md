@@ -23,6 +23,10 @@ We use letters instead of numbers to avoid confusion with the automatic builds s
 
 Note that this version is continuously built based on [texlive/texlive](https://gitlab.com/islandoftex/images/texlive).
 
+### Removed
+
+- Removed `pkgcheck` as it is used seldomly - and codeberg is restrictive in providing downloads.
+
 ## TeXLive 2024
 
 ### [2024-A] &ndash; 2025-02-13
