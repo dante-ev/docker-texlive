@@ -12,7 +12,7 @@
  \begin{luacode}
    myfonts = luaotfload.aux.read_font_index()
    t={ myfonts, myfonts.families }
-   % really? https://stackoverflow.com/questions/2705793/how-to-get-number-of-entries-in-a-lua-table 
+   -- really? https://stackoverflow.com/questions/2705793/how-to-get-number-of-entries-in-a-lua-table 
    total = 0
    for _,i in ipairs(myfonts.mappings) do
      total = total + 1

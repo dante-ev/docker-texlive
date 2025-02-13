@@ -71,9 +71,9 @@ ENV PLANTUML_JAR=/home/plantuml.jar
 COPY load-fonts.tex /tmp/
 RUN luaotfload-tool --update --force --no-compress
 RUN texhash
-RUN cd /tmp && lualatex -interaction=batchmode load-fonts
+RUN cd /tmp && yes "" | lualatex -interaction=batchmode load-fonts
 # Needs to run twice according to https://tex.stackexchange.com/a/737059/9075
-RUN cd /tmp && lualatex -interaction=batchmode load-fonts
+RUN cd /tmp && yes "" | lualatex -interaction=batchmode load-fonts
 RUN rm /tmp/load-fonts.*
 
 WORKDIR /workdir
