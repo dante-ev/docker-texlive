@@ -1,5 +1,5 @@
-# FROM registry.gitlab.com/islandoftex/images/texlive:latest
-FROM registry.gitlab.com/islandoftex/images/texlive:TL2024-2025-02-09-full
+FROM registry.gitlab.com/islandoftex/images/texlive:latest
+# FROM registry.gitlab.com/islandoftex/images/texlive:TL2024-2025-02-09-full
 
 ARG TARGETARCH
 
