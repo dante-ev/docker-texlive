@@ -54,7 +54,7 @@ RUN apt-get update -q && \
     # Removing documentation packages *after* installing them is kind of hacky,
     # but it only adds some overhead while building the image.
     # Source: https://github.com/aergus/dockerfiles/blob/master/latex/Dockerfile
-    apt-get --purge remove -qy .\*-doc$ && \
+    apt-get --purge remove -qqy .\*-doc$ && \
     # save some space
     rm -rf /var/lib/apt/lists/* && apt-get clean
 
