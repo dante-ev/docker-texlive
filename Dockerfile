@@ -63,7 +63,7 @@ RUN wget https://github.com/jgm/pandoc/releases/download/3.6.3/pandoc-3.6.3-1-$T
 
 # get PlantUML in place
 RUN wget https://github.com/plantuml/plantuml/releases/download/v1.2025.0/plantuml-asl-1.2025.0.jar -q --output-document=/home/plantuml.zip && \
-  unzip plantuml.zip && \
+  unzip -q plantuml.zip && \
   rm plantuml.zip
 ENV PLANTUML_JAR=/home/plantuml.jar
 
