@@ -1,4 +1,4 @@
-# Docker image for texlive [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+# Docker image for TeX Live
 
 This docker image supports full TeX Live with following additions:
 
@@ -12,7 +12,25 @@ This docker image supports full TeX Live with following additions:
   - [pip](https://pypi.org/project/pip/). This enables manual Python package installation.
 - Java headless - required for Pandoc
 
-It builds on the [full texlive image by "Island of TeX"](https://gitlab.com/islandoftex/images/texlive) with additions concidered important.
+It builds on the [full TeX Live image by "Island of TeX"](https://gitlab.com/islandoftex/images/texlive) with additions considered important.
+
+We decided to base on the IoT's TeX Live image, because this ensures recent TeX Live packages and a working basic build.
+We extended the image with tools required for our use cases.
+
+## Available tags
+
+- `edge` - the edge build. Usually created on the first and fifteenth of a month.
+- `latest` - the latest released version.
+- `YYYY-MM-DD` - a build of that date. Usually created on the first and fifteenth of a month.
+
+Browse all available tags at <https://hub.docker.com/repository/docker/danteev/texlive/tags?page=1&ordering=last_updated>.
+
+### Other versions
+
+- `2021-A` - first image release in year 2021
+- `2020-A` - latest TeXLive 2020 build
+- `TL2017` - TeXLive 2017 build
+- For all other versions see [CHANGELOG.md](https://github.com/dante-ev/docker-texlive/blob/master/CHANGELOG.md#changelog).
 
 ## Usage
 
@@ -20,6 +38,14 @@ It builds on the [full texlive image by "Island of TeX"](https://gitlab.com/isla
 
 ```terminal
 docker run --rm -it -v $(pwd):/workdir danteev/texlive latexmk -pdf document.tex
+```
+
+In case you want to use an explicit tag, you can do it as follows:
+
+You can run the build of 2021-05-15 by using the tag `2021-05-15`:
+
+```terminal
+docker run --rm -it -v $(pwd):/workdir danteev/texlive:2021-05-15 latexmk document.tex
 ```
 
 ### Usage in [GitHub Workflows](https://help.github.com/en/articles/about-github-actions)
@@ -100,6 +126,21 @@ One can push the results using following example:
 
 Alternatively, you can use the [GitHub push action](https://github.com/ad-m/github-push-action) to push something.
 
+### Usage in [GitLab CI](https://docs.gitlab.com/ce/ci/)
+
+Create file `.gitlab-ci.yml` with following content:
+
+```yaml
+build:
+  image: danteev/texlive
+  stage: build
+  script:
+    - latexmk -pdf document.tex
+  artifacts:
+    paths:
+      - document.pdf
+```
+
 ### Usage in [CircleCI 2.0](https://circleci.com/docs/2.0/)
 
 Create file `.circle/config.yml` with following content:
@@ -127,55 +168,6 @@ services: docker
 script:
 - docker run --rm -it -v $(pwd):/workdir danteev/texlive latexmk -pdf document.tex
 ```
-
-### Usage in [GitLab CI](https://docs.gitlab.com/ce/ci/)
-
-Create file `.gitlab-ci.yml` with following content:
-
-```yaml
-build:
-  image: danteev/texlive
-  stage: build
-  script:
-    - latexmk -pdf document.tex
-  artifacts:
-    paths:
-      - document.pdf
-```
-
-## Available tags
-
-- `edge` - the edge build. Usually created on the first and fifteenth of a month.
-- `latest` - the latest released version.
-- `YYYY-MM-DD` - a build of that date. Usually created on the first and fifteenth of a month.
-
-Browse all available tags at <https://hub.docker.com/repository/docker/danteev/texlive/tags?page=1&ordering=last_updated>.
-
-### Other versions
-
-- `2021-A` - first image release in year 2021
-- `2020-A` - latest TeXLive 2020 build
-- `TL2017` - TeXLive 2017 build
-- For all other versions see [CHANGELOG.md](https://github.com/dante-ev/docker-texlive/blob/master/CHANGELOG.md#changelog).
-
-### Usage example
-
-```terminal
-docker run --rm -it -v $(pwd):/workdir danteev/texlive latexmk document.tex
-```
-
-In case you want to use an explicit tag, you can do it as follows:
-
-You can run the build of 2021-05-15 by using the tag `2021-05-15`:
-
-```terminal
-docker run --rm -it -v $(pwd):/workdir danteev/texlive:2021-05-15 latexmk document.tex
-```
-
-## Background
-
-We decided to base on the official TeXLive image, because this ensures recent TeXLive packages and a working basic build.
-We extended the image with tools required for our use cases.
 
 ## Development hints
 
