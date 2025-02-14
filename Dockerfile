@@ -69,9 +69,9 @@ RUN wget https://github.com/plantuml/plantuml/releases/download/v1.2025.0/plantu
 ENV PLANTUML_JAR=/home/plantuml.jar
 
 # Create font cache
-COPY load-fonts.tex /tmp/ && \
-  luaotfload-tool --update --force --no-compress  && \
-  RUN texhash && \
+COPY load-fonts.tex /tmp/
+RUN  luaotfload-tool --update --force --no-compress  && \
+  texhash && \
   # This errors because of missing glyphs, but still populates the cache
   RUN cd /tmp && yes "" | lualatex load-fonts || true && \
   # Needs to run twice according to https://tex.stackexchange.com/a/737059/9075
