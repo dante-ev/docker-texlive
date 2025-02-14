@@ -70,12 +70,12 @@ ENV PLANTUML_JAR=/home/plantuml.jar
 
 # Create font cache
 COPY load-fonts.tex /tmp/
-RUN  luaotfload-tool --update --force --no-compress  && \
+RUN luaotfload-tool --update --force --no-compress && \
   texhash && \
   # This errors because of missing glyphs, but still populates the cache
-  RUN cd /tmp && yes "" | lualatex load-fonts || true && \
+  cd /tmp && yes "" | lualatex load-fonts || true && \
   # Needs to run twice according to https://tex.stackexchange.com/a/737059/9075
-  RUN cd /tmp && yes "" | lualatex load-fonts || true && \
-  RUN rm /tmp/load-fonts.*
+  cd /tmp && yes "" | lualatex load-fonts || true && \
+  rm /tmp/load-fonts.*
 
 WORKDIR /workdir
