@@ -1,0 +1,30 @@
+% Source: https://tex.stackexchange.com/a/737059/9075
+
+ %! TeX program = lualatex
+ \documentclass{article}
+ \usepackage{fontspec}
+ \usepackage{luacode}
+ \begin{document}
+ 
+ % based on https://tex.stackexchange.com/a/14171/9075
+ % based on @cfr's https://tex.stackexchange.com/a/737051/38080
+ % addaswyd yn ateb: https://tex.stackexchange.com/a/737051/
+ \begin{luacode}
+   myfonts = luaotfload.aux.read_font_index()
+   t={ myfonts, myfonts.families }
+   -- really? https://stackoverflow.com/questions/2705793/how-to-get-number-of-entries-in-a-lua-table 
+   total = 0
+   for _,i in ipairs(myfonts.mappings) do
+     total = total + 1
+   end
+   n=0
+   for _,i in ipairs(myfonts.mappings) do
+     n = n + 1
+     -- if n > 100 then return 0 end -- be patient...
+     tex.print("\\ttfamily\\tiny\\detokenize{"  .. myfonts.mappings[n].plainname .. "}: " ..
+       "\\font\\myfont = {file:" .. myfonts.mappings[n].basename .. "} at 14pt \\myfont \\detokenize{" ..
+       myfonts.mappings[n].plainname .. "}\\par\\smallskip")
+     tex.print("\\typeout{font " .. n .. " of " .. total .. "}")
+   end
+ \end{luacode}
+ \end{document}

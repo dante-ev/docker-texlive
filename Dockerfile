@@ -16,6 +16,7 @@ ENV LANG=C.UTF-8 \
 ARG BUILD_DATE
 ARG GITLATEXDIFF_VERSION=1.6.0
 
+# Required at least for PlantUML below
 WORKDIR /home
 
 # Fix for update-alternatives: error: error creating symbolic link '/usr/share/man/man1/rmid.1.gz.dpkg-tmp': No such file or directory
@@ -67,7 +68,14 @@ RUN wget https://github.com/plantuml/plantuml/releases/download/v1.2025.0/plantu
   rm plantuml.zip
 ENV PLANTUML_JAR=/home/plantuml.jar
 
-# update font index
-RUN luaotfload-tool --update
+# Create font cache
+COPY load-fonts.tex /tmp/
+RUN luaotfload-tool --update --force --no-compress && \
+  texhash && \
+  # This errors because of missing glyphs, but still populates the cache
+  cd /tmp && yes "" | lualatex load-fonts || true && \
+  # Needs to run twice according to https://tex.stackexchange.com/a/737059/9075
+  cd /tmp && yes "" | lualatex load-fonts || true && \
+  rm /tmp/load-fonts.*
 
 WORKDIR /workdir
