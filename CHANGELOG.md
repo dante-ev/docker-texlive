@@ -24,6 +24,10 @@ We use letters instead of numbers to avoid confusion with the automatic builds s
 
 Note that this version is continuously built based on [texlive/texlive](https://gitlab.com/islandoftex/images/texlive).
 
+### Added
+
+- All fonts are cached so that `latexmk` correctly determines whether it should re run. [#51](https://github.com/dante-ev/docker-texlive/issues/51)
+
 ## TeXLive 2024
 
 ### [2024-B] &ndash; 2025-02-13
