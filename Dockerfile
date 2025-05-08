@@ -59,10 +59,10 @@ RUN apt-get update -q && \
     rm -rf /var/lib/apt/lists/* && apt-get clean
 
 # pandoc in the repositories is older - we just overwrite it with a more recent version
-RUN wget https://github.com/jgm/pandoc/releases/download/3.6.3/pandoc-3.6.3-1-$TARGETARCH.deb -q --output-document=/home/pandoc.deb && dpkg -i pandoc.deb && rm pandoc.deb
+RUN curl -o /home/pandoc.deb -sSL https://github.com/jgm/pandoc/releases/download/3.6.3/pandoc-3.6.3-1-$TARGETARCH.deb && dpkg -i pandoc.deb && rm pandoc.deb
 
 # get PlantUML in place
-RUN wget https://github.com/plantuml/plantuml/releases/download/v1.2025.0/plantuml-asl-1.2025.0.jar -q --output-document=/home/plantuml.zip && \
+RUN curl -o /home/plantuml.zip -sSL https://github.com/plantuml/plantuml/releases/download/v1.2025.0/plantuml-asl-1.2025.0.jar && \
   unzip -q plantuml.zip && \
   rm plantuml.zip
 ENV PLANTUML_JAR=/home/plantuml.jar
