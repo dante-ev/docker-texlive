@@ -86,4 +86,3 @@ jobs:
           name: pdfs
           path: |
             test/**/*.pdf
-      - uses: gautamkrishnar/keepalive-workflow@v2
