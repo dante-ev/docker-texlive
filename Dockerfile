@@ -23,8 +23,8 @@ WORKDIR /home
 RUN mkdir -p /usr/share/man/man1
 
 RUN apt-get update -q && \
-    # Install wget
-    apt-get install -qqy -o=Dpkg::Use-Pty=0 --no-install-recommends wget && \
+    # Install tools less annd wget
+    apt-get install -qqy -o=Dpkg::Use-Pty=0 --no-install-recommends less wget && \
     # Install Ruby's bundler
     apt-get install -qqy -o=Dpkg::Use-Pty=0 ruby poppler-utils && gem install bundler && \
     # libfile-copy-recursive-perl is required by ctanify

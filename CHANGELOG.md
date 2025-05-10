@@ -24,6 +24,10 @@ We use letters instead of numbers to avoid confusion with the automatic builds s
 
 Note that this version is continuously built based on [texlive/texlive](https://gitlab.com/islandoftex/images/texlive).
 
+### Added
+
+- Added `less`
+
 ### Changed
 
 - Removed packages already available upstream (`git`, ...)
