@@ -1,4 +1,5 @@
 name: Check build of docker image
+
 on:
   schedule:
     # 1h later than publish.yml
@@ -8,11 +9,14 @@ on:
       - main
   pull_request:
   workflow_dispatch:
+
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  group: "${{ github.workflow }}-${{ github.head_ref || github.ref }}"
   cancel-in-progress: true
+
 permissions:
   actions: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
