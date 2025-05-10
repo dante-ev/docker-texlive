@@ -13,6 +13,7 @@ We use letters instead of numbers to avoid confusion with the automatic builds s
 ## Versions
 
 - [edge](#edge)
+- [TeXLive 2025](#texlive-2025)
 - [TeXLive 2024](#texlive-2024)
 - [TeXLive 2023](#texlive-2023)
 - [TeXLive 2021](#texlive-2021)
