@@ -24,12 +24,18 @@ We use letters instead of numbers to avoid confusion with the automatic builds s
 
 Note that this version is continuously built based on [texlive/texlive](https://gitlab.com/islandoftex/images/texlive).
 
-### Added
+## TeXLive 2025
+
+### [2025-A] &ndash; 2025-05-10
+
+#### Added
 
 - Added `less`
 
-### Changed
+#### Changed
 
+- Updated `pandoc` to [3.6.4](https://pandoc.org/releases.html#pandoc-3.6.4-2025-03-16)
+- Updated `plantuml` to [v1.2025.2](https://github.com/plantuml/plantuml/releases/tag/v1.2025.2)
 - Removed packages already available upstream (`git`, ...)
 
 ## TeXLive 2024
@@ -228,7 +234,8 @@ Note that this version is continuously built based on [texlive/texlive](https://
 
 Initial release
 
-[edge]: https://github.com/koppor/docker-texlive/compare/2024-B...HEAD
+[edge]: https://github.com/koppor/docker-texlive/compare/2025-A...HEAD
+[2025-A]: https://github.com/koppor/docker-texlive/compare/2024-B...2025-A
 [2024-B]: https://github.com/koppor/docker-texlive/compare/2024-A...2024-B
 [2024-A]: https://github.com/koppor/docker-texlive/compare/2023-A...2024-A
 [2023-A]: https://github.com/koppor/docker-texlive/compare/2021-D...2023-A
