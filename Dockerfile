@@ -50,6 +50,13 @@ RUN apt-get update -q && \
     # save some space
     rm -rf /var/lib/apt/lists/* && apt-get clean
 
+RUN cd /tmp && \
+    git clone --depth=1 https://gitlab.com/islandoftex/texmf/depp.git && \
+    cd depp && \
+    l3build install && \
+    cd .. && \
+    rm -rf /tmp/depp
+
 # pandoc in the repositories is older - we just overwrite it with a more recent version
 RUN curl -o /home/pandoc.deb -sSL https://github.com/jgm/pandoc/releases/download/3.6.4/pandoc-3.6.4-1-$TARGETARCH.deb && dpkg -i pandoc.deb && rm pandoc.deb
 

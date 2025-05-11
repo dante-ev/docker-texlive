@@ -25,6 +25,10 @@ We use letters instead of numbers to avoid confusion with the automatic builds s
 
 Note that this version is continuously built based on [texlive/texlive](https://gitlab.com/islandoftex/images/texlive).
 
+### Added
+
+- Added the [Dependency Printer for TeX Live](https://gitlab.com/islandoftex/texmf/depp).
+
 ## TeXLive 2025
 
 ### [2025-A] &ndash; 2025-05-10
