@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
-This project cannot adhere to [Semantic Versioning](http://semver.org/), because it builds on TeXLive, which introduces breaking changes now and then.
+This project cannot adhere to [Semantic Versioning](https://semver.org/), because it builds on TeXLive, which introduces breaking changes now and then.
 Thus, each new version would lead to a new major version.
 Instead, we version `YYYY-R`, where `YYYY` is TeXLive version this image is based on and `R` is numbering different releases in that cycle using characters.
 E.g., `2021-A`, `2021-B`, ...
@@ -207,8 +207,8 @@ Note that this version is continuously built based on [texlive/texlive](https://
 
 ### Added
 
-- Added [pygments](http://pygments.org/) package to enable [minted](https://github.com/gpoore/minted).
-- Added [bundler](http://bundler.io/) to enable testing via [RSpec](http://rspec.info/).
+- Added [pygments](https://pygments.org/) package to enable [minted](https://github.com/gpoore/minted).
+- Added [bundler](https://bundler.io/) to enable testing via [RSpec](https://rspec.info/).
 
 ## [v1.3.0] &ndash; 2018-01-10
 
@@ -232,7 +232,7 @@ Note that this version is continuously built based on [texlive/texlive](https://
 ### Added
 
 - packages `python2.7`, `python-pip`, `pyparsing`, and `python-docx` to enable execution of helper scripts
-- packages `openjdk-8-jre-headless` and `libfile-which-perl` to enable execution of [pax](http://ctan.org/pkg/pax)
+- packages `openjdk-8-jre-headless` and `libfile-which-perl` to enable execution of [pax](https://ctan.org/pkg/pax)
 - package [pdftk](https://www.pdflabs.com/tools/pdftk-the-pdf-toolkit/)
 
 ## v1.0.0 &ndash; 2017-08-03
