@@ -1,5 +1,5 @@
-FROM registry.gitlab.com/islandoftex/images/texlive:latest
-# FROM registry.gitlab.com/islandoftex/images/texlive:TL2024-2025-02-09-full
+FROM registry.gitlab.com/islandoftex/images/texlive:TL2026-2026-06-26-full
+# FROM registry.gitlab.com/islandoftex/images/texlive:latest
 
 ARG TARGETARCH
 
@@ -60,10 +60,8 @@ RUN cd /tmp && \
 # pandoc in the repositories is older - we just overwrite it with a more recent version
 RUN curl -o /home/pandoc.deb -sSL https://github.com/jgm/pandoc/releases/download/3.6.4/pandoc-3.6.4-1-$TARGETARCH.deb && dpkg -i pandoc.deb && rm pandoc.deb
 
-# get PlantUML in place
-RUN curl -o /home/plantuml.zip -sSL https://github.com/plantuml/plantuml/releases/download/v1.2025.2/plantuml-asl-1.2025.2.jar && \
-  unzip -q plantuml.zip && \
-  rm plantuml.zip
+# get PlantUML in place (the released .jar is already runnable; do not unzip it)
+RUN curl -o /home/plantuml.jar -sSL https://github.com/plantuml/plantuml/releases/download/v1.2026.6/plantuml-asl-1.2026.6.jar
 ENV PLANTUML_JAR=/home/plantuml.jar
 
 # update font index

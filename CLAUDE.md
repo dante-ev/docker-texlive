@@ -32,7 +32,7 @@ Versions are **`YYYY-R`** where `YYYY` is the TeX Live year and `R` is a letter
 - **`main` tracks `:latest`** so the scheduled `edge` builds pick up new upstream
   TeX Live automatically.
 - **A tagged release pins the base** to a specific dated upstream tag for
-  reproducibility, e.g. `…/texlive:TL2026-2026-06-21-full`. The `Dockerfile`
+  reproducibility, e.g. `…/texlive:TL2026-2026-06-26-full`. The `Dockerfile`
   keeps both lines, with the inactive one commented as a toggle.
 
 Find the newest pinnable upstream tag (the `full` variant) — the registry tag

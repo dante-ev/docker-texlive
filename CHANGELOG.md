@@ -13,6 +13,7 @@ We use letters instead of numbers to avoid confusion with the automatic builds s
 ## Versions
 
 - [edge](#edge)
+- [TeXLive 2026](#texlive-2026)
 - [TeXLive 2025](#texlive-2025)
 - [TeXLive 2024](#texlive-2024)
 - [TeXLive 2023](#texlive-2023)
@@ -25,9 +26,22 @@ We use letters instead of numbers to avoid confusion with the automatic builds s
 
 Note that this version is continuously built based on [texlive/texlive](https://gitlab.com/islandoftex/images/texlive).
 
-### Added
+## TeXLive 2026
+
+### [2026-A] &ndash; 2026-06-28
+
+#### Added
 
 - Added the [Dependency Printer for TeX Live](https://gitlab.com/islandoftex/texmf/depp).
+
+#### Changed
+
+- Based on TeX Live 2026. The release pins the upstream image to `TL2026-2026-06-26-full` for reproducible builds.
+- Updated `plantuml` to [v1.2026.6](https://github.com/plantuml/plantuml/releases/tag/v1.2026.6)
+
+#### Fixed
+
+- PlantUML is now stored as the runnable jar at `$PLANTUML_JAR` instead of being unpacked into `/home`, so `plantuml` works again.
 
 ## TeXLive 2025
 
@@ -239,7 +253,8 @@ Note that this version is continuously built based on [texlive/texlive](https://
 
 Initial release
 
-[edge]: https://github.com/koppor/docker-texlive/compare/2025-A...HEAD
+[edge]: https://github.com/koppor/docker-texlive/compare/2026-A...HEAD
+[2026-A]: https://github.com/koppor/docker-texlive/compare/2025-A...2026-A
 [2025-A]: https://github.com/koppor/docker-texlive/compare/2024-B...2025-A
 [2024-B]: https://github.com/koppor/docker-texlive/compare/2024-A...2024-B
 [2024-A]: https://github.com/koppor/docker-texlive/compare/2023-A...2024-A
