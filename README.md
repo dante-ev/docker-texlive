@@ -1,6 +1,6 @@
 # Docker image for TeX Live
 
-This docker image supports full TeX Live with following additions:
+This Docker image supports full TeX Live with following additions:
 
 - [bibtool](https://github.com/ge-ne/bibtool)
 - [DEPP](https://gitlab.com/islandoftex/texmf/depp) - Dependency Printer for TeX Live
@@ -10,7 +10,7 @@ This docker image supports full TeX Live with following additions:
 - [Inkscape](https://inkscape.org/)
 - [LaTeXML](https://github.com/brucemiller/LaTeXML)
 - [Mermaid CLI](https://github.com/mermaid-js/mermaid-cli) (`mmdc`) with Node.js and Chromium - enables the [ltmermaid](https://ctan.org/pkg/ltmermaid) package
-- [Pandoc](http://pandoc.org/) - to convert from and to `.tex` (more recent than the Debian package)
+- [Pandoc](https://pandoc.org/) - to convert from and to `.tex` (more recent than the Debian package)
 - [PlantUML](https://plantuml.com/) - available as `plantuml` command and at `$PLANTUML_JAR`; enables the [plantuml](https://ctan.org/pkg/plantuml) package
 - [pip](https://pypi.org/project/pip/). This enables manual Python package installation.
 - [TikZ-UML](https://perso.ensta.fr/~kielbasi/tikzuml/) - not part of TeX Live
@@ -19,7 +19,7 @@ The base image already provides, among others,
 [latexmk](https://www.ctan.org/pkg/latexmk/),
 Python 3 with [pygments](https://pygments.org/) (for [minted](https://ctan.org/pkg/minted)),
 Java,
-and git.
+and Git.
 
 It builds on the [full TeX Live image by "Island of TeX"](https://gitlab.com/islandoftex/images/texlive) with additions considered important.
 
@@ -32,18 +32,18 @@ We extended the image with tools required for our use cases.
 - `latest` - the latest released version.
 - `YYYY-MM-DD` - a build of that date. Usually created on the first and fifteenth of a month.
 
-Browse all available tags at <https://hub.docker.com/repository/docker/danteev/texlive/tags?page=1&ordering=last_updated>.
+Browse all available tags at <https://hub.docker.com/r/danteev/texlive/tags>.
 
 ### Other versions
 
 - `2021-A` - first image release in year 2021
 - `2020-A` - latest TeXLive 2020 build
 - `TL2017` - TeXLive 2017 build
-- For all other versions see [CHANGELOG.md](https://github.com/dante-ev/docker-texlive/blob/master/CHANGELOG.md#changelog).
+- For all other versions see [CHANGELOG.md](https://github.com/dante-ev/docker-texlive/blob/main/CHANGELOG.md#changelog).
 
 ## Usage
 
-### Using docker
+### Using Docker
 
 ```terminal
 docker run --rm -it -v $(pwd):/workdir danteev/texlive latexmk -pdf document.tex
@@ -57,7 +57,7 @@ You can run the build of 2021-05-15 by using the tag `2021-05-15`:
 docker run --rm -it -v $(pwd):/workdir danteev/texlive:2021-05-15 latexmk document.tex
 ```
 
-### Usage in [GitHub Workflows](https://help.github.com/en/articles/about-github-actions)
+### Usage in [GitHub Workflows](https://docs.github.com/en/actions)
 
 Create a file `.github/workflows/build.yml` with following content:
 
@@ -135,7 +135,7 @@ One can push the results using following example:
 
 Alternatively, you can use the [GitHub push action](https://github.com/ad-m/github-push-action) to push something.
 
-### Usage in [GitLab CI](https://docs.gitlab.com/ce/ci/)
+### Usage in [GitLab CI](https://docs.gitlab.com/ci/)
 
 Create file `.gitlab-ci.yml` with following content:
 
@@ -150,7 +150,7 @@ build:
       - document.pdf
 ```
 
-### Usage in [CircleCI 2.0](https://circleci.com/docs/2.0/)
+### Usage in [CircleCI 2.0](https://circleci.com/docs/)
 
 Create file `.circle/config.yml` with following content:
 
@@ -165,7 +165,7 @@ jobs:
        - run: latexmk -pdf document.tex
 ```
 
-### Usage in [Travis CI](https://travis-ci.org/)
+### Usage in [Travis CI](https://www.travis-ci.com/)
 
 Create file `.travis.yml` with following content:
 
@@ -201,7 +201,7 @@ More background information is given at <https://gitlab.com/islandoftex/images/t
 
 In case this all-in-one image is too large for you, you might be interested in following images:
 
-- [VS.Code DevContainer](https://github.com/a-nau/latex-devcontainer) - contains a ready-to-start VS Code environment.
+- [VS.Code DevContainer](https://github.com/a-nau/latex-devcontainer) - contains a ready-to-start Visual Studio Code environment.
 - [Official texlive image](https://hub.docker.com/r/texlive/texlive) - contains plain full TeXLive without additional tooling
 - [docker-texlive-thin](https://github.com/thomasWeise/docker-texlive-thin) - other packages and tools
 - [texlive-docker by @reitzig](https://github.com/reitzig/texlive-docker) - profile-based TeXLive image
