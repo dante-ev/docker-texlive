@@ -3,8 +3,8 @@
 Full TeX Live Docker image published as `danteev/texlive` (Docker Hub) and
 `ghcr.io/dante-ev/texlive`. It builds on the
 [Island of TeX TeX Live image](https://gitlab.com/islandoftex/images/texlive) and
-adds tooling: pandoc, PlantUML, inkscape, graphviz, latexml, bibtool, gnuplot,
-fig2dev, DEPP, fonts, etc. See `Dockerfile`.
+adds tooling: pandoc, PlantUML, Mermaid CLI (with Node.js and Chromium), TikZ-UML,
+inkscape, graphviz, latexml, bibtool, gnuplot, fig2dev, DEPP, fonts, etc. See `Dockerfile`.
 
 ## Build & smoke test
 
@@ -14,7 +14,9 @@ docker build -t ghcr.io/dante-ev/texlive:edge .
 docker run --rm ghcr.io/dante-ev/texlive:edge bash -c '
   tex --version | head -1
   pandoc --version | head -1
-  java -jar "$PLANTUML_JAR" -version | head -1'
+  plantuml -version | head -1
+  mmdc --version
+  kpsewhich tikz-uml.sty'
 ```
 
 `.github/workflows/check-build.yml` compiles the samples in `test/` on push/PR.
@@ -73,3 +75,14 @@ it.
 changelog uses a custom layout, `heylogs.properties` disables the rules that
 clash with it; keep the changelog passing `heylogs check` (run locally via
 `jbang com.github.nbbrd.heylogs:heylogs-cli:0.18.1:bin check CHANGELOG.md`).
+
+## Markdown checks
+
+`.github/workflows/check-markdown.yml` runs markdownlint (rules in `.markdownlint.yml`) and
+textlint (rules in `.textlintrc.json`) on all Markdown files. Run locally:
+
+```bash
+npx -y markdownlint-cli2 "**/*.md"
+npx --yes --package textlint@15.8.0 --package textlint-rule-terminology@5.2.16 \
+  --package textlint-rule-common-misspellings@1.0.1 textlint $(git ls-files '*.md')
+```

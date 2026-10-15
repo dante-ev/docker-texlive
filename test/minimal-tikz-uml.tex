@@ -1,0 +1,9 @@
+\documentclass{article}
+\usepackage{tikz-uml}
+\begin{document}
+\begin{tikzpicture}
+  \umlclass{Alice}{name : string}{greet() : void}
+  \umlclass[x=6]{Bob}{}{}
+  \umlassoc{Alice}{Bob}
+\end{tikzpicture}
+\end{document}

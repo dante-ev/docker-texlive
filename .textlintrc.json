@@ -1,0 +1,6 @@
+{
+  "rules": {
+    "terminology": true,
+    "common-misspellings": true
+  }
+}
