@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
-This project cannot adhere to [Semantic Versioning](http://semver.org/), because it builds on TeXLive, which introduces breaking changes now and then.
+This project cannot adhere to [Semantic Versioning](https://semver.org/), because it builds on TeXLive, which introduces breaking changes now and then.
 Thus, each new version would lead to a new major version.
 Instead, we version `YYYY-R`, where `YYYY` is TeXLive version this image is based on and `R` is numbering different releases in that cycle using characters.
 E.g., `2021-A`, `2021-B`, ...
@@ -13,6 +13,8 @@ We use letters instead of numbers to avoid confusion with the automatic builds s
 ## Versions
 
 - [edge](#edge)
+- [TeXLive 2026](#texlive-2026)
+- [TeXLive 2025](#texlive-2025)
 - [TeXLive 2024](#texlive-2024)
 - [TeXLive 2023](#texlive-2023)
 - [TeXLive 2021](#texlive-2021)
@@ -24,9 +26,40 @@ We use letters instead of numbers to avoid confusion with the automatic builds s
 
 Note that this version is continuously built based on [texlive/texlive](https://gitlab.com/islandoftex/images/texlive).
 
-### Added
+#### Added
 
 - All fonts are cached so that `latexmk` correctly determines whether it should re run. [#51](https://github.com/dante-ev/docker-texlive/issues/51)
+
+## TeXLive 2026
+
+### [2026-A] &ndash; 2026-06-28
+
+#### Added
+
+- Added the [Dependency Printer for TeX Live](https://gitlab.com/islandoftex/texmf/depp).
+
+#### Changed
+
+- Based on TeX Live 2026. The release pins the upstream image to `TL2026-2026-06-26-full` for reproducible builds.
+- Updated `plantuml` to [v1.2026.6](https://github.com/plantuml/plantuml/releases/tag/v1.2026.6)
+
+#### Fixed
+
+- PlantUML is now stored as the runnable jar at `$PLANTUML_JAR` instead of being unpacked into `/home`, so `plantuml` works again.
+
+## TeXLive 2025
+
+### [2025-A] &ndash; 2025-05-10
+
+#### Added
+
+- Added `less`
+
+#### Changed
+
+- Updated `pandoc` to [3.6.4](https://pandoc.org/releases.html#pandoc-3.6.4-2025-03-16)
+- Updated `plantuml` to [v1.2025.2](https://github.com/plantuml/plantuml/releases/tag/v1.2025.2)
+- Removed packages already available upstream (`git`, ...)
 
 ## TeXLive 2024
 
@@ -192,8 +225,8 @@ Note that this version is continuously built based on [texlive/texlive](https://
 
 ### Added
 
-- Added [pygments](http://pygments.org/) package to enable [minted](https://github.com/gpoore/minted).
-- Added [bundler](http://bundler.io/) to enable testing via [RSpec](http://rspec.info/).
+- Added [pygments](https://pygments.org/) package to enable [minted](https://github.com/gpoore/minted).
+- Added [bundler](https://bundler.io/) to enable testing via [RSpec](https://rspec.info/).
 
 ## [v1.3.0] &ndash; 2018-01-10
 
@@ -217,14 +250,16 @@ Note that this version is continuously built based on [texlive/texlive](https://
 ### Added
 
 - packages `python2.7`, `python-pip`, `pyparsing`, and `python-docx` to enable execution of helper scripts
-- packages `openjdk-8-jre-headless` and `libfile-which-perl` to enable execution of [pax](http://ctan.org/pkg/pax)
+- packages `openjdk-8-jre-headless` and `libfile-which-perl` to enable execution of [pax](https://ctan.org/pkg/pax)
 - package [pdftk](https://www.pdflabs.com/tools/pdftk-the-pdf-toolkit/)
 
 ## v1.0.0 &ndash; 2017-08-03
 
 Initial release
 
-[edge]: https://github.com/koppor/docker-texlive/compare/2024-B...HEAD
+[edge]: https://github.com/koppor/docker-texlive/compare/2026-A...HEAD
+[2026-A]: https://github.com/koppor/docker-texlive/compare/2025-A...2026-A
+[2025-A]: https://github.com/koppor/docker-texlive/compare/2024-B...2025-A
 [2024-B]: https://github.com/koppor/docker-texlive/compare/2024-A...2024-B
 [2024-A]: https://github.com/koppor/docker-texlive/compare/2023-A...2024-A
 [2023-A]: https://github.com/koppor/docker-texlive/compare/2021-D...2023-A

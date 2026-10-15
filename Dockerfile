@@ -1,5 +1,5 @@
 FROM registry.gitlab.com/islandoftex/images/texlive:latest
-# FROM registry.gitlab.com/islandoftex/images/texlive:TL2024-2025-02-09-full
+# FROM registry.gitlab.com/islandoftex/images/texlive:TL2026-2026-06-26-full
 
 ARG TARGETARCH
 
@@ -24,28 +24,20 @@ WORKDIR /home
 RUN mkdir -p /usr/share/man/man1
 
 RUN apt-get update -q && \
-    # Install git (Required for git-latexdiff)
-    apt-get install -qqy -o=Dpkg::Use-Pty=0 --no-install-recommends git wget && \
+    # Install tools less annd wget
+    apt-get install -qqy -o=Dpkg::Use-Pty=0 --no-install-recommends less wget && \
     # Install Ruby's bundler
     apt-get install -qqy -o=Dpkg::Use-Pty=0 ruby poppler-utils && gem install bundler && \
-    # plantuml requires a recent java version
-    apt-get install -qqy -o=Dpkg::Use-Pty=0 --no-install-recommends openjdk-21-jre-headless && \
-    # proposal by https://github.com/sumandoc/TeXLive-2017
-    apt-get install -qqy -o=Dpkg::Use-Pty=0 curl libgetopt-long-descriptive-perl libdigest-perl-md5-perl fontconfig && \
     # libfile-copy-recursive-perl is required by ctanify
-    apt-get install -qqy -o=Dpkg::Use-Pty=0 --no-install-recommends libfile-which-perl libfile-copy-recursive-perl openssh-client  && \
-    # latexindent modules
-    apt-get install -qqy -o=Dpkg::Use-Pty=0 libyaml-tiny-perl libfile-homedir-perl libunicode-linebreak-perl liblog-log4perl-perl libtest-log-dispatch-perl && \
+    apt-get install -qqy -o=Dpkg::Use-Pty=0 --no-install-recommends libfile-copy-recursive-perl openssh-client  && \
     # for plantuml, we need graphviz and inkscape. For inkscape, there is no non-X11 version, so 200 MB more
     apt-get install -qqy -o=Dpkg::Use-Pty=0 --no-install-recommends graphviz inkscape && \
-    # some more packages
-    apt-get install -qqy -o=Dpkg::Use-Pty=0 --no-install-recommends fonts-texgyre latexml && \
+    # LateXML - https://github.com/brucemiller/LaTeXML
+    apt-get install -qqy -o=Dpkg::Use-Pty=0 --no-install-recommends latexml && \
     # fig2dev - tool for xfig to translate the figure to other formats
     apt-get install -qqy -o=Dpkg::Use-Pty=0 fig2dev && \
     # add Google's Inconsolata font (https://fonts.google.com/specimen/Inconsolata)
     apt-get install -qqy -o=Dpkg::Use-Pty=0 fonts-inconsolata && \
-    # required by tlmgr init-usertree
-    apt-get install -qqy -o=Dpkg::Use-Pty=0 xzdec && \
     # install bibtool
     apt-get install -qqy -o=Dpkg::Use-Pty=0 bibtool && \
     # install Python's pip3
@@ -59,13 +51,18 @@ RUN apt-get update -q && \
     # save some space
     rm -rf /var/lib/apt/lists/* && apt-get clean
 
-# pandoc in the repositories is older - we just overwrite it with a more recent version
-RUN wget https://github.com/jgm/pandoc/releases/download/3.6.3/pandoc-3.6.3-1-$TARGETARCH.deb -q --output-document=/home/pandoc.deb && dpkg -i pandoc.deb && rm pandoc.deb
+RUN cd /tmp && \
+    git clone --depth=1 https://gitlab.com/islandoftex/texmf/depp.git && \
+    cd depp && \
+    l3build install && \
+    cd .. && \
+    rm -rf /tmp/depp
 
-# get PlantUML in place
-RUN wget https://github.com/plantuml/plantuml/releases/download/v1.2025.0/plantuml-asl-1.2025.0.jar -q --output-document=/home/plantuml.zip && \
-  unzip -q plantuml.zip && \
-  rm plantuml.zip
+# pandoc in the repositories is older - we just overwrite it with a more recent version
+RUN curl -o /home/pandoc.deb -sSL https://github.com/jgm/pandoc/releases/download/3.6.4/pandoc-3.6.4-1-$TARGETARCH.deb && dpkg -i pandoc.deb && rm pandoc.deb
+
+# get PlantUML in place (the released .jar is already runnable; do not unzip it)
+RUN curl -o /home/plantuml.jar -sSL https://github.com/plantuml/plantuml/releases/download/v1.2026.6/plantuml-asl-1.2026.6.jar
 ENV PLANTUML_JAR=/home/plantuml.jar
 
 # Create font cache
