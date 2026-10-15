@@ -13,6 +13,7 @@ This Docker image supports full TeX Live with following additions:
 - [Pandoc](https://pandoc.org/) - to convert from and to `.tex` (more recent than the Debian package)
 - [PlantUML](https://plantuml.com/) - available as `plantuml` command and at `$PLANTUML_JAR`; enables the [plantuml](https://ctan.org/pkg/plantuml) package
 - [pip](https://pypi.org/project/pip/). This enables manual Python package installation.
+- [TeXtidote](https://github.com/sylvainhalle/textidote) - spelling, grammar and style checker for LaTeX documents
 - [TikZ-UML](https://perso.ensta.fr/~kielbasi/tikzuml/) - not part of TeX Live
 
 The base image already provides, among others,

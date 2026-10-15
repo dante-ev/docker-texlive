@@ -71,6 +71,14 @@ RUN curl -o /home/plantuml.jar -sSL https://github.com/plantuml/plantuml/release
     chmod +x /usr/local/bin/plantuml
 ENV PLANTUML_JAR=/home/plantuml.jar
 
+# TeXtidote - https://github.com/sylvainhalle/textidote
+# The JDK's default XML limits are too low for LanguageTool's grammar.xml files, so `--check <lang>` fails without lifting them.
+RUN mkdir -p /opt/textidote && \
+    curl -o /opt/textidote/textidote.jar -sSL https://github.com/sylvainhalle/textidote/releases/download/v0.9/textidote.jar && \
+    echo "3ad1aaa0922709f8c9dc0cdc9d476f475c00c3368de6c1492f0004c0a3418de7  /opt/textidote/textidote.jar" | sha256sum -c - && \
+    printf '#!/bin/sh\nexec java -Djdk.xml.totalEntitySizeLimit=0 -Djdk.xml.entityExpansionLimit=0 -jar /opt/textidote/textidote.jar "$@"\n' > /usr/local/bin/textidote && \
+    chmod +x /usr/local/bin/textidote
+
 # Mermaid CLI. ltmermaid calls plain `mmdc`, so a wrapper adapts the call:
 # - Chromium needs --no-sandbox when running as root inside a container, set via the puppeteer config.
 # - ltmermaid always passes -f (--pdfFit), which mermaid-cli 12 removed because fitting is now the default.

@@ -57,6 +57,10 @@ jobs:
         working-directory: test
         run: |
           docker run -v $(pwd):/workdir localhost:5000/name/app:latest latexindent minimal-article.tex
+      - name: textidote
+        working-directory: test
+        run: |
+          docker run -v $(pwd):/workdir localhost:5000/name/app:latest textidote --check en minimal-article.tex
       - name: minimal-article.tex
         working-directory: test
         run: |
