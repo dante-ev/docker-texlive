@@ -26,6 +26,10 @@ We use letters instead of numbers to avoid confusion with the automatic builds s
 
 Note that this version is continuously built based on [texlive/texlive](https://gitlab.com/islandoftex/images/texlive).
 
+## TeXLive 2026
+
+### [2026-B] &ndash; 2026-10-15
+
 #### Added
 
 - Added [Mermaid CLI](https://github.com/mermaid-js/mermaid-cli) (`mmdc`) 12.0.0 with Node.js and Chromium, so that `ltmermaid`/`mermaid.sty` work with `--shell-escape`.
@@ -41,15 +45,13 @@ Note that this version is continuously built based on [texlive/texlive](https://
 
 #### Changed
 
-- Updated the TeX Live base image to `TL2026-2026-10-11-full`.
+- The release pins the upstream image to `TL2026-2026-10-11-full` for reproducible builds.
 - Updated `pandoc` to [3.12.1](https://github.com/jgm/pandoc/releases/tag/3.12.1)
 - Updated `plantuml` to [v1.2026.8](https://github.com/plantuml/plantuml/releases/tag/v1.2026.8)
 
 #### Removed
 
 - Removed `tlcockpit`, which bundles `jackson-databind` 2.9.4 with known critical CVEs. [#60](https://github.com/dante-ev/docker-texlive/issues/60)
-
-## TeXLive 2026
 
 ### [2026-A] &ndash; 2026-06-28
 
@@ -276,7 +278,8 @@ Note that this version is continuously built based on [texlive/texlive](https://
 
 Initial release
 
-[edge]: https://github.com/koppor/docker-texlive/compare/2026-A...HEAD
+[edge]: https://github.com/koppor/docker-texlive/compare/2026-B...HEAD
+[2026-B]: https://github.com/koppor/docker-texlive/compare/2026-A...2026-B
 [2026-A]: https://github.com/koppor/docker-texlive/compare/2025-A...2026-A
 [2025-A]: https://github.com/koppor/docker-texlive/compare/2024-B...2025-A
 [2024-B]: https://github.com/koppor/docker-texlive/compare/2024-A...2024-B
