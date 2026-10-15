@@ -80,7 +80,7 @@ Note that this version is continuously built based on [texlive/texlive](https://
 
 ### Removed
 
-- Removed `pkgcheck` as it is used seldomly - and codeberg is restrictive in providing downloads.
+- Removed `pkgcheck` as it is used seldom - and codeberg is restrictive in providing downloads.
 
 ### [2024-A] &ndash; 2025-02-13
 
@@ -148,7 +148,7 @@ Note that this version is continuously built based on [texlive/texlive](https://
 - Switch upstream image to [Island of TeX's texlive image](https://gitlab.com/islandoftex/images/texlive)
 - Switch to TeX Live 2021
 - Update pandoc to 2.12.1
-- The working directory for latex compilation is now `/workdir` instead of `/home`. `/home` is kept for plantuml.jar and other local packages.
+- The working directory for LaTeX compilation is now `/workdir` instead of `/home`. `/home` is kept for plantuml.jar and other local packages.
 
 #### Removed
 
@@ -180,7 +180,7 @@ Note that this version is continuously built based on [texlive/texlive](https://
 - Update to Python 3 variant of pygments, python-docx, and pyparsing
 - Update IBM's OpenType plex from 1.2.3 to 5.0.0
 - Update pandoc to 2.9.2
-- Always load latest plantuml.jar when building the docker image
+- Always load latest plantuml.jar when building the Docker image
 - Change versioning theme to `YYYY-RR`, where `YYYY` is the TeXLive version this image is based on and `RR` is numbering different releases in that cycle.
 
 #### Removed
@@ -211,8 +211,8 @@ Note that this version is continuously built based on [texlive/texlive](https://
 ### Changed
 
 - Use [Ubuntu Bionics's texlive-all](https://packages.ubuntu.com/bionic/texlive-full) instead of self-installed texlive.
-  We cannot use Debian/sid or a later ubuntu, because of <https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=901761>.
-- Ensure that git and ssh are installed
+  We cannot use Debian/sid or a later Ubuntu, because of <https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=901761>.
+- Ensure that Git and SSH are installed
 - Install [LaTeXML](https://dlmf.nist.gov/LaTeXML/) as Debian package and not directly from source
 - New home at [DANTE e.V.](https://www.dante.de/): <https://github.com/dante-ev/docker-texlive>
 
@@ -220,7 +220,7 @@ Note that this version is continuously built based on [texlive/texlive](https://
 
 ### Added
 
-- Added `plantuml.jar` and environemnt variable `PLANTUML_JAR` to enable usage of the [plantuml package](https://www.ctan.org/plantuml).
+- Added `plantuml.jar` and environment variable `PLANTUML_JAR` to enable usage of the [plantuml package](https://www.ctan.org/plantuml).
 - Added `graphviz` and `inkscape` for the plantuml package.
 - Added `pandoc` to be able to convert `md` to `pdf`.
 
