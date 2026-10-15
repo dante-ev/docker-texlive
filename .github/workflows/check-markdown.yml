@@ -1,0 +1,45 @@
+name: Check Markdown
+
+# markdownlint rules are configured in .markdownlint.yml, textlint rules in .textlintrc.json.
+# textlint deliberately has no dead-link rule: Docker Hub rate limits and redirects make it flaky.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: "${{ github.workflow }}-${{ github.head_ref || github.ref }}"
+  cancel-in-progress: true
+
+jobs:
+  markdownlint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Lint Markdown with markdownlint
+        uses: DavidAnson/markdownlint-cli2-action@v24
+        with:
+          globs: "**/*.md"
+
+  textlint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: lts/*
+
+      - name: Lint Markdown with textlint
+        run: >
+          npx --yes
+          --package textlint@15.8.0
+          --package textlint-rule-terminology@5.2.16
+          --package textlint-rule-common-misspellings@1.0.1
+          textlint $(git ls-files '*.md')

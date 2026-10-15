@@ -28,11 +28,21 @@ Note that this version is continuously built based on [texlive/texlive](https://
 
 #### Added
 
+- Added [Mermaid CLI](https://github.com/mermaid-js/mermaid-cli) (`mmdc`) 12.0.0 with Node.js and Chromium, so that `ltmermaid`/`mermaid.sty` work with `--shell-escape`.
+- Added [TikZ-UML](https://perso.ensta.fr/~kielbasi/tikzuml/) (`tikz-uml.sty`), which is not part of TeX Live.
+- Added a `plantuml` command wrapping `$PLANTUML_JAR`.
 - Added [panflute](https://scorreia.com/software/panflute/index.html) to ease writing Pandoc filters in Python. [#62](https://github.com/dante-ev/docker-texlive/pull/62)
 
 #### Fixed
 
+- The `plantuml` LaTeX package works again; its sample is compiled in CI again.
 - Pre-generated luaotfload's font caches and added `/etc/latexmkrc`, so `latexmk -pdflua` no longer reruns `lualatex` in every fresh container. [#51](https://github.com/dante-ev/docker-texlive/issues/51)
+
+#### Changed
+
+- Updated the TeX Live base image to `TL2026-2026-10-11-full`.
+- Updated `pandoc` to [3.12.1](https://github.com/jgm/pandoc/releases/tag/3.12.1)
+- Updated `plantuml` to [v1.2026.8](https://github.com/plantuml/plantuml/releases/tag/v1.2026.8)
 
 ## TeXLive 2026
 
@@ -71,7 +81,7 @@ Note that this version is continuously built based on [texlive/texlive](https://
 
 ### Removed
 
-- Removed `pkgcheck` as it is used seldomly - and codeberg is restrictive in providing downloads.
+- Removed `pkgcheck` as it is used seldom - and codeberg is restrictive in providing downloads.
 
 ### [2024-A] &ndash; 2025-02-13
 
@@ -139,7 +149,7 @@ Note that this version is continuously built based on [texlive/texlive](https://
 - Switch upstream image to [Island of TeX's texlive image](https://gitlab.com/islandoftex/images/texlive)
 - Switch to TeX Live 2021
 - Update pandoc to 2.12.1
-- The working directory for latex compilation is now `/workdir` instead of `/home`. `/home` is kept for plantuml.jar and other local packages.
+- The working directory for LaTeX compilation is now `/workdir` instead of `/home`. `/home` is kept for plantuml.jar and other local packages.
 
 #### Removed
 
@@ -171,7 +181,7 @@ Note that this version is continuously built based on [texlive/texlive](https://
 - Update to Python 3 variant of pygments, python-docx, and pyparsing
 - Update IBM's OpenType plex from 1.2.3 to 5.0.0
 - Update pandoc to 2.9.2
-- Always load latest plantuml.jar when building the docker image
+- Always load latest plantuml.jar when building the Docker image
 - Change versioning theme to `YYYY-RR`, where `YYYY` is the TeXLive version this image is based on and `RR` is numbering different releases in that cycle.
 
 #### Removed
@@ -202,8 +212,8 @@ Note that this version is continuously built based on [texlive/texlive](https://
 ### Changed
 
 - Use [Ubuntu Bionics's texlive-all](https://packages.ubuntu.com/bionic/texlive-full) instead of self-installed texlive.
-  We cannot use Debian/sid or a later ubuntu, because of <https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=901761>.
-- Ensure that git and ssh are installed
+  We cannot use Debian/sid or a later Ubuntu, because of <https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=901761>.
+- Ensure that Git and SSH are installed
 - Install [LaTeXML](https://dlmf.nist.gov/LaTeXML/) as Debian package and not directly from source
 - New home at [DANTE e.V.](https://www.dante.de/): <https://github.com/dante-ev/docker-texlive>
 
@@ -211,7 +221,7 @@ Note that this version is continuously built based on [texlive/texlive](https://
 
 ### Added
 
-- Added `plantuml.jar` and environemnt variable `PLANTUML_JAR` to enable usage of the [plantuml package](https://www.ctan.org/plantuml).
+- Added `plantuml.jar` and environment variable `PLANTUML_JAR` to enable usage of the [plantuml package](https://www.ctan.org/plantuml).
 - Added `graphviz` and `inkscape` for the plantuml package.
 - Added `pandoc` to be able to convert `md` to `pdf`.
 
@@ -282,4 +292,4 @@ Initial release
 [v1.2.0]: https://github.com/koppor/docker-texlive/compare/v1.1.0...v1.2.0
 [v1.1.0]: https://github.com/koppor/docker-texlive/compare/v1.0.0...v1.1.0
 
-<!-- markdownlint-disable-file MD024 -->
+<!-- markdownlint-disable-file MD001 MD024 -->

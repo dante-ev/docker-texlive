@@ -12,7 +12,7 @@ Should the Docker image include all packages or a subset of the packages?
 
 ## Decision Outcome
 
-Chosen option: "Provide all packages", because 
+Chosen option: "Provide all packages", because
 
 * texliveonfly does not work on all packages
 * speeds-up compilation time (because no additional download)
