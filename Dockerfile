@@ -73,6 +73,7 @@ ENV PLANTUML_JAR=/home/plantuml.jar
 
 # TeXtidote - https://github.com/sylvainhalle/textidote
 # The JDK's default XML limits are too low for LanguageTool's grammar.xml files, so `--check <lang>` fails without lifting them.
+# See https://github.com/sylvainhalle/textidote/issues/272
 RUN mkdir -p /opt/textidote && \
     curl -o /opt/textidote/textidote.jar -sSL https://github.com/sylvainhalle/textidote/releases/download/v0.9/textidote.jar && \
     echo "3ad1aaa0922709f8c9dc0cdc9d476f475c00c3368de6c1492f0004c0a3418de7  /opt/textidote/textidote.jar" | sha256sum -c - && \
