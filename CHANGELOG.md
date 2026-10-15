@@ -37,6 +37,7 @@ Note that this version is continuously built based on [texlive/texlive](https://
 #### Fixed
 
 - The `plantuml` LaTeX package works again; its sample is compiled in CI again.
+- Pre-generated luaotfload's font caches and added `/etc/latexmkrc`, so `latexmk -pdflua` no longer reruns `lualatex` in every fresh container. [#51](https://github.com/dante-ev/docker-texlive/issues/51)
 
 #### Changed
 

@@ -99,6 +99,19 @@ jobs:
         working-directory: test/subdir1
         run: |
           docker run -v $(pwd)/..:/workdir localhost:5000/name/app:latest /bin/bash -c "cd subdir1 && lualatex current-file.tex"
+      # latexmk must not rerun lualatex in a fresh container just because of
+      # luaotfload's font caches: https://github.com/dante-ev/docker-texlive/issues/51
+      - name: 51-lualatex-simple.tex
+        working-directory: test
+        run: |
+          docker run -v $(pwd):/workdir localhost:5000/name/app:latest latexmk -pdflua 51-lualatex-simple.tex
+      - name: 51-lualatex-simple.tex (second run in a fresh container is a no-op)
+        working-directory: test
+        run: |
+          output=$(docker run -v $(pwd):/workdir localhost:5000/name/app:latest latexmk -pdflua 51-lualatex-simple.tex)
+          echo "$output"
+          echo "$output" | grep -q "All targets (.*) are up-to-date"
+          ! echo "$output" | grep -q "Run number"
       - name: Archive PDFs
         uses: actions/upload-artifact@v4
         with:

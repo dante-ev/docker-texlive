@@ -16,6 +16,7 @@ ENV LANG=C.UTF-8 \
 ARG BUILD_DATE
 ARG GITLATEXDIFF_VERSION=1.6.0
 
+# Required at least for PlantUML below
 WORKDIR /home
 
 # Fix for update-alternatives: error: error creating symbolic link '/usr/share/man/man1/rmid.1.gz.dpkg-tmp': No such file or directory
@@ -116,7 +117,22 @@ RUN mkdir -p /usr/local/texlive/texmf-local/tex/latex/tikz-uml && \
 RUN tlmgr remove --force tlcockpit && \
     rm -f /usr/bin/tlcockpit
 
-# update font index
-RUN luaotfload-tool --update
+# Pre-generate luaotfload's font caches so that latexmk does not rerun lualatex
+# in every fresh container (https://github.com/dante-ev/docker-texlive/issues/51).
+# The lookup cache cannot be pre-generated; /etc/latexmkrc takes care of it.
+# Several small worker runs: each lualatex process keeps the fonts it loaded in
+# memory (roughly 7 MB per font), so this bounds memory while using all cores.
+COPY font-cache/latexmkrc /etc/latexmkrc
+COPY font-cache/warm-font-cache.lua font-cache/warm-font-cache.tex /tmp/font-cache/
+RUN luaotfload-tool --update && \
+    cd /tmp/font-cache && \
+    WORKERS=32 && \
+    seq 0 $((WORKERS - 1)) | xargs -P "$(nproc)" -I{} env WORKER={} WORKERS="$WORKERS" \
+      lualatex -interaction=batchmode --jobname=warm-{} warm-font-cache.tex > /dev/null; \
+    grep -h WARM warm-*.log && \
+    [ "$(grep -l WARMDONE warm-*.log | wc -l)" -eq "$WORKERS" ] && \
+    # luaotfload reads the compiled .luc files; the .lua twins only cost space
+    rm /usr/local/texlive/*/texmf-var/luatex-cache/generic/fonts/otl/*.lua && \
+    cd / && rm -rf /tmp/font-cache
 
 WORKDIR /workdir
