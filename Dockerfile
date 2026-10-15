@@ -41,6 +41,8 @@ RUN apt-get update -q && \
     apt-get install -qqy -o=Dpkg::Use-Pty=0 bibtool && \
     # install Python's pip3
     apt-get install -qqy -o=Dpkg::Use-Pty=0 python3-pip && \
+    # Panflute - https://scorreia.com/software/panflute/index.html
+    apt-get install -qqy -o=Dpkg::Use-Pty=0 python3-panflute && \
     # install gnuplot
     apt-get install -qqy -o=Dpkg::Use-Pty=0 gnuplot && \
     # Mermaid CLI (used by ltmermaid/mermaid.sty) runs on Node.js and renders via a headless Chromium.

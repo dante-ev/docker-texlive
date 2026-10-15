@@ -31,6 +31,7 @@ Note that this version is continuously built based on [texlive/texlive](https://
 - Added [Mermaid CLI](https://github.com/mermaid-js/mermaid-cli) (`mmdc`) 12.0.0 with Node.js and Chromium, so that `ltmermaid`/`mermaid.sty` work with `--shell-escape`.
 - Added [TikZ-UML](https://perso.ensta.fr/~kielbasi/tikzuml/) (`tikz-uml.sty`), which is not part of TeX Live.
 - Added a `plantuml` command wrapping `$PLANTUML_JAR`.
+- Added [panflute](https://scorreia.com/software/panflute/index.html) to ease writing Pandoc filters in Python. [#62](https://github.com/dante-ev/docker-texlive/pull/62)
 
 #### Fixed
 
