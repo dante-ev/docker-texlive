@@ -65,14 +65,22 @@ RUN curl -o /home/pandoc.deb -sSL https://github.com/jgm/pandoc/releases/downloa
 RUN curl -o /home/plantuml.jar -sSL https://github.com/plantuml/plantuml/releases/download/v1.2026.6/plantuml-asl-1.2026.6.jar
 ENV PLANTUML_JAR=/home/plantuml.jar
 
-# Create font cache
-COPY load-fonts.tex /tmp/
-RUN luaotfload-tool --update --force --no-compress && \
-  texhash && \
-  # This errors because of missing glyphs, but still populates the cache
-  cd /tmp && yes "" | lualatex load-fonts || true && \
-  # Needs to run twice according to https://tex.stackexchange.com/a/737059/9075
-  cd /tmp && yes "" | lualatex load-fonts || true && \
-  rm /tmp/load-fonts.*
+# Pre-generate luaotfload's font caches so that latexmk does not rerun lualatex
+# in every fresh container (https://github.com/dante-ev/docker-texlive/issues/51).
+# The lookup cache cannot be pre-generated; /etc/latexmkrc takes care of it.
+# Several small worker runs: each lualatex process keeps the fonts it loaded in
+# memory (roughly 7 MB per font), so this bounds memory while using all cores.
+COPY font-cache/latexmkrc /etc/latexmkrc
+COPY font-cache/warm-font-cache.lua font-cache/warm-font-cache.tex /tmp/font-cache/
+RUN luaotfload-tool --update && \
+    cd /tmp/font-cache && \
+    WORKERS=32 && \
+    seq 0 $((WORKERS - 1)) | xargs -P "$(nproc)" -I{} env WORKER={} WORKERS="$WORKERS" \
+      lualatex -interaction=batchmode --jobname=warm-{} warm-font-cache.tex > /dev/null; \
+    grep -h WARM warm-*.log && \
+    [ "$(grep -l WARMDONE warm-*.log | wc -l)" -eq "$WORKERS" ] && \
+    # luaotfload reads the compiled .luc files; the .lua twins only cost space
+    rm /usr/local/texlive/*/texmf-var/luatex-cache/generic/fonts/otl/*.lua && \
+    cd / && rm -rf /tmp/font-cache
 
 WORKDIR /workdir

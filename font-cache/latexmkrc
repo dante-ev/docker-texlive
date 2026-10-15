@@ -1,0 +1,12 @@
+# System-wide latexmk configuration, installed as /etc/latexmkrc.
+#
+# lualatex reads and rewrites luaotfload's font lookup cache
+# (texmf-var/luatex-cache/generic/names/luaotfload-lookup-cache.luc) whenever
+# a document asks for a font by name that is not in the cache yet. Inside a
+# fresh container the cache starts from the image's state on every run, so
+# latexmk would otherwise see the file change and rerun lualatex once per
+# `docker run` (https://github.com/dante-ev/docker-texlive/issues/51).
+# Ignoring the content of .luc files (compiled Lua bytecode, never a document
+# source) keeps the cache out of latexmk's rerun decision. Same workaround as
+# https://github.com/latex3/luaotfload/issues/157#issuecomment-1079658745
+$hash_calc_ignore_pattern{'luc'} = '^';

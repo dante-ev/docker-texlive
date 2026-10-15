@@ -28,7 +28,7 @@ Note that this version is continuously built based on [texlive/texlive](https://
 
 #### Added
 
-- All fonts are cached so that `latexmk` correctly determines whether it should re run. [#51](https://github.com/dante-ev/docker-texlive/issues/51)
+- `latexmk -pdflua` no longer reruns `lualatex` in every fresh container: luaotfload's font caches are pre-generated in the image and a system-wide `/etc/latexmkrc` keeps the font lookup cache out of latexmk's rerun decision. [#51](https://github.com/dante-ev/docker-texlive/issues/51)
 
 ## TeXLive 2026
 
