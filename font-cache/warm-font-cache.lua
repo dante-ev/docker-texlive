@@ -17,7 +17,9 @@ local loaded, failed = 0, 0
 for i, m in ipairs(maps) do
   if i % workers == worker then
     local spec = "file:" .. m.basename
-    if m.subfont then spec = spec .. "(" .. tostring(m.subfont) .. ")" end
+    -- The index counts subfonts of a TrueType collection from 1, the
+    -- file: syntax from 0.
+    if m.subfont then spec = spec .. "(" .. (m.subfont - 1) .. ")" end
     local ok, result = pcall(fonts.definers.read, spec, 655360)
     if ok and result then
       loaded = loaded + 1
