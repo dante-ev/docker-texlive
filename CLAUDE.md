@@ -21,7 +21,8 @@ docker run --rm ghcr.io/dante-ev/texlive:edge bash -c '
 ```
 
 `.github/workflows/check-build.yml` compiles the samples in `test/` on push/PR.
-`.github/workflows/publish.yml` builds multi-arch (amd64+arm64) and pushes on
+`.github/workflows/publish.yml` builds amd64 and arm64 on native runners via
+[Docker GitHub Builder](https://github.com/docker/github-builder) and pushes on
 schedule (1st & 15th), on tag push, and on push to `main`.
 
 ## Versioning
