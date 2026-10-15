@@ -20,7 +20,7 @@ jobs:
   # Builds each platform on a native runner (arm64 on ubuntu-24.04-arm) and merges them into one
   # multi-platform image. Emulating arm64 with QEMU made the font-cache warm-up take hours.
   build:
-    uses: docker/github-builder/.github/workflows/build.yml@v1
+    uses: docker/github-builder/.github/workflows/build.yml@58cb9f5b71b1836d6f690c1e95effdeb9b98cb8a # v1.17.0
     permissions:
       contents: read # to fetch the repository content
       id-token: write # for signing attestations with GitHub OIDC
