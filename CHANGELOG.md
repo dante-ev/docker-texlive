@@ -39,7 +39,7 @@ Note that this version is continuously built based on [texlive/texlive](https://
 
 #### Changed
 
-- Updated the TeX Live base image to `TL2026-2026-10-11-full`, which is what `:latest` currently points to. A release pins `FROM` to this tag for reproducible builds.
+- Updated the TeX Live base image to `TL2026-2026-10-11-full`. A release pins `FROM` to this tag for reproducible builds.
 - Updated `pandoc` to [3.12.1](https://github.com/jgm/pandoc/releases/tag/3.12.1)
 - Updated `plantuml` to [v1.2026.8](https://github.com/plantuml/plantuml/releases/tag/v1.2026.8)
 
