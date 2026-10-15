@@ -43,6 +43,10 @@ Note that this version is continuously built based on [texlive/texlive](https://
 - Updated `pandoc` to [3.12.1](https://github.com/jgm/pandoc/releases/tag/3.12.1)
 - Updated `plantuml` to [v1.2026.8](https://github.com/plantuml/plantuml/releases/tag/v1.2026.8)
 
+#### Removed
+
+- Removed `tlcockpit`, which bundles `jackson-databind` 2.9.4 with known critical CVEs. [#60](https://github.com/dante-ev/docker-texlive/issues/60)
+
 ## TeXLive 2026
 
 ### [2026-A] &ndash; 2026-06-28

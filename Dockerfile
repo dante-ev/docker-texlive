@@ -102,6 +102,11 @@ RUN mkdir -p /usr/local/texlive/texmf-local/tex/latex/tikz-uml && \
     rm /tmp/tikzuml.tbz && \
     mktexlsr /usr/local/texlive/texmf-local
 
+# tlcockpit is a JavaFX GUI, unusable in a container, and bundles jackson-databind 2.9.4 with critical CVEs.
+# --force records the removal, so a later `tlmgr update --all` does not reinstall it.
+RUN tlmgr remove --force tlcockpit && \
+    rm -f /usr/bin/tlcockpit
+
 # update font index
 RUN luaotfload-tool --update
 
