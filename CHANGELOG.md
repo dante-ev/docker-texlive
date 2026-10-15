@@ -26,6 +26,21 @@ We use letters instead of numbers to avoid confusion with the automatic builds s
 
 Note that this version is continuously built based on [texlive/texlive](https://gitlab.com/islandoftex/images/texlive).
 
+#### Added
+
+- Added [Mermaid CLI](https://github.com/mermaid-js/mermaid-cli) (`mmdc`) 12.0.0 with Node.js and Chromium, so that `ltmermaid`/`mermaid.sty` work with `--shell-escape`.
+- Added [TikZ-UML](https://perso.ensta.fr/~kielbasi/tikzuml/) (`tikz-uml.sty`), which is not part of TeX Live.
+- Added a `plantuml` command wrapping `$PLANTUML_JAR`.
+
+#### Fixed
+
+- The `plantuml` LaTeX package works again; its sample is compiled in CI again.
+
+#### Changed
+
+- Updated `pandoc` to [3.12.1](https://github.com/jgm/pandoc/releases/tag/3.12.1)
+- Updated `plantuml` to [v1.2026.8](https://github.com/plantuml/plantuml/releases/tag/v1.2026.8)
+
 ## TeXLive 2026
 
 ### [2026-A] &ndash; 2026-06-28

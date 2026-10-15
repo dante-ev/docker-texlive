@@ -3,8 +3,8 @@
 Full TeX Live Docker image published as `danteev/texlive` (Docker Hub) and
 `ghcr.io/dante-ev/texlive`. It builds on the
 [Island of TeX TeX Live image](https://gitlab.com/islandoftex/images/texlive) and
-adds tooling: pandoc, PlantUML, inkscape, graphviz, latexml, bibtool, gnuplot,
-fig2dev, DEPP, fonts, etc. See `Dockerfile`.
+adds tooling: pandoc, PlantUML, Mermaid CLI (with Node.js and Chromium), TikZ-UML,
+inkscape, graphviz, latexml, bibtool, gnuplot, fig2dev, DEPP, fonts, etc. See `Dockerfile`.
 
 ## Build & smoke test
 
@@ -14,7 +14,9 @@ docker build -t ghcr.io/dante-ev/texlive:edge .
 docker run --rm ghcr.io/dante-ev/texlive:edge bash -c '
   tex --version | head -1
   pandoc --version | head -1
-  java -jar "$PLANTUML_JAR" -version | head -1'
+  plantuml -version | head -1
+  mmdc --version
+  kpsewhich tikz-uml.sty'
 ```
 
 `.github/workflows/check-build.yml` compiles the samples in `test/` on push/PR.

@@ -2,15 +2,24 @@
 
 This docker image supports full TeX Live with following additions:
 
+- [bibtool](https://github.com/ge-ne/bibtool)
+- [DEPP](https://gitlab.com/islandoftex/texmf/depp) - Dependency Printer for TeX Live
+- [fig2dev](https://sourceforge.net/projects/mcj/) - to convert xfig figures
 - [Gnuplot](http://www.gnuplot.info/)
 - [GraphViz](https://www.graphviz.org/)
 - [Inkscape](https://inkscape.org/)
-- [latexmk](https://www.ctan.org/pkg/latexmk/) - an automator for latex building
-- [Pandoc](http://pandoc.org/) - to convert from and to `.tex`
-- Python
-  - [pygments](https://pygments.org/). This enables the usage of the [minted](https://ctan.org/pkg/minted) package for source code highlighting.
-  - [pip](https://pypi.org/project/pip/). This enables manual Python package installation.
-- Java headless - required for Pandoc
+- [LaTeXML](https://github.com/brucemiller/LaTeXML)
+- [Mermaid CLI](https://github.com/mermaid-js/mermaid-cli) (`mmdc`) with Node.js and Chromium - enables the [ltmermaid](https://ctan.org/pkg/ltmermaid) package
+- [Pandoc](http://pandoc.org/) - to convert from and to `.tex` (more recent than the Debian package)
+- [PlantUML](https://plantuml.com/) - available as `plantuml` command and at `$PLANTUML_JAR`; enables the [plantuml](https://ctan.org/pkg/plantuml) package
+- [pip](https://pypi.org/project/pip/). This enables manual Python package installation.
+- [TikZ-UML](https://perso.ensta.fr/~kielbasi/tikzuml/) - not part of TeX Live
+
+The base image already provides, among others,
+[latexmk](https://www.ctan.org/pkg/latexmk/),
+Python 3 with [pygments](https://pygments.org/) (for [minted](https://ctan.org/pkg/minted)),
+Java,
+and git.
 
 It builds on the [full TeX Live image by "Island of TeX"](https://gitlab.com/islandoftex/images/texlive) with additions considered important.
 
