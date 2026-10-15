@@ -103,6 +103,11 @@ RUN mkdir -p /usr/local/texlive/texmf-local/tex/latex/tikz-uml && \
     rm /tmp/tikzuml.tbz && \
     mktexlsr /usr/local/texlive/texmf-local
 
+# tlcockpit is a JavaFX GUI, unusable in a container, and bundles jackson-databind 2.9.4 with critical CVEs.
+# --force records the removal, so a later `tlmgr update --all` does not reinstall it.
+RUN tlmgr remove --force tlcockpit && \
+    rm -f /usr/bin/tlcockpit
+
 # Pre-generate luaotfload's font caches so that latexmk does not rerun lualatex
 # in every fresh container (https://github.com/dante-ev/docker-texlive/issues/51).
 # The lookup cache cannot be pre-generated; /etc/latexmkrc takes care of it.
