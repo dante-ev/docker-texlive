@@ -26,6 +26,10 @@ We use letters instead of numbers to avoid confusion with the automatic builds s
 
 Note that this version is continuously built based on [texlive/texlive](https://gitlab.com/islandoftex/images/texlive).
 
+#### Added
+
+- Added [panflute](https://scorreia.com/software/panflute/index.html) to ease writing Pandoc filters in Python. [#62](https://github.com/dante-ev/docker-texlive/pull/62)
+
 ## TeXLive 2026
 
 ### [2026-A] &ndash; 2026-06-28
