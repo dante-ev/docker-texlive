@@ -24,9 +24,9 @@ WORKDIR /home
 RUN mkdir -p /usr/share/man/man1
 
 RUN apt-get update -q && \
-    # Install tools less annd wget
+    # Install tools less and wget
     apt-get install -qqy -o=Dpkg::Use-Pty=0 --no-install-recommends less wget && \
-    # Install Ruby's bundler
+    # Install Ruby with an up-to-date bundler, and poppler-utils (pdftotext, pdftoppm, ...)
     apt-get install -qqy -o=Dpkg::Use-Pty=0 ruby poppler-utils && gem install bundler && \
     # libfile-copy-recursive-perl is required by ctanify
     apt-get install -qqy -o=Dpkg::Use-Pty=0 --no-install-recommends libfile-copy-recursive-perl openssh-client  && \
@@ -44,8 +44,7 @@ RUN apt-get update -q && \
     apt-get install -qqy -o=Dpkg::Use-Pty=0 python3-pip && \
     # Panflute - https://scorreia.com/software/panflute/index.html
     apt-get install -qqy -o=Dpkg::Use-Pty=0 python3-panflute && \
-    # install gnuplot
-    apt-get install -qqy -o=Dpkg::Use-Pty=0 gnuplot && \
+    # gnuplot is not installed here: the upstream image already ships gnuplot-nox
     # Mermaid CLI (used by ltmermaid/mermaid.sty) runs on Node.js and renders via a headless Chromium.
     # Debian's chromium is used, because puppeteer ships no Chrome build for arm64.
     apt-get install -qqy -o=Dpkg::Use-Pty=0 --no-install-recommends nodejs npm chromium && \
