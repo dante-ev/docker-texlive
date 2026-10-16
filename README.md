@@ -157,6 +157,10 @@ build:
       - document.pdf
 ```
 
+### Usage in [Forgejo Actions](https://forgejo.org/docs/latest/user/actions/)
+
+M. Peischl, M. Krüger & O. Kopp. [Creation of LaTeX documents using a cloud-based pipeline](https://doi.org/10.47397/tb/45-2/tb140peischl-pipeline). TUGboat 45(2), 227–233 (2024) - detailed instructions on how to set up and use Forgejo Actions workflows for LaTeX documents.
+
 ### Usage in [CircleCI 2.0](https://circleci.com/docs/)
 
 Create file `.circle/config.yml` with following content:
