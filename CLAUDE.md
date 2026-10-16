@@ -59,6 +59,8 @@ grep -E "^TL$(date +%Y)-.*-full$" tags.txt | sort | tail -1
 1. `CHANGELOG.md`: promote the `## [edge]` entries into a new
    `## TeXLive <year>` / `### [<year>-R] – <date>` section, add the `[<year>-R]`
    compare link, and add the `## TeXLive <year>` anchor to the Versions list.
+   `README.md`: under "Other versions", list the new tag as the latest build of
+   its TeX Live year (replacing that year's previous tag).
 2. `Dockerfile`: **pin** `FROM` to the chosen `TL…-full` tag (comment out
    `:latest`).
 3. Commit `Release <year>-R` and tag it `<year>-R`. **Pushing the tag triggers

@@ -37,9 +37,15 @@ Browse all available tags at <https://hub.docker.com/r/danteev/texlive/tags>.
 
 ### Other versions
 
-- `2021-A` - first image release in year 2021
-- `2020-A` - latest TeXLive 2020 build
-- `TL2017` - TeXLive 2017 build
+- `2026-B` - latest TeX Live 2026 build
+- `2025-A` - latest TeX Live 2025 build
+- `2024-B` - latest TeX Live 2024 build
+- `2023-A` - latest TeX Live 2023 build
+- `2021-D` - latest TeX Live 2021 build
+- `2020-A` - latest TeX Live 2020 build
+- `2019-A` - latest TeX Live 2019 build
+- `TL2017` - latest TeX Live 2017 build
+- There are no releases based on TeX Live 2018 or 2022.
 - For all other versions see [CHANGELOG.md](https://github.com/dante-ev/docker-texlive/blob/main/CHANGELOG.md#changelog).
 
 ## Usage
