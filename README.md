@@ -210,7 +210,7 @@ script:
 
 ### Further reading
 
-M. Peischl, M. Krüger & O. Kopp. [Creation of LaTeX documents using a cloud-based pipeline](https://doi.org/10.47397/tb/45-2/tb140peischl-pipeline). TUGboat 45(2), 227–233 (2024) - background on building LaTeX documents in CI pipelines, with detailed instructions on how to set up and use Forgejo Actions workflows.
+M. Peischl, M. Krüger & O. Kopp. [Creation of LaTeX documents using a cloud-based pipeline](https://doi.org/10.47397/tb/45-2/tb140peischl-pipeline). TUGboat 45(2), 227–233 (2024) - background on building LaTeX documents in CI pipelines.
 
 ## Development hints
 
