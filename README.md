@@ -37,9 +37,15 @@ Browse all available tags at <https://hub.docker.com/r/danteev/texlive/tags>.
 
 ### Other versions
 
-- `2021-A` - first image release in year 2021
-- `2020-A` - latest TeXLive 2020 build
-- `TL2017` - TeXLive 2017 build
+- `2026-B` - latest TeX Live 2026 build
+- `2025-A` - latest TeX Live 2025 build
+- `2024-B` - latest TeX Live 2024 build
+- `2023-A` - latest TeX Live 2023 build
+- `2021-D` - latest TeX Live 2021 build
+- `2020-A` - latest TeX Live 2020 build
+- `2019-A` - latest TeX Live 2019 build
+- `TL2017` - latest TeX Live 2017 build
+- There are no releases based on TeX Live 2018 or 2022.
 - For all other versions see [CHANGELOG.md](https://github.com/dante-ev/docker-texlive/blob/main/CHANGELOG.md#changelog).
 
 ## Usage
@@ -151,6 +157,29 @@ build:
       - document.pdf
 ```
 
+### Usage in [Forgejo Actions](https://forgejo.org/docs/latest/user/actions/)
+
+Create file `.forgejo/workflows/build.yml` with following content:
+
+```yaml
+on: [push, pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    container:
+      image: danteev/texlive
+    steps:
+      - uses: actions/checkout@v4
+      - run: latexmk -pdf document.tex
+      - uses: https://code.forgejo.org/forgejo/upload-artifact@v4
+        with:
+          name: document
+          path: document.pdf
+```
+
+The image includes Node.js, which Forgejo needs to run JavaScript actions such as `actions/checkout`.
+For a fuller example that also publishes the PDF to a branch, see [TeXhackse/forgejo-actions-latex](https://codeberg.org/TeXhackse/forgejo-actions-latex/src/branch/main/.forgejo/workflows/main.yaml).
+
 ### Usage in [CircleCI 2.0](https://circleci.com/docs/)
 
 Create file `.circle/config.yml` with following content:
@@ -178,6 +207,10 @@ services: docker
 script:
 - docker run --rm -it -v $(pwd):/workdir danteev/texlive latexmk -pdf document.tex
 ```
+
+### Further reading
+
+M. Peischl, M. Krüger & O. Kopp. [Creation of LaTeX documents using a cloud-based pipeline](https://doi.org/10.47397/tb/45-2/tb140peischl-pipeline). TUGboat 45(2), 227–233 (2024) - background on building LaTeX documents in CI pipelines.
 
 ## Development hints
 
