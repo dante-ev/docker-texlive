@@ -159,7 +159,26 @@ build:
 
 ### Usage in [Forgejo Actions](https://forgejo.org/docs/latest/user/actions/)
 
-M. Peischl, M. Krüger & O. Kopp. [Creation of LaTeX documents using a cloud-based pipeline](https://doi.org/10.47397/tb/45-2/tb140peischl-pipeline). TUGboat 45(2), 227–233 (2024) - detailed instructions on how to set up and use Forgejo Actions workflows for LaTeX documents.
+Create file `.forgejo/workflows/build.yml` with following content:
+
+```yaml
+on: [push, pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    container:
+      image: danteev/texlive
+    steps:
+      - uses: actions/checkout@v4
+      - run: latexmk -pdf document.tex
+      - uses: https://code.forgejo.org/forgejo/upload-artifact@v4
+        with:
+          name: document
+          path: document.pdf
+```
+
+The image includes Node.js, which Forgejo needs to run JavaScript actions such as `actions/checkout`.
+For a fuller example that also publishes the PDF to a branch, see [TeXhackse/forgejo-actions-latex](https://codeberg.org/TeXhackse/forgejo-actions-latex/src/branch/main/.forgejo/workflows/main.yaml).
 
 ### Usage in [CircleCI 2.0](https://circleci.com/docs/)
 
@@ -188,6 +207,10 @@ services: docker
 script:
 - docker run --rm -it -v $(pwd):/workdir danteev/texlive latexmk -pdf document.tex
 ```
+
+### Further reading
+
+M. Peischl, M. Krüger & O. Kopp. [Creation of LaTeX documents using a cloud-based pipeline](https://doi.org/10.47397/tb/45-2/tb140peischl-pipeline). TUGboat 45(2), 227–233 (2024) - background on building LaTeX documents in CI pipelines, with detailed instructions on how to set up and use Forgejo Actions workflows.
 
 ## Development hints
 
