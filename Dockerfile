@@ -1,5 +1,5 @@
 FROM registry.gitlab.com/islandoftex/images/texlive:latest
-# FROM registry.gitlab.com/islandoftex/images/texlive:TL2026-2026-10-11-full
+# FROM registry.gitlab.com/islandoftex/images/texlive:TL2026-2026-10-18-full
 
 ARG TARGETARCH
 
@@ -44,6 +44,8 @@ RUN apt-get update -q && \
     apt-get install -qqy -o=Dpkg::Use-Pty=0 python3-pip && \
     # Panflute - https://scorreia.com/software/panflute/index.html
     apt-get install -qqy -o=Dpkg::Use-Pty=0 python3-panflute && \
+    # aspell with English and German dictionaries for command-line spell checking
+    apt-get install -qqy -o=Dpkg::Use-Pty=0 --no-install-recommends aspell aspell-en aspell-de && \
     # gnuplot is not installed here: the upstream image already ships gnuplot-nox
     # Mermaid CLI (used by ltmermaid/mermaid.sty) runs on Node.js and renders via a headless Chromium.
     # Debian's chromium is used, because puppeteer ships no Chrome build for arm64.
