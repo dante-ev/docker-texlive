@@ -2,6 +2,7 @@
 
 This Docker image supports full TeX Live with following additions:
 
+- [Aspell](https://github.com/GNUAspell/aspell) with English and German dictionaries - spell checker
 - [bibtool](https://github.com/ge-ne/bibtool)
 - [DEPP](https://gitlab.com/islandoftex/texmf/depp) - Dependency Printer for TeX Live
 - [fig2dev](https://sourceforge.net/projects/mcj/) - to convert xfig figures
