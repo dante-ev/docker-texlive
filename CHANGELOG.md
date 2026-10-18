@@ -26,11 +26,17 @@ We use letters instead of numbers to avoid confusion with the automatic builds s
 
 Note that this version is continuously built based on [texlive/texlive](https://gitlab.com/islandoftex/images/texlive).
 
-### Added
+## TeXLive 2026
+
+### [2026-C] &ndash; 2026-10-18
+
+#### Added
 
 - Added [GNU Aspell](https://github.com/GNUAspell/aspell) (`aspell`) with English and German dictionaries.
 
-## TeXLive 2026
+#### Changed
+
+- Updated the TeX Live base image to `TL2026-2026-10-18-full`.
 
 ### [2026-B] &ndash; 2026-10-15
 
@@ -282,7 +288,8 @@ Note that this version is continuously built based on [texlive/texlive](https://
 
 Initial release
 
-[edge]: https://github.com/koppor/docker-texlive/compare/2026-B...HEAD
+[edge]: https://github.com/koppor/docker-texlive/compare/2026-C...HEAD
+[2026-C]: https://github.com/koppor/docker-texlive/compare/2026-B...2026-C
 [2026-B]: https://github.com/koppor/docker-texlive/compare/2026-A...2026-B
 [2026-A]: https://github.com/koppor/docker-texlive/compare/2025-A...2026-A
 [2025-A]: https://github.com/koppor/docker-texlive/compare/2024-B...2025-A

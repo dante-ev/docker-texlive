@@ -38,7 +38,7 @@ Browse all available tags at <https://hub.docker.com/r/danteev/texlive/tags>.
 
 ### Other versions
 
-- `2026-B` - latest TeX Live 2026 build
+- `2026-C` - latest TeX Live 2026 build
 - `2025-A` - latest TeX Live 2025 build
 - `2024-B` - latest TeX Live 2024 build
 - `2023-A` - latest TeX Live 2023 build
