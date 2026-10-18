@@ -3,8 +3,11 @@
 Full TeX Live Docker image published as `danteev/texlive` (Docker Hub) and
 `ghcr.io/dante-ev/texlive`. It builds on the
 [Island of TeX TeX Live image](https://gitlab.com/islandoftex/images/texlive) and
-adds tooling: pandoc, PlantUML, Mermaid CLI (with Node.js and Chromium), TikZ-UML, TeXtidote,
+adds tooling: aspell, pandoc, PlantUML, Mermaid CLI (with Node.js and Chromium), TikZ-UML, TeXtidote,
 inkscape, graphviz, latexml, bibtool, gnuplot, fig2dev, DEPP, fonts, etc. See `Dockerfile`.
+
+When adding or removing a tool in the `Dockerfile`, also update the list of additions at
+the top of `README.md` (kept alphabetical) and add a `CHANGELOG.md` entry.
 
 ## Build & smoke test
 

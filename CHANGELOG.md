@@ -26,6 +26,10 @@ We use letters instead of numbers to avoid confusion with the automatic builds s
 
 Note that this version is continuously built based on [texlive/texlive](https://gitlab.com/islandoftex/images/texlive).
 
+### Added
+
+- Added [GNU Aspell](https://github.com/GNUAspell/aspell) (`aspell`) with English and German dictionaries.
+
 ## TeXLive 2026
 
 ### [2026-B] &ndash; 2026-10-15
