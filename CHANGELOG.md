@@ -26,6 +26,12 @@ We use letters instead of numbers to avoid confusion with the automatic builds s
 
 Note that this version is continuously built based on [texlive/texlive](https://gitlab.com/islandoftex/images/texlive).
 
+### Changed
+
+- Updated `pandoc` to [3.13](https://github.com/jgm/pandoc/releases/tag/3.13)
+- Updated `plantuml` to [v1.2026.9](https://github.com/plantuml/plantuml/releases/tag/v1.2026.9)
+- Updated `@mermaid-js/mermaid-cli` to [12.2.0](https://github.com/mermaid-js/mermaid-cli/releases/tag/12.2.0)
+
 ## TeXLive 2026
 
 ### [2026-C] &ndash; 2026-10-18
