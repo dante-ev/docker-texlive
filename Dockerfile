@@ -14,7 +14,6 @@ ENV LANG=C.UTF-8 \
     TERM=dumb
 
 ARG BUILD_DATE
-ARG GITLATEXDIFF_VERSION=1.6.0
 
 # Required at least for PlantUML below
 WORKDIR /home
@@ -65,10 +64,10 @@ RUN cd /tmp && \
     rm -rf /tmp/depp
 
 # pandoc in the repositories is older - we just overwrite it with a more recent version
-RUN curl -o /home/pandoc.deb -sSL https://github.com/jgm/pandoc/releases/download/3.13/pandoc-3.13-1-$TARGETARCH.deb && dpkg -i pandoc.deb && rm pandoc.deb
+RUN curl -o /home/pandoc.deb -sSL https://github.com/jgm/pandoc/releases/download/3.14/pandoc-3.14-1-$TARGETARCH.deb && dpkg -i pandoc.deb && rm pandoc.deb
 
 # get PlantUML in place (the released .jar is already runnable; do not unzip it)
-RUN curl -o /home/plantuml.jar -sSL https://github.com/plantuml/plantuml/releases/download/v1.2026.9/plantuml-asl-1.2026.9.jar && \
+RUN curl -o /home/plantuml.jar -sSL https://github.com/plantuml/plantuml/releases/download/v1.2026.10/plantuml-asl-1.2026.10.jar && \
     printf '#!/bin/sh\nexec java -Djava.awt.headless=true -jar "$PLANTUML_JAR" "$@"\n' > /usr/local/bin/plantuml && \
     chmod +x /usr/local/bin/plantuml
 ENV PLANTUML_JAR=/home/plantuml.jar
